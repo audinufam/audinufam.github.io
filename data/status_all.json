@@ -1,0 +1,1050 @@
+[
+    {
+        "name": "2015",
+        "children": [
+            {
+                "name": "CORREGEDORIA",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "DEMAT",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 12
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 16
+                    }
+                ]
+            },
+            {
+                "name": "INC",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "PCU",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2016",
+        "children": [
+            {
+                "name": "BC",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 5
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 7
+                    }
+                ]
+            },
+            {
+                "name": "INC",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 13
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PCU",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 10
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 10
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2017",
+        "children": [
+            {
+                "name": "BC",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "CDTECH",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "CGL",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "COMEP",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "CPPAD",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 11
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "CTIC",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "DEMAT",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "EEM",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "FACED",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "FAEXP",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 12
+                    }
+                ]
+            },
+            {
+                "name": "FCA",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "FCF",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "FD",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "FEFF",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "FES",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "FT",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "GAB REITOR",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 9
+                    }
+                ]
+            },
+            {
+                "name": "ICB",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "ICE",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 24
+                    }
+                ]
+            },
+            {
+                "name": "IEAA",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "IFCHS",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "INC",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 7
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "ISB",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PCU",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 16
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 20
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 13
+                    }
+                ]
+            },
+            {
+                "name": "PROEG",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROEXT",
+                "children": [
+                    {
+                        "name": "Baixada",
+                        "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 3
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROPESP",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "PROPLAN",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PROTEC",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2018",
+        "children": [
+            {
+                "name": "ADM SUPERIOR",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 9
+                    }
+                ]
+            },
+            {
+                "name": "ASCOM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "CCA",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "CTIC",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 7
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 10
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PCU",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 7
+                    }
+                ]
+            },
+            {
+                "name": "SDP",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2019",
+        "children": [
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "PCU",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 15
+                    }
+                ]
+            },
+            {
+                "name": "PROEXT",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 20
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROPESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2020",
+        "children": [
+            {
+                "name": "ADM SUPERIOR",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 10
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 8
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2021",
+        "children": [
+            {
+                "name": "ADM SUPERIOR",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 6
+                    }
+                ]
+            },
+            {
+                "name": "ARII",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "ASCOM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 5
+                    }
+                ]
+            },
+            {
+                "name": "CCA",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "CTIC",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "DAEST",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 10
+                    }
+                ]
+            },
+            {
+                "name": "ICET",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 5
+                    }
+                ]
+            },
+            {
+                "name": "IEAA",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "INC",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "ISB",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 10
+                    }
+                ]
+            },
+            {
+                "name": "PROPLAN",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PROTEC",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2022",
+        "children": [
+            {
+                "name": "ADM SUPERIOR",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "DAEST",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "IEAA",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROEG",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 9
+                    }
+                ]
+            },
+            {
+                "name": "PROEXT",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "PROPESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2023",
+        "children": [
+            {
+                "name": "ADM SUPERIOR",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "ARII",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 5
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "DAEST",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 5
+                    }
+                ]
+            },
+            {
+                "name": "ICSEZ",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 2
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "PCU",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 7
+                    }
+                ]
+            },
+            {
+                "name": "PROEXT",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 2
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROTEC",
+                "children": [
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 2
+                    }
+                ]
+            }
+        ]
+    }
+]
