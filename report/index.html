@@ -1,14 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recomendações detalhadas</title>
+    <title>Relatórios</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- DataTables CSS (sem Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <style>
+        /* Estilos customizados para a tabela */
+        .dataTables_wrapper {
+            padding: 0;
+            font-family: inherit;
+        }
+        .dataTables_filter {
+            margin-bottom: 15px;
+        }
+        .dataTables_filter input {
+            border: 2px solid #1c8b3d !important;
+            border-radius: 8px !important;
+            padding: 8px 15px !important;
+            margin-left: 10px !important;
+            font-size: 14px;
+        }
+        .dataTables_length {
+            margin-bottom: 15px;
+        }
+        .dataTables_length select {
+            border: 2px solid #1c8b3d !important;
+            border-radius: 8px !important;
+            padding: 5px 10px !important;
+        }
+        #relatoriosTable {
+            width: 100% !important;
+            border-collapse: collapse;
+        }
+        #relatoriosTable thead th {
+            background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%) !important;
+            color: white !important;
+            font-weight: 600;
+            padding: 15px 10px !important;
+            border: none !important;
+            text-align: left;
+        }
+        #relatoriosTable tbody tr {
+            border-bottom: 1px solid #eee;
+        }
+        #relatoriosTable tbody tr:hover {
+            background-color: #e8f5e9 !important;
+        }
+        #relatoriosTable tbody td {
+            padding: 12px 10px !important;
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+        #relatoriosTable tbody tr:nth-child(odd) {
+            background-color: #fafafa;
+        }
+        .dataTables_paginate {
+            margin-top: 15px;
+        }
+        .dataTables_paginate .paginate_button {
+            padding: 5px 12px !important;
+            margin: 0 3px;
+            border-radius: 5px !important;
+            border: 1px solid #ddd !important;
+            background: white !important;
+            color: #333 !important;
+        }
+        .dataTables_paginate .paginate_button:hover {
+            background: #e8f5e9 !important;
+            border-color: #1c8b3d !important;
+            color: #1c8b3d !important;
+        }
+        .dataTables_paginate .paginate_button.current {
+            background: #1c8b3d !important;
+            border-color: #1c8b3d !important;
+            color: white !important;
+        }
+        .dataTables_info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        /* Filtros rápidos */
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .filter-btn.all { border-color: #1c8b3d; color: #1c8b3d; }
+        .filter-btn.all:hover, .filter-btn.all.active { background: #1c8b3d; color: white; }
+        .filter-btn.ano { border-color: #2196F3; color: #2196F3; }
+        .filter-btn.ano:hover, .filter-btn.ano.active { background: #2196F3; color: white; }
+        /* Export buttons */
+        .dt-buttons {
+            margin-bottom: 15px;
+        }
+        .dt-buttons .dt-button {
+            background: #1c8b3d !important;
+            border: none !important;
+            margin-right: 5px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: white !important;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .dt-buttons .dt-button:hover {
+            background: #166b2f !important;
+        }
+        /* Progress bar mini */
+        .progress-mini {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            width: 100px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+        .progress-mini-bar {
+            height: 100%;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    
+
     <div class="container">
         <div class="navigation">
             <ul>
@@ -65,7 +196,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/report/index.html">
                         <span class="icon">
                             <ion-icon name="file-tray-stacked-outline"></ion-icon>
                         </span>
@@ -90,30 +221,408 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
             </div>
-            <div class="flourish-embed" data-src="visualisation/14345489"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-            <a href="https://auditoria.ufam.edu.br/acesso-aos-relatorios.html">
-                <div style="text-align: center;"> <h2>Clique aqui para ver todos </h2></div>
+
+            <!-- Cards de Métricas -->
+            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+                <!-- Card Principal - Relatórios -->
+                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                    <ion-icon name="document-text-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="total-relatorios">67</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Relatórios</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">2015 - 2025</div>
+                </div>
+
+                <!-- Card Recomendações -->
+                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                    <ion-icon name="list-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="total-recomendacoes">609</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Recomendações</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Emitidas</div>
+                </div>
+
+                <!-- Card Média -->
+                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                    <ion-icon name="calculator-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="media-relatorio">9,1</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Média</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recom./Relatório</div>
+                </div>
+
+                <!-- Card Efetividade -->
+                <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
+                    <ion-icon name="trending-up-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="efetividade">35,6%</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Efetividade</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Atendidas + Baixadas</div>
+                </div>
+            </div>
+
+            <!-- Botão de Acesso -->
+            <div style="padding: 0 20px 20px 20px;">
+                <a href="https://auditoria.ufam.edu.br/acesso-aos-relatorios.html" target="_blank" style="text-decoration: none;">
+                    <div style="background: white; border-radius: 12px; padding: 18px; text-align: center; color: #1c8b3d; font-weight: 600; border: 2px solid #1c8b3d; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.3s;">
+                        <ion-icon name="open-outline" style="font-size: 1.3rem; vertical-align: middle; margin-right: 10px;"></ion-icon>
+                        Acessar todos os relatórios no site da AUDIN
+                    </div>
                 </a>
-            <br>
-            <tr></tr>
-            <div class="flourish-embed flourish-chart" data-src="visualisation/14585243"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-            <tr></tr>
-            <br>
-            <div class="flourish-embed flourish-hierarchy" data-src="visualisation/20492114"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/20492114/thumbnail" width="100%" alt="hierarchy visualization" /></noscript></div>
-            <tr></tr>
-            <br>
-            <div class="flourish-embed flourish-chart" data-src="visualisation/14585657"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+            </div>
+
+            <!-- Filtros por Ano -->
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background: white; border-radius: 15px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08);">
+                    <h4 style="color: #1c8b3d; margin: 0 0 15px 0; font-size: 1rem;">
+                        <ion-icon name="calendar-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Filtrar por Ano
+                    </h4>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="filtros-ano">
+                        <button class="filter-btn all active" onclick="filterAno('')">
+                            <ion-icon name="apps-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                            Todos
+                        </button>
+                        <!-- Botões de ano serão adicionados via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de Relatórios -->
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1c8b3d; margin: 0 0 20px 0; font-size: 1.2rem;">
+                        <ion-icon name="folder-open-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Relatórios de Auditoria
+                    </h3>
+
+                    <table id="relatoriosTable" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Ano</th>
+                                <th>Rel.</th>
+                                <th>Unidade(s)</th>
+                                <th>Recom.</th>
+                                <th>Resolvidas</th>
+                                <th>Pendentes</th>
+                                <th>Efetividade</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Informações Adicionais -->
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background: #f8f9fa; border-radius: 15px; padding: 20px; border-left: 4px solid #1c8b3d;">
+                    <h4 style="color: #1c8b3d; margin: 0 0 15px 0;">
+                        <ion-icon name="information-circle-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Como usar esta tabela
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; font-size: 0.9rem; color: #555;">
+                        <div>
+                            <ion-icon name="search-outline" style="color: #1c8b3d; margin-right: 5px;"></ion-icon>
+                            <strong>Busca:</strong> Pesquise por unidade, ano ou número do relatório
+                        </div>
+                        <div>
+                            <ion-icon name="calendar-outline" style="color: #1c8b3d; margin-right: 5px;"></ion-icon>
+                            <strong>Filtros:</strong> Clique nos botões de ano para filtrar
+                        </div>
+                        <div>
+                            <ion-icon name="download-outline" style="color: #1c8b3d; margin-right: 5px;"></ion-icon>
+                            <strong>Exportar:</strong> Use os botões Excel/PDF para baixar
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 5 Unidades Mais Auditadas -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 25px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <h3 style="color: #1c8b3d; margin: 0 0 20px 0; font-size: 1.2rem;">
+                        <ion-icon name="podium-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Top 5 Unidades Mais Auditadas
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #FFD700; color: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
+                            <span style="flex: 1; font-weight: 500;">PROADM</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;">116</span>
+                                <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #C0C0C0; color: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
+                            <span style="flex: 1; font-weight: 500;">ICSEZ</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;">67</span>
+                                <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #CD7F32; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
+                            <span style="flex: 1; font-weight: 500;">PROAE</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;">38</span>
+                                <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #4CAF50; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">4</span>
+                            <span style="flex: 1; font-weight: 500;">PCU</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;">35</span>
+                                <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #81C784; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">5</span>
+                            <span style="flex: 1; font-weight: 500;">INC</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;">34</span>
+                                <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de Relatórios por Ano -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <iframe src="/charts/bar_relatorios_ano.html" style="width:100%; height:400px; border:none;"></iframe>
+                </div>
+            </div>
+
+            <!-- Gráfico de Evolução por Status -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <iframe src="/charts/bar_status_ano.html" style="width:100%; height:500px; border:none;"></iframe>
+                </div>
+            </div>
 
         </div>
     </div>
-    
+
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables JS (sem Bootstrap) -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables Buttons -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+    <script>
+        var table;
+        var relatoriosData = [];
+
+        // Função para calcular efetividade com badge
+        function formatEfetividade(valor) {
+            var bgColor = '';
+            if (valor >= 50) {
+                bgColor = '#4CAF50';
+            } else if (valor >= 25) {
+                bgColor = '#FF9800';
+            } else {
+                bgColor = '#f44336';
+            }
+            return '<div class="progress-mini"><div class="progress-mini-bar" style="width: ' + valor + '%; background: ' + bgColor + ';"></div></div><span style="font-weight: 600;">' + valor.toFixed(0) + '%</span>';
+        }
+
+        // Função para filtrar por ano
+        function filterAno(ano) {
+            // Atualizar botões ativos
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (ano === '') {
+                document.querySelector('.filter-btn.all').classList.add('active');
+            } else {
+                document.querySelectorAll('.filter-btn.ano').forEach(btn => {
+                    if (btn.textContent.trim() === ano) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            // Aplicar filtro na tabela
+            table.column(0).search(ano).draw();
+        }
+
+        // Carregar dados e inicializar tabela
+        $(document).ready(function() {
+            fetch('/data/recomendacoes_table.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Agregar dados por relatório
+                    var relatoriosMap = {};
+                    var anos = new Set();
+
+                    data.forEach(function(item) {
+                        var key = item.Ano + '-' + item.Relatorio;
+                        anos.add(item.Ano);
+
+                        if (!relatoriosMap[key]) {
+                            relatoriosMap[key] = {
+                                ano: item.Ano,
+                                relatorio: item.Relatorio,
+                                unidades: new Set(),
+                                total: 0,
+                                atendidas: 0,
+                                baixadas: 0,
+                                implementacao: 0,
+                                pendentes: 0
+                            };
+                        }
+
+                        relatoriosMap[key].unidades.add(item.Unidade);
+                        relatoriosMap[key].total++;
+
+                        if (item.Situacao === 'Atendida') {
+                            relatoriosMap[key].atendidas++;
+                        } else if (item.Situacao === 'Baixada') {
+                            relatoriosMap[key].baixadas++;
+                        } else if (item.Situacao === 'Em Implementação') {
+                            relatoriosMap[key].implementacao++;
+                        } else if (item.Situacao === 'Pendente') {
+                            relatoriosMap[key].pendentes++;
+                        }
+                    });
+
+                    // Criar botões de filtro por ano
+                    var anosArray = Array.from(anos).sort().reverse();
+                    var filtrosContainer = document.getElementById('filtros-ano');
+                    anosArray.forEach(function(ano) {
+                        var btn = document.createElement('button');
+                        btn.className = 'filter-btn ano';
+                        btn.onclick = function() { filterAno(ano); };
+                        btn.innerHTML = ano;
+                        filtrosContainer.appendChild(btn);
+                    });
+
+                    // Converter para array e preparar dados
+                    relatoriosData = Object.values(relatoriosMap);
+                    var tableData = relatoriosData.map(function(item) {
+                        var efetividade = item.total > 0 ? ((item.atendidas + item.baixadas) / item.total) * 100 : 0;
+                        var unidadesStr = Array.from(item.unidades).join(', ');
+                        if (unidadesStr.length > 40) {
+                            unidadesStr = unidadesStr.substring(0, 37) + '...';
+                        }
+                        return [
+                            item.ano,
+                            item.relatorio,
+                            unidadesStr,
+                            item.total,
+                            item.atendidas + item.baixadas,
+                            item.pendentes + item.implementacao,
+                            efetividade
+                        ];
+                    });
+
+                    // Inicializar DataTables
+                    table = $('#relatoriosTable').DataTable({
+                        data: tableData,
+                        columns: [
+                            { title: "Ano", width: "60px" },
+                            { title: "Rel.", width: "50px" },
+                            { title: "Unidade(s)", width: "180px" },
+                            { title: "Recom.", width: "70px", className: "dt-center" },
+                            {
+                                title: "Resolvidas",
+                                width: "80px",
+                                className: "dt-center",
+                                render: function(data) {
+                                    return '<span style="color: #4CAF50; font-weight: 600;">' + data + '</span>';
+                                }
+                            },
+                            {
+                                title: "Pendentes",
+                                width: "80px",
+                                className: "dt-center",
+                                render: function(data) {
+                                    return '<span style="color: #f44336; font-weight: 600;">' + data + '</span>';
+                                }
+                            },
+                            {
+                                title: "Efetividade",
+                                width: "140px",
+                                render: function(data) {
+                                    return formatEfetividade(data);
+                                }
+                            }
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'excel',
+                                text: '<ion-icon name="document-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> Excel',
+                                className: 'btn btn-success btn-sm',
+                                title: 'Relatorios_AUDIN',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6]
+                                }
+                            },
+                            {
+                                extend: 'pdf',
+                                text: '<ion-icon name="document-text-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> PDF',
+                                className: 'btn btn-success btn-sm',
+                                title: 'Relatórios - AUDIN UFAM',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4, 5, 6]
+                                },
+                                customize: function(doc) {
+                                    doc.styles.tableHeader.fillColor = '#1c8b3d';
+                                }
+                            },
+                            {
+                                extend: 'print',
+                                text: '<ion-icon name="print-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> Imprimir',
+                                className: 'btn btn-success btn-sm',
+                                title: 'Relatórios - AUDIN UFAM'
+                            }
+                        ],
+                        language: {
+                            url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json',
+                            search: "Buscar:",
+                            lengthMenu: "Mostrar _MENU_ registros",
+                            info: "Mostrando _START_ a _END_ de _TOTAL_ relatórios",
+                            paginate: {
+                                first: "Primeiro",
+                                last: "Último",
+                                next: "Próximo",
+                                previous: "Anterior"
+                            }
+                        },
+                        pageLength: 15,
+                        order: [[0, 'desc'], [1, 'asc']],
+                        responsive: true
+                    });
+
+                    // Atualizar contadores
+                    document.getElementById('total-relatorios').textContent = relatoriosData.length;
+                    document.getElementById('total-recomendacoes').textContent = data.length;
+
+                    var media = data.length / relatoriosData.length;
+                    document.getElementById('media-relatorio').textContent = media.toFixed(1).replace('.', ',');
+
+                    var totalAtendidas = data.filter(d => d.Situacao === 'Atendida' || d.Situacao === 'Baixada').length;
+                    var efetividadeGeral = (totalAtendidas / data.length) * 100;
+                    document.getElementById('efetividade').textContent = efetividadeGeral.toFixed(1).replace('.', ',') + '%';
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar dados:', error);
+                });
+        });
+    </script>
 </body>
 </html>

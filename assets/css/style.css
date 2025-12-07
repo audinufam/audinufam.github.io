@@ -56,9 +56,14 @@ body {
   border-bottom-left-radius: 20px;
 }
 
-.navigation ul li:hover,
-.navigation ul li.hovered {
+/* Item ativo (página atual) - efeito completo */
+.navigation ul li.active {
   background-color: var(--white);
+}
+
+/* Hover sutil - apenas destaque leve */
+.navigation ul li:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .navigation ul li:nth-child(1) {
@@ -73,10 +78,17 @@ body {
   display: flex;
   text-decoration: none;
   color: var(--white);
+  transition: color 0.2s ease;
 }
-.navigation ul li:hover a,
-.navigation ul li.hovered a {
+
+/* Cor do texto para item ativo */
+.navigation ul li.active a {
   color: var(--blue);
+}
+
+/* Hover sutil no texto */
+.navigation ul li:hover:not(.active) a {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .navigation ul li a .icon {
@@ -101,9 +113,8 @@ body {
   white-space: nowrap;
 }
 
-/* --------- curve outside ---------- */
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before {
+/* --------- curve outside (apenas para item ativo) ---------- */
+.navigation ul li.active a::before {
   content: "";
   position: absolute;
   right: 0;
@@ -115,8 +126,7 @@ body {
   box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
+.navigation ul li.active a::after {
   content: "";
   position: absolute;
   right: 0;
@@ -189,6 +199,12 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  align-items: stretch;
+}
+
+.cardBox a {
+  text-decoration: none;
+  display: block;
 }
 
 .cardBox .card {
@@ -198,8 +214,11 @@ body {
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  min-height: 120px;
+  height: 100%;
 }
 
 .cardBox .card .numbers {

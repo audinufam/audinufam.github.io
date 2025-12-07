@@ -31,7 +31,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/monitor/index.html">
                         <span class="icon">
                             <ion-icon name="radio-outline"></ion-icon>
                         </span>
@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/raio-x/index.html">
                         <span class="icon">
                             <ion-icon name="search-outline"></ion-icon>
                         </span>
@@ -91,11 +91,99 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
             </div>
-            <br>
-            
-            <div class="flourish-embed flourish-heatmap" data-src="visualisation/17081692"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
-            <div class="flourish-embed flourish-chart" data-src="visualisation/17083818"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+            <!-- Cards de Estatísticas -->
+            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+                <!-- Card Total Unidades Auditadas -->
+                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                    <ion-icon name="business-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">38</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Unidades Auditadas</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Desde 2015</div>
+                </div>
+
+                <!-- Card Anos de Atuação -->
+                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                    <ion-icon name="calendar-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">11</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Anos de Atuação</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">2015 - 2025</div>
+                </div>
+
+                <!-- Card Média por Ano -->
+                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                    <ion-icon name="analytics-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">55,4</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Média por Ano</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recomendações/ano</div>
+                </div>
+
+                <!-- Card Ano com Mais Recomendações -->
+                <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
+                    <ion-icon name="star-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">2017</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Ano de Pico</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">197 recomendações</div>
+                </div>
+            </div>
+
+            <!-- Descrição do Raio-X -->
+            <div style="padding: 0 20px;">
+                <div style="background: #f8f9fa; border-radius: 15px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #1c8b3d;">
+                    <h4 style="color: #1c8b3d; margin: 0 0 15px 0;">
+                        <ion-icon name="search-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Raio-X da Auditoria
+                    </h4>
+                    <div style="font-size: 0.9rem; color: #555; line-height: 1.6;">
+                        <p style="margin: 0;">O Raio-X apresenta uma visão analítica da atuação da Auditoria Interna ao longo dos anos, permitindo identificar padrões de distribuição de recomendações por unidade e período. Esta análise auxilia no planejamento estratégico das ações de auditoria e no acompanhamento da evolução das unidades auditadas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heatmap Unidade x Ano -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <h3 style="color: #1c8b3d; margin: 0 0 15px 0; font-size: 1.1rem; padding-left: 10px;">
+                        <ion-icon name="grid-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Matriz de Recomendações: Unidade x Ano
+                    </h3>
+                    <iframe src="/charts/heatmap_raiox.html" style="width:100%; height:820px; border:none;"></iframe>
+                </div>
+            </div>
+
+            <!-- Top Unidades por Quantidade -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 25px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <h3 style="color: #1c8b3d; margin: 0 0 20px 0; font-size: 1.2rem;">
+                        <ion-icon name="bar-chart-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Unidades com Maior Concentração de Recomendações
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">PROADM</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #1c8b3d;">116</div>
+                            <div style="font-size: 0.8rem; color: #888;">19% do total</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">ICSEZ</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #1565C0;">67</div>
+                            <div style="font-size: 0.8rem; color: #888;">11% do total</div>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">PROAE</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #E65100;">38</div>
+                            <div style="font-size: 0.8rem; color: #888;">6,2% do total</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico de Barras por Unidade -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <iframe src="/charts/bar_unidades.html" style="width:100%; height:820px; border:none;"></iframe>
+                </div>
+            </div>
 
         </div>
     </div>

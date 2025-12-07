@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%);
+            border-radius: 10px;
+            margin: 10px 15px;
+        }
+        .toggle-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .toggle-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .toggle-btn.active {
+            background: white;
+            color: #1c8b3d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        #chart {
+            width: 100%;
+            height: calc(100vh - 80px);
+            min-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-container">
+        <button class="toggle-btn active" onclick="showTreemap()" id="btn-treemap">
+            Treemap
+        </button>
+        <button class="toggle-btn" onclick="showSunburst()" id="btn-sunburst">
+            Sunburst
+        </button>
+    </div>
+    <div id="chart"></div>
+
+    <script>
+        var rawData = [{"Ano":"2015","Unidade":"CORREGEDORIA","Status":"Atendida","Quantidade":2},{"Ano":"2015","Unidade":"CORREGEDORIA","Status":"Em Implementação","Quantidade":1},{"Ano":"2015","Unidade":"DEMAT","Status":"Em Implementação","Quantidade":12},{"Ano":"2015","Unidade":"ICSEZ","Status":"Em Implementação","Quantidade":16},{"Ano":"2015","Unidade":"INC","Status":"Em Implementação","Quantidade":4},{"Ano":"2015","Unidade":"INC","Status":"Atendida","Quantidade":1},{"Ano":"2015","Unidade":"PCU","Status":"Em Implementação","Quantidade":2},{"Ano":"2015","Unidade":"PROADM","Status":"Em Implementação","Quantidade":4},{"Ano":"2015","Unidade":"PROGESP","Status":"Em Implementação","Quantidade":4},{"Ano":"2016","Unidade":"BC","Status":"Em Implementação","Quantidade":5},{"Ano":"2016","Unidade":"BC","Status":"Pendente","Quantidade":1},{"Ano":"2016","Unidade":"BC","Status":"Atendida","Quantidade":1},{"Ano":"2016","Unidade":"BC","Status":"Baixada","Quantidade":1},{"Ano":"2016","Unidade":"ICSEZ","Status":"Em Implementação","Quantidade":7},{"Ano":"2016","Unidade":"INC","Status":"Em Implementação","Quantidade":13},{"Ano":"2016","Unidade":"INC","Status":"Baixada","Quantidade":2},{"Ano":"2016","Unidade":"PCU","Status":"Em Implementação","Quantidade":2},{"Ano":"2016","Unidade":"PROADM","Status":"Em Implementação","Quantidade":10},{"Ano":"2016","Unidade":"PROAE","Status":"Em Implementação","Quantidade":8},{"Ano":"2016","Unidade":"PROAE","Status":"Pendente","Quantidade":3},{"Ano":"2016","Unidade":"PROGESP","Status":"Baixada","Quantidade":1},{"Ano":"2016","Unidade":"PROGESP","Status":"Atendida","Quantidade":3},{"Ano":"2016","Unidade":"PROGESP","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"BC","Status":"Atendida","Quantidade":1},{"Ano":"2017","Unidade":"CDTECH","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"CGL","Status":"Atendida","Quantidade":4},{"Ano":"2017","Unidade":"COMEP","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"CPPAD","Status":"Atendida","Quantidade":11},{"Ano":"2017","Unidade":"CPPAD","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"CTIC","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"DEMAT","Status":"Atendida","Quantidade":2},{"Ano":"2017","Unidade":"EEM","Status":"Atendida","Quantidade":2},{"Ano":"2017","Unidade":"FACED","Status":"Atendida","Quantidade":2},{"Ano":"2017","Unidade":"FAEXP","Status":"Atendida","Quantidade":12},{"Ano":"2017","Unidade":"FAEXP - DEMAT","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"FAEXP - PCU","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"FCA","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"FCF","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"FD","Status":"Baixada","Quantidade":4},{"Ano":"2017","Unidade":"FEFF","Status":"Atendida","Quantidade":4},{"Ano":"2017","Unidade":"FES","Status":"Atendida","Quantidade":2},{"Ano":"2017","Unidade":"FT","Status":"Baixada","Quantidade":4},{"Ano":"2017","Unidade":"GAB REITOR","Status":"Atendida","Quantidade":9},{"Ano":"2017","Unidade":"ICB","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"ICE","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"ICSEZ","Status":"Atendida","Quantidade":24},{"Ano":"2017","Unidade":"IEAA","Status":"Baixada","Quantidade":4},{"Ano":"2017","Unidade":"IFCHS","Status":"Baixada","Quantidade":4},{"Ano":"2017","Unidade":"INC","Status":"Atendida","Quantidade":7},{"Ano":"2017","Unidade":"INC","Status":"Baixada","Quantidade":3},{"Ano":"2017","Unidade":"ISB","Status":"Baixada","Quantidade":4},{"Ano":"2017","Unidade":"PCU","Status":"Atendida","Quantidade":16},{"Ano":"2017","Unidade":"PCU","Status":"Baixada","Quantidade":1},{"Ano":"2017","Unidade":"PROADM","Status":"Atendida","Quantidade":20},{"Ano":"2017","Unidade":"PROADM","Status":"Pendente","Quantidade":13},{"Ano":"2017","Unidade":"PROEG","Status":"Baixada","Quantidade":1},{"Ano":"2017","Unidade":"PROEXT","Status":"Baixada","Quantidade":1},{"Ano":"2017","Unidade":"PROEXT","Status":"Atendida","Quantidade":1},{"Ano":"2017","Unidade":"PROGESP","Status":"Atendida","Quantidade":3},{"Ano":"2017","Unidade":"PROGESP","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"PROGESP","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"PROPESP","Status":"Atendida","Quantidade":2},{"Ano":"2017","Unidade":"PROPESP","Status":"Em Implementação","Quantidade":1},{"Ano":"2017","Unidade":"PROPLAN","Status":"Baixada","Quantidade":2},{"Ano":"2017","Unidade":"PROPLAN","Status":"Atendida","Quantidade":1},{"Ano":"2017","Unidade":"PROTEC","Status":"Em Implementação","Quantidade":1},{"Ano":"2018","Unidade":"ADM SUPERIOR","Status":"Pendente","Quantidade":9},{"Ano":"2018","Unidade":"ASCOM","Status":"Pendente","Quantidade":1},{"Ano":"2018","Unidade":"CCA","Status":"Em Implementação","Quantidade":2},{"Ano":"2018","Unidade":"CTIC","Status":"Atendida","Quantidade":5},{"Ano":"2018","Unidade":"CTIC","Status":"Em Implementação","Quantidade":8},{"Ano":"2018","Unidade":"CTIC","Status":"Pendente","Quantidade":4},{"Ano":"2018","Unidade":"ICSEZ","Status":"Em Implementação","Quantidade":4},{"Ano":"2018","Unidade":"PCU","Status":"Atendida","Quantidade":1},{"Ano":"2018","Unidade":"PCU","Status":"Em Implementação","Quantidade":2},{"Ano":"2018","Unidade":"PROADM","Status":"Pendente","Quantidade":2},{"Ano":"2018","Unidade":"PROADM","Status":"Em Implementação","Quantidade":7},{"Ano":"2018","Unidade":"SDP","Status":"Atendida","Quantidade":1},{"Ano":"2019","Unidade":"ICSEZ","Status":"Em Implementação","Quantidade":3},{"Ano":"2019","Unidade":"PCU","Status":"Pendente","Quantidade":3},{"Ano":"2019","Unidade":"PCU","Status":"Atendida","Quantidade":1},{"Ano":"2019","Unidade":"PROADM","Status":"Pendente","Quantidade":15},{"Ano":"2019","Unidade":"PROADM","Status":"Em Implementação","Quantidade":2},{"Ano":"2019","Unidade":"PROADM","Status":"Atendida","Quantidade":1},{"Ano":"2019","Unidade":"PROEXT","Status":"Pendente","Quantidade":20},{"Ano":"2019","Unidade":"PROGESP","Status":"Em Implementação","Quantidade":1},{"Ano":"2019","Unidade":"PROPESP","Status":"Pendente","Quantidade":3},{"Ano":"2020","Unidade":"ADM SUPERIOR","Status":"Atendida","Quantidade":1},{"Ano":"2020","Unidade":"ADM SUPERIOR","Status":"Pendente","Quantidade":10},{"Ano":"2020","Unidade":"PROADM","Status":"Pendente","Quantidade":8},{"Ano":"2020","Unidade":"PROADM","Status":"Atendida","Quantidade":3},{"Ano":"2021","Unidade":"ADM SUPERIOR","Status":"Pendente","Quantidade":5},{"Ano":"2021","Unidade":"ARII","Status":"Em Implementação","Quantidade":5},{"Ano":"2021","Unidade":"ARII","Status":"Pendente","Quantidade":1},{"Ano":"2021","Unidade":"ARII","Status":"Atendida","Quantidade":1},{"Ano":"2021","Unidade":"ASCOM","Status":"Em Implementação","Quantidade":2},{"Ano":"2021","Unidade":"ASCOM","Status":"Pendente","Quantidade":3},{"Ano":"2021","Unidade":"CCA","Status":"Em Implementação","Quantidade":1},{"Ano":"2021","Unidade":"CTIC","Status":"Pendente","Quantidade":3},{"Ano":"2021","Unidade":"CTIC","Status":"Em Implementação","Quantidade":3},{"Ano":"2021","Unidade":"CTIC","Status":"Atendida","Quantidade":2},{"Ano":"2021","Unidade":"ICET","Status":"Pendente","Quantidade":4},{"Ano":"2021","Unidade":"ICSEZ","Status":"Pendente","Quantidade":5},{"Ano":"2021","Unidade":"IEAA","Status":"Pendente","Quantidade":4},{"Ano":"2021","Unidade":"INC","Status":"Pendente","Quantidade":3},{"Ano":"2021","Unidade":"INC","Status":"Em Implementação","Quantidade":1},{"Ano":"2021","Unidade":"ISB","Status":"Pendente","Quantidade":3},{"Ano":"2021","Unidade":"ISB","Status":"Em Implementação","Quantidade":2},{"Ano":"2021","Unidade":"ISB","Status":"Atendida","Quantidade":2},{"Ano":"2021","Unidade":"PROADM","Status":"Pendente","Quantidade":10},{"Ano":"2021","Unidade":"PROAE","Status":"Pendente","Quantidade":10},{"Ano":"2021","Unidade":"PROPLAN","Status":"Atendida","Quantidade":2},{"Ano":"2021","Unidade":"PROPLAN","Status":"Em Implementação","Quantidade":1},{"Ano":"2021","Unidade":"PROTEC","Status":"Em Implementação","Quantidade":1},{"Ano":"2021","Unidade":"PROTEC","Status":"Pendente","Quantidade":1},{"Ano":"2021","Unidade":"PROTEC","Status":"Atendida","Quantidade":1},{"Ano":"2022","Unidade":"ADM SUPERIOR","Status":"Pendente","Quantidade":1},{"Ano":"2022","Unidade":"ADM SUPERIOR","Status":"Atendida","Quantidade":2},{"Ano":"2022","Unidade":"DAEST","Status":"Atendida","Quantidade":1},{"Ano":"2022","Unidade":"ICSEZ","Status":"Atendida","Quantidade":1},{"Ano":"2022","Unidade":"ICSEZ","Status":"Pendente","Quantidade":3},{"Ano":"2022","Unidade":"IEAA","Status":"Atendida","Quantidade":1},{"Ano":"2022","Unidade":"IEAA","Status":"Pendente","Quantidade":3},{"Ano":"2022","Unidade":"PROAE","Status":"Pendente","Quantidade":3},{"Ano":"2022","Unidade":"PROEG","Status":"Em Implementação","Quantidade":9},{"Ano":"2022","Unidade":"PROEXT","Status":"Pendente","Quantidade":1},{"Ano":"2022","Unidade":"PROEXT","Status":"Atendida","Quantidade":2},{"Ano":"2022","Unidade":"PROGESP","Status":"Atendida","Quantidade":2},{"Ano":"2022","Unidade":"PROPESP","Status":"Pendente","Quantidade":4},{"Ano":"2022","Unidade":"PROPESP","Status":"Atendida","Quantidade":1},{"Ano":"2023","Unidade":"ADM SUPERIOR","Status":"Pendente","Quantidade":1},{"Ano":"2023","Unidade":"ARII","Status":"Em Implementação","Quantidade":5},{"Ano":"2023","Unidade":"ARII","Status":"Pendente","Quantidade":3},{"Ano":"2023","Unidade":"ARII","Status":"Atendida","Quantidade":2},{"Ano":"2023","Unidade":"DAEST","Status":"Atendida","Quantidade":2},{"Ano":"2023","Unidade":"ICSEZ","Status":"Pendente","Quantidade":2},{"Ano":"2023","Unidade":"ICSEZ","Status":"Atendida","Quantidade":2},{"Ano":"2023","Unidade":"PCU","Status":"Pendente","Quantidade":7},{"Ano":"2023","Unidade":"PROAE","Status":"Pendente","Quantidade":5},{"Ano":"2023","Unidade":"PROAE","Status":"Em Implementação","Quantidade":2},{"Ano":"2023","Unidade":"PROEXT","Status":"Pendente","Quantidade":4},{"Ano":"2023","Unidade":"PROGESP","Status":"Pendente","Quantidade":2},{"Ano":"2023","Unidade":"PROGESP","Status":"Atendida","Quantidade":4},{"Ano":"2023","Unidade":"PROTEC","Status":"Pendente","Quantidade":2},{"Ano":"2023","Unidade":"PROTEC","Status":"Atendida","Quantidade":1},{"Ano":"2024","Unidade":"ASCOM","Status":"Pendente","Quantidade":3},{"Ano":"2024","Unidade":"CTIC","Status":"Pendente","Quantidade":4},{"Ano":"2024","Unidade":"PROADM","Status":"Pendente","Quantidade":21},{"Ano":"2024","Unidade":"PROGESP","Status":"Pendente","Quantidade":4},{"Ano":"2024","Unidade":"PROPESP","Status":"Pendente","Quantidade":4},{"Ano":"2024","Unidade":"PROPLAN","Status":"Atendida","Quantidade":1},{"Ano":"2024","Unidade":"PROPLAN","Status":"Pendente","Quantidade":4},{"Ano":"2025","Unidade":"PROAE","Status":"Pendente","Quantidade":7},{"Ano":"2025","Unidade":"PROGESP","Status":"Pendente","Quantidade":2}];
+
+        // Cores para status - verde harmonizando com o site
+        var statusColors = {
+            "Atendida": "#4CAF50",
+            "Baixada": "#2196F3",
+            "Em Implementação": "#FF9800",
+            "Pendente": "#f44336"
+        };
+
+        var layout = {
+            title: {
+                text: '<b>Status de Recomendações por Ano e Unidade</b>',
+                font: {size: 16, color: '#1c8b3d', family: 'Segoe UI, Arial, sans-serif'},
+                x: 0.5
+            },
+            margin: {t: 40, l: 5, r: 5, b: 5},
+            font: {family: 'Segoe UI, Arial, sans-serif', color: '#333'},
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            autosize: true
+        };
+
+        var config = {responsive: true};
+
+        // Processar dados - usar branchvalues: 'remainder' para evitar warnings
+        var ids = [];
+        var labels = [];
+        var parents = [];
+        var values = [];
+        var colors = [];
+
+        // Agrupar por Ano
+        var anos = [...new Set(rawData.map(d => d.Ano))].sort();
+
+        anos.forEach(function(ano) {
+            ids.push(ano);
+            labels.push(ano);
+            parents.push("");
+            values.push(0);
+            colors.push("#1c8b3d");
+
+            var unidadesDoAno = rawData.filter(function(d) { return d.Ano === ano; });
+            var unidades = [...new Set(unidadesDoAno.map(function(d) { return d.Unidade; }))];
+
+            unidades.forEach(function(unidade) {
+                var unidadeId = ano + "-" + unidade;
+                ids.push(unidadeId);
+                labels.push(unidade);
+                parents.push(ano);
+                values.push(0);
+                colors.push("#2ba84a");
+
+                var dadosUnidade = rawData.filter(function(d) {
+                    return d.Ano === ano && d.Unidade === unidade;
+                });
+
+                dadosUnidade.forEach(function(d) {
+                    var statusId = unidadeId + "-" + d.Status;
+                    ids.push(statusId);
+                    labels.push(d.Status);
+                    parents.push(unidadeId);
+                    values.push(d.Quantidade);
+                    colors.push(statusColors[d.Status] || "#999");
+                });
+            });
+        });
+
+        function showTreemap() {
+            document.getElementById('btn-treemap').classList.add('active');
+            document.getElementById('btn-sunburst').classList.remove('active');
+
+            var trace = {
+                type: 'treemap',
+                ids: ids,
+                labels: labels,
+                parents: parents,
+                values: values,
+                marker: {
+                    colors: colors,
+                    line: {width: 1, color: 'white'}
+                },
+                textfont: {size: 12, color: 'white'},
+                hovertemplate: '<b>%{label}</b><br>Quantidade: %{value}<extra></extra>',
+                branchvalues: 'remainder',
+                pathbar: {visible: true}
+            };
+
+            Plotly.react('chart', [trace], layout, config);
+        }
+
+        function showSunburst() {
+            document.getElementById('btn-sunburst').classList.add('active');
+            document.getElementById('btn-treemap').classList.remove('active');
+
+            var trace = {
+                type: 'sunburst',
+                ids: ids,
+                labels: labels,
+                parents: parents,
+                values: values,
+                marker: {
+                    colors: colors,
+                    line: {width: 1, color: 'white'}
+                },
+                textfont: {size: 11},
+                insidetextorientation: 'radial',
+                hovertemplate: '<b>%{label}</b><br>Quantidade: %{value}<extra></extra>',
+                branchvalues: 'remainder'
+            };
+
+            Plotly.react('chart', [trace], layout, config);
+        }
+
+        // Iniciar com Treemap
+        showTreemap();
+
+        // Responsividade ao redimensionar janela
+        window.addEventListener('resize', function() {
+            Plotly.Plots.resize('chart');
+        });
+    </script>
+</body>
+</html>
