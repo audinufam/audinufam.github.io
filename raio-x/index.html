@@ -13,11 +13,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
                             <ion-icon name="logo-apple-ar"></ion-icon>
                         </span>
-                        <img src="../assets/imgs/audin_logo.jpeg" alt="" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="../assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
@@ -97,7 +97,7 @@
                 <!-- Card Total Unidades Auditadas -->
                 <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
                     <ion-icon name="business-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">38</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-unidades">--</div>
                     <div style="font-size: 0.95rem; opacity: 0.9;">Unidades Auditadas</div>
                     <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Desde 2015</div>
                 </div>
@@ -105,15 +105,15 @@
                 <!-- Card Anos de Atuação -->
                 <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
                     <ion-icon name="calendar-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">11</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-anos">--</div>
                     <div style="font-size: 0.95rem; opacity: 0.9;">Anos de Atuação</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">2015 - 2025</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;" id="raiox-periodo">--</div>
                 </div>
 
                 <!-- Card Média por Ano -->
                 <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
                     <ion-icon name="analytics-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">55,4</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-media">--</div>
                     <div style="font-size: 0.95rem; opacity: 0.9;">Média por Ano</div>
                     <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recomendações/ano</div>
                 </div>
@@ -121,9 +121,9 @@
                 <!-- Card Ano com Mais Recomendações -->
                 <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
                     <ion-icon name="star-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">2017</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-ano-pico">--</div>
                     <div style="font-size: 0.95rem; opacity: 0.9;">Ano de Pico</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">197 recomendações</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;" id="raiox-rec-pico">--</div>
                 </div>
             </div>
 
@@ -160,19 +160,19 @@
                     </h3>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                         <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 12px; padding: 20px; text-align: center;">
-                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">PROADM</div>
-                            <div style="font-size: 2rem; font-weight: 700; color: #1c8b3d;">116</div>
-                            <div style="font-size: 0.8rem; color: #888;">19% do total</div>
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;" id="top-rec-1-nome">--</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #1c8b3d;" id="top-rec-1-total">--</div>
+                            <div style="font-size: 0.8rem; color: #888;" id="top-rec-1-perc">--</div>
                         </div>
                         <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 20px; text-align: center;">
-                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">ICSEZ</div>
-                            <div style="font-size: 2rem; font-weight: 700; color: #1565C0;">67</div>
-                            <div style="font-size: 0.8rem; color: #888;">11% do total</div>
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;" id="top-rec-2-nome">--</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #1565C0;" id="top-rec-2-total">--</div>
+                            <div style="font-size: 0.8rem; color: #888;" id="top-rec-2-perc">--</div>
                         </div>
                         <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 12px; padding: 20px; text-align: center;">
-                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">PROAE</div>
-                            <div style="font-size: 2rem; font-weight: 700; color: #E65100;">38</div>
-                            <div style="font-size: 0.8rem; color: #888;">6,2% do total</div>
+                            <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;" id="top-rec-3-nome">--</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #E65100;" id="top-rec-3-total">--</div>
+                            <div style="font-size: 0.8rem; color: #888;" id="top-rec-3-perc">--</div>
                         </div>
                     </div>
                 </div>
@@ -190,6 +190,7 @@
     
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/data-loader.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

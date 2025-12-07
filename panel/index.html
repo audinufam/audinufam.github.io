@@ -172,11 +172,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
                             <ion-icon name="logo-apple-ar"></ion-icon>
                         </span>
-                        <img src="../assets/imgs/audin_logo.jpeg" alt="" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="../assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
@@ -256,35 +256,35 @@
                 <!-- Card Total -->
                 <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
                     <ion-icon name="layers-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="total-count">609</div>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="total-count">--</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Total</div>
                 </div>
 
                 <!-- Card Atendidas -->
                 <div style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);">
                     <ion-icon name="checkmark-circle-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="atendidas-count">173</div>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="atendidas-count">--</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Atendidas</div>
                 </div>
 
                 <!-- Card Baixadas -->
                 <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
                     <ion-icon name="archive-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="baixadas-count">44</div>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="baixadas-count">--</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Baixadas</div>
                 </div>
 
                 <!-- Card Em Implementação -->
                 <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
                     <ion-icon name="construct-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="implementacao-count">158</div>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="implementacao-count">--</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Em Implem.</div>
                 </div>
 
                 <!-- Card Pendentes -->
                 <div style="background: linear-gradient(135deg, #f44336 0%, #c62828 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);">
                     <ion-icon name="alert-circle-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="pendentes-count">234</div>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="pendentes-count">--</div>
                     <div style="font-size: 0.85rem; opacity: 0.9;">Pendentes</div>
                 </div>
             </div>
@@ -299,23 +299,23 @@
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <button class="filter-btn all active" onclick="filterStatus('')">
                             <ion-icon name="apps-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                            Todas (609)
+                            Todas (<span id="btn-total-count">--</span>)
                         </button>
                         <button class="filter-btn atendida" onclick="filterStatus('Atendida')">
                             <ion-icon name="checkmark-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                            Atendidas (173)
+                            Atendidas (<span id="btn-atendidas-count">--</span>)
                         </button>
                         <button class="filter-btn baixada" onclick="filterStatus('Baixada')">
                             <ion-icon name="archive-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                            Baixadas (44)
+                            Baixadas (<span id="btn-baixadas-count">--</span>)
                         </button>
                         <button class="filter-btn implementacao" onclick="filterStatus('Em Implementação')">
                             <ion-icon name="construct-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                            Em Implementação (158)
+                            Em Implementação (<span id="btn-implementacao-count">--</span>)
                         </button>
                         <button class="filter-btn pendente" onclick="filterStatus('Pendente')">
                             <ion-icon name="alert-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                            Pendentes (234)
+                            Pendentes (<span id="btn-pendentes-count">--</span>)
                         </button>
                     </div>
                 </div>
@@ -531,6 +531,13 @@
                     document.getElementById('baixadas-count').textContent = counts.baixadas;
                     document.getElementById('implementacao-count').textContent = counts.implementacao;
                     document.getElementById('pendentes-count').textContent = counts.pendentes;
+
+                    // Atualizar botões de filtro
+                    document.getElementById('btn-total-count').textContent = counts.total;
+                    document.getElementById('btn-atendidas-count').textContent = counts.atendidas;
+                    document.getElementById('btn-baixadas-count').textContent = counts.baixadas;
+                    document.getElementById('btn-implementacao-count').textContent = counts.implementacao;
+                    document.getElementById('btn-pendentes-count').textContent = counts.pendentes;
                 })
                 .catch(error => {
                     console.error('Erro ao carregar dados:', error);

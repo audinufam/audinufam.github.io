@@ -29,12 +29,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Menu Toggle
+// Menu Toggle com persistência de estado
 let toggle = document.querySelector(".toggle");
 let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
 
+// Restaurar estado do menu ao carregar a página
+if (localStorage.getItem("menuClosed") === "true") {
+  navigation.classList.add("active");
+  main.classList.add("active");
+}
+
 toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
+
+  // Salvar estado do menu
+  const isClosed = navigation.classList.contains("active");
+  localStorage.setItem("menuClosed", isClosed);
 };

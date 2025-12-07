@@ -144,11 +144,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
                             <ion-icon name="logo-apple-ar"></ion-icon>
                         </span>
-                        <img src="../assets/imgs/audin_logo.jpeg" alt="" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="../assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
@@ -346,41 +346,41 @@
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <span style="background: #FFD700; color: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
-                            <span style="flex: 1; font-weight: 500;">PROADM</span>
+                            <span style="flex: 1; font-weight: 500;" id="report-top-1-nome">--</span>
                             <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
-                                <span style="color: #1c8b3d; font-weight: 700;">116</span>
+                                <span style="color: #1c8b3d; font-weight: 700;" id="report-top-1-total">--</span>
                                 <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <span style="background: #C0C0C0; color: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
-                            <span style="flex: 1; font-weight: 500;">ICSEZ</span>
+                            <span style="flex: 1; font-weight: 500;" id="report-top-2-nome">--</span>
                             <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
-                                <span style="color: #1c8b3d; font-weight: 700;">67</span>
+                                <span style="color: #1c8b3d; font-weight: 700;" id="report-top-2-total">--</span>
                                 <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <span style="background: #CD7F32; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
-                            <span style="flex: 1; font-weight: 500;">PROAE</span>
+                            <span style="flex: 1; font-weight: 500;" id="report-top-3-nome">--</span>
                             <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
-                                <span style="color: #1c8b3d; font-weight: 700;">38</span>
+                                <span style="color: #1c8b3d; font-weight: 700;" id="report-top-3-total">--</span>
                                 <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <span style="background: #4CAF50; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">4</span>
-                            <span style="flex: 1; font-weight: 500;">PCU</span>
+                            <span style="flex: 1; font-weight: 500;" id="report-top-4-nome">--</span>
                             <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
-                                <span style="color: #1c8b3d; font-weight: 700;">35</span>
+                                <span style="color: #1c8b3d; font-weight: 700;" id="report-top-4-total">--</span>
                                 <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
                             </div>
                         </div>
                         <div style="display: flex; align-items: center; gap: 15px;">
                             <span style="background: #81C784; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">5</span>
-                            <span style="flex: 1; font-weight: 500;">INC</span>
+                            <span style="flex: 1; font-weight: 500;" id="report-top-5-nome">--</span>
                             <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
-                                <span style="color: #1c8b3d; font-weight: 700;">34</span>
+                                <span style="color: #1c8b3d; font-weight: 700;" id="report-top-5-total">--</span>
                                 <span style="color: #666; font-size: 0.85rem;"> recomendações</span>
                             </div>
                         </div>
@@ -407,6 +407,7 @@
 
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/data-loader.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

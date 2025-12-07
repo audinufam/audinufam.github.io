@@ -192,16 +192,16 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
-                            <ion-icon name="logo-apple-ar"></ion-icon>
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
                         </span>
-                        <img src="assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
                 <li>
-                    <a href="/">
+                    <a href="/" data-tooltip="Dashboard">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -210,7 +210,7 @@
                 </li>
 
                 <li>
-                    <a href="/monitor/index.html">
+                    <a href="/monitor/index.html" data-tooltip="Monitoramento">
                         <span class="icon">
                             <ion-icon name="radio-outline"></ion-icon>
                         </span>
@@ -219,7 +219,7 @@
                 </li>
 
                 <li>
-                    <a href="/panel/index.html">
+                    <a href="/panel/index.html" data-tooltip="Recomendações detalhadas">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
@@ -227,7 +227,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/beneficios/index.html">
+                    <a href="/beneficios/index.html" data-tooltip="Benefícios">
                         <span class="icon">
                             <ion-icon name="medal-outline"></ion-icon>
                         </span>
@@ -235,7 +235,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/raio-x/index.html">
+                    <a href="/raio-x/index.html" data-tooltip="Raio-X Audin">
                         <span class="icon">
                             <ion-icon name="search-outline"></ion-icon>
                         </span>
@@ -244,7 +244,7 @@
                 </li>
 
                 <li>
-                    <a href="/report/index.html">
+                    <a href="/report/index.html" data-tooltip="Relatórios">
                         <span class="icon">
                             <ion-icon name="file-tray-stacked-outline"></ion-icon>
                         </span>
@@ -253,7 +253,7 @@
                 </li>
 
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" data-tooltip="Site da Auditoria">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -272,7 +272,7 @@
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <span style="background: #e8f5e9; padding: 5px 12px; border-radius: 20px; color: #1c8b3d; font-size: 0.85rem;">
                         <ion-icon name="calendar-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
-                        Última atualização: 07 de Dezembro de 2025
+                        Última atualização: <span id="data-atualizacao">--/--/----</span>
                     </span>
                 </div>
             </div>
@@ -293,7 +293,7 @@
                 <a href="/report/index.html">
                     <div class="card">
                         <div>
-                            <div class="numbers">67</div>
+                            <div class="numbers" id="card-relatorios">--</div>
                             <div class="cardName">Relatórios de Auditoria</div>
                         </div>
                         <div class="iconBx">
@@ -305,7 +305,7 @@
                 <a href="/panel/index.html">
                     <div class="card">
                         <div>
-                            <div class="numbers">609</div>
+                            <div class="numbers" id="card-recomendacoes">--</div>
                             <div class="cardName">Recomendações Emitidas</div>
                         </div>
                         <div class="iconBx">
@@ -317,7 +317,7 @@
                 <a href="/beneficios/index.html">
                     <div class="card">
                         <div>
-                            <div class="numbers">217</div>
+                            <div class="numbers" id="card-beneficios">--</div>
                             <div class="cardName">Benefícios Gerados</div>
                         </div>
                         <div class="iconBx">
@@ -329,7 +329,7 @@
                 <a href="/raio-x/index.html">
                     <div class="card">
                         <div>
-                            <div class="numbers">38</div>
+                            <div class="numbers" id="card-unidades">--</div>
                             <div class="cardName">Unidades Auditadas</div>
                         </div>
                         <div class="iconBx">
@@ -347,16 +347,16 @@
                         Situação Geral das Recomendações
                     </h3>
                     <div class="status-bar">
-                        <div style="background: #4CAF50; width: 28.4%;">173</div>
-                        <div style="background: #2196F3; width: 7.2%;">44</div>
-                        <div style="background: #FF9800; width: 25.9%;">158</div>
-                        <div style="background: #f44336; width: 38.4%;">234</div>
+                        <div id="bar-atendidas" style="background: #4CAF50; width: 28.4%;">--</div>
+                        <div id="bar-baixadas" style="background: #2196F3; width: 7.2%;">--</div>
+                        <div id="bar-implementacao" style="background: #FF9800; width: 25.9%;">--</div>
+                        <div id="bar-pendentes" style="background: #f44336; width: 38.4%;">--</div>
                     </div>
                     <div class="status-legend">
-                        <span><span class="dot" style="background: #4CAF50;"></span> Atendidas (28,4%)</span>
-                        <span><span class="dot" style="background: #2196F3;"></span> Baixadas (7,2%)</span>
-                        <span><span class="dot" style="background: #FF9800;"></span> Em Implementação (25,9%)</span>
-                        <span><span class="dot" style="background: #f44336;"></span> Pendentes (38,4%)</span>
+                        <span><span class="dot" style="background: #4CAF50;"></span> <span id="legend-atendidas">Atendidas (--)</span></span>
+                        <span><span class="dot" style="background: #2196F3;"></span> <span id="legend-baixadas">Baixadas (--)</span></span>
+                        <span><span class="dot" style="background: #FF9800;"></span> <span id="legend-implementacao">Em Implementação (--)</span></span>
+                        <span><span class="dot" style="background: #f44336;"></span> <span id="legend-pendentes">Pendentes (--)</span></span>
                     </div>
                 </div>
             </div>
@@ -439,15 +439,15 @@
                     <!-- Números em Destaque -->
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
                         <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #1c8b3d;">11</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #1c8b3d;" id="stat-anos">--</div>
                             <div style="font-size: 0.7rem; color: #666;">Anos de Atuação</div>
                         </div>
                         <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #2196F3;">67</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #2196F3;" id="stat-relatorios">--</div>
                             <div style="font-size: 0.7rem; color: #666;">Relatórios</div>
                         </div>
                         <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
-                            <div style="font-size: 1.5rem; font-weight: 700; color: #FF9800;">38</div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #FF9800;" id="stat-unidades">--</div>
                             <div style="font-size: 0.7rem; color: #666;">Unidades</div>
                         </div>
                     </div>
@@ -484,8 +484,8 @@
                         <svg viewBox="0 0 200 110" style="width: 100%; height: 100%;">
                             <!-- Fundo do arco -->
                             <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e0e0e0" stroke-width="18" stroke-linecap="round"/>
-                            <!-- Arco de progresso (35.6%) -->
-                            <path d="M 20 100 A 80 80 0 0 1 77 32" fill="none" stroke="url(#gaugeGradient)" stroke-width="18" stroke-linecap="round"/>
+                            <!-- Arco de progresso (dinâmico) -->
+                            <path id="gauge-arc" d="M 20 100 A 80 80 0 0 1 77 32" fill="none" stroke="url(#gaugeGradient)" stroke-width="18" stroke-linecap="round"/>
                             <!-- Gradiente -->
                             <defs>
                                 <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -495,7 +495,7 @@
                             </defs>
                         </svg>
                         <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #1c8b3d;">35,6%</div>
+                            <div style="font-size: 2rem; font-weight: 700; color: #1c8b3d;" id="efetividade-valor">--%</div>
                         </div>
                     </div>
 
@@ -510,11 +510,11 @@
                     <div style="background: #f8f9fa; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                             <span style="font-size: 0.85rem; color: #666;">Atendidas + Baixadas</span>
-                            <span style="font-size: 0.85rem; font-weight: 600; color: #1c8b3d;">217</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: #1c8b3d;" id="efetividade-atendidas-baixadas">--</span>
                         </div>
                         <div style="display: flex; justify-content: space-between;">
                             <span style="font-size: 0.85rem; color: #666;">Total de Recomendações</span>
-                            <span style="font-size: 0.85rem; font-weight: 600; color: #333;">609</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: #333;" id="efetividade-total">--</span>
                         </div>
                     </div>
 
@@ -663,6 +663,7 @@
 
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/data-loader.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
