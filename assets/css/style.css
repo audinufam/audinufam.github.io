@@ -32,13 +32,15 @@ body {
   position: fixed;
   width: 300px;
   height: 100%;
-  background: var(--blue);
-  border-left: 10px solid var(--blue);
+  background: linear-gradient(180deg, #1c8b3d 0%, #145a28 100%);
+  border-left: none;
   transition: 0.5s;
   overflow: hidden;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
 }
 .navigation.active {
   width: 80px;
+  overflow: visible;
 }
 
 .navigation ul {
@@ -46,6 +48,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  padding-top: 10px;
 }
 
 .navigation ul li {
@@ -56,15 +59,78 @@ body {
   border-bottom-left-radius: 20px;
 }
 
-.navigation ul li:hover,
-.navigation ul li.hovered {
+/* Item ativo (página atual) - efeito completo */
+.navigation ul li.active {
   background-color: var(--white);
 }
 
-.navigation ul li:nth-child(1) {
-  margin-bottom: 40px;
-  pointer-events: none;
+/* Hover sutil - apenas destaque leve */
+.navigation ul li:hover:not(.active):not(:first-child) {
+  background-color: rgba(255, 255, 255, 0.12);
 }
+
+/* Logo container - primeiro item */
+.navigation ul li:nth-child(1) {
+  margin-bottom: 25px;
+  pointer-events: auto;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: padding 0.5s ease;
+}
+
+/* Logo container quando menu fechado */
+.navigation.active ul li:nth-child(1) {
+  padding: 15px 10px;
+}
+
+/* Esconder logo e mostrar ícone quando menu fechado */
+.navigation.active ul li:nth-child(1) .nav-logo {
+  display: none;
+}
+
+.navigation.active ul li:nth-child(1) .icon {
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: white;
+}
+
+.navigation.active ul li:nth-child(1) .icon ion-icon {
+  font-size: 2rem;
+}
+
+.navigation ul li:nth-child(1) a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navigation ul li:nth-child(1) .icon {
+  display: none;
+}
+
+/* Logo styling */
+.navigation ul li:nth-child(1) .nav-logo {
+  width: 220px;
+  height: auto;
+  padding: 12px 18px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.navigation ul li:nth-child(1):hover .nav-logo {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
 
 .navigation ul li a {
   position: relative;
@@ -73,10 +139,17 @@ body {
   display: flex;
   text-decoration: none;
   color: var(--white);
+  transition: all 0.3s ease;
 }
-.navigation ul li:hover a,
-.navigation ul li.hovered a {
+
+/* Cor do texto para item ativo */
+.navigation ul li.active a {
   color: var(--blue);
+}
+
+/* Hover sutil no texto */
+.navigation ul li:hover:not(.active) a {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .navigation ul li a .icon {
@@ -99,11 +172,58 @@ body {
   line-height: 60px;
   text-align: start;
   white-space: nowrap;
+  font-weight: 400;
+  letter-spacing: 0.3px;
 }
 
-/* --------- curve outside ---------- */
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before {
+/* Tooltip no hover quando menu está fechado */
+.navigation.active ul li {
+  position: relative;
+}
+
+.navigation.active ul li a .title {
+  display: block !important;
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  height: auto;
+  line-height: normal;
+}
+
+.navigation.active ul li a .title::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: #333;
+}
+
+.navigation.active ul li:hover a .title {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Remover tooltip do primeiro item (logo) */
+.navigation.active ul li:nth-child(1) a .title {
+  display: none !important;
+}
+
+/* --------- curve outside (apenas para item ativo) ---------- */
+.navigation ul li.active a::before {
   content: "";
   position: absolute;
   right: 0;
@@ -115,8 +235,7 @@ body {
   box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
+.navigation ul li.active a::after {
   content: "";
   position: absolute;
   right: 0;
@@ -189,6 +308,12 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
+  align-items: stretch;
+}
+
+.cardBox a {
+  text-decoration: none;
+  display: block;
 }
 
 .cardBox .card {
@@ -198,8 +323,11 @@ body {
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  min-height: 120px;
+  height: 100%;
 }
 
 .cardBox .card .numbers {

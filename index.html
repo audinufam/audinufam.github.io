@@ -1,13 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Auditoria | UFAM</title>
+    <title>Painel de Auditoria Interna | UFAM</title>
+    <meta name="description" content="Painel de monitoramento das recomendações da Auditoria Interna da Universidade Federal do Amazonas">
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .welcome-banner {
+            background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);
+        }
+        .welcome-banner h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .welcome-banner p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .quick-link {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .quick-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .quick-link ion-icon {
+            font-size: 2rem;
+            color: #1c8b3d;
+        }
+        .quick-link .link-content h4 {
+            margin: 0 0 5px 0;
+            color: #1c8b3d;
+            font-size: 1rem;
+        }
+        .quick-link .link-content span {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .status-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+        }
+        .status-summary h3 {
+            color: #1c8b3d;
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+        }
+        .status-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 30px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .status-bar > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .status-legend {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .status-legend span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .status-legend .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+        .mission-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 4px solid #1c8b3d;
+            margin-bottom: 20px;
+        }
+        .mission-card h4 {
+            color: #1c8b3d;
+            margin: 0 0 10px 0;
+        }
+        .mission-card p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .highlight-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .highlight-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1c8b3d;
+        }
+        .highlight-card .label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .highlight-card .sublabel {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 5px;
+        }
+        .external-links {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .external-links h3 {
+            color: #1c8b3d;
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+        }
+        .external-link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background 0.3s;
+        }
+        .external-link-item:hover {
+            background: #e8f5e9;
+        }
+        .external-link-item ion-icon {
+            font-size: 1.5rem;
+            color: #1c8b3d;
+        }
+        .external-link-item span {
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,16 +192,16 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
-                            <ion-icon name="logo-apple-ar"></ion-icon>
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
                         </span>
-                        <img src="assets/imgs/audin_logo.jpeg" alt="" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/" data-tooltip="Dashboard">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -34,7 +210,7 @@
                 </li>
 
                 <li>
-                    <a href="/monitor/index.html">
+                    <a href="/monitor/index.html" data-tooltip="Monitoramento">
                         <span class="icon">
                             <ion-icon name="radio-outline"></ion-icon>
                         </span>
@@ -43,7 +219,7 @@
                 </li>
 
                 <li>
-                    <a href="/panel/index.html">
+                    <a href="/panel/index.html" data-tooltip="Recomendações detalhadas">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
@@ -51,7 +227,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/beneficios/index.html">
+                    <a href="/beneficios/index.html" data-tooltip="Benefícios">
                         <span class="icon">
                             <ion-icon name="medal-outline"></ion-icon>
                         </span>
@@ -59,7 +235,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/raio-x/index.html">
+                    <a href="/raio-x/index.html" data-tooltip="Raio-X Audin">
                         <span class="icon">
                             <ion-icon name="search-outline"></ion-icon>
                         </span>
@@ -68,7 +244,7 @@
                 </li>
 
                 <li>
-                    <a href="/report/index.html">
+                    <a href="/report/index.html" data-tooltip="Relatórios">
                         <span class="icon">
                             <ion-icon name="file-tray-stacked-outline"></ion-icon>
                         </span>
@@ -77,7 +253,7 @@
                 </li>
 
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" data-tooltip="Site da Auditoria">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -93,8 +269,23 @@
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-                <span>Última atualização: 20 de Maio de 2025</span>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="background: #e8f5e9; padding: 5px 12px; border-radius: 20px; color: #1c8b3d; font-size: 0.85rem;">
+                        <ion-icon name="calendar-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                        Última atualização: <span id="data-atualizacao">--/--/----</span>
+                    </span>
+                </div>
+            </div>
 
+            <!-- Banner de Boas-vindas -->
+            <div style="padding: 20px 20px 0 20px;">
+                <div class="welcome-banner">
+                    <h1>
+                        <ion-icon name="shield-checkmark-outline" style="vertical-align: middle; margin-right: 10px;"></ion-icon>
+                        Painel de Monitoramento da Auditoria Interna
+                    </h1>
+                    <p>Acompanhe em tempo real o status das recomendações emitidas pela AUDIN/UFAM. Este painel apresenta indicadores de desempenho, evolução histórica e análises detalhadas do trabalho de auditoria interna da universidade.</p>
+                </div>
             </div>
 
             <!-- ======================= Cards ================== -->
@@ -102,10 +293,9 @@
                 <a href="/report/index.html">
                     <div class="card">
                         <div>
-                            <div class="numbers">65</div>
-                            <div class="cardName">Relatórios da Auditoria Interna</div>
+                            <div class="numbers" id="card-relatorios">--</div>
+                            <div class="cardName">Relatórios de Auditoria</div>
                         </div>
-
                         <div class="iconBx">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </div>
@@ -115,125 +305,356 @@
                 <a href="/panel/index.html">
                     <div class="card">
                         <div>
-                            <div class="numbers">576</div>
-                            <div class="cardName">Recomendações Expedidas</div>
+                            <div class="numbers" id="card-recomendacoes">--</div>
+                            <div class="cardName">Recomendações Emitidas</div>
                         </div>
-
                         <div class="iconBx">
                             <ion-icon name="layers-outline"></ion-icon>
                         </div>
                     </div>
                 </a>
-                
-                <a href="/monitor/index.html#atendidas">
-                <div class="card">
-                    <div>
-                        <div class="numbers">215</div>
-                        <div class="cardName">Recomendações Atendidas</div>
-                    </div>
 
-                    <div class="iconBx">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon>
+                <a href="/beneficios/index.html">
+                    <div class="card">
+                        <div>
+                            <div class="numbers" id="card-beneficios">--</div>
+                            <div class="cardName">Benefícios Gerados</div>
+                        </div>
+                        <div class="iconBx">
+                            <ion-icon name="trophy-outline"></ion-icon>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/raio-x/index.html">
+                    <div class="card">
+                        <div>
+                            <div class="numbers" id="card-unidades">--</div>
+                            <div class="cardName">Unidades Auditadas</div>
+                        </div>
+                        <div class="iconBx">
+                            <ion-icon name="business-outline"></ion-icon>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Resumo de Status -->
+            <div style="padding: 0 20px;">
+                <div class="status-summary">
+                    <h3>
+                        <ion-icon name="pie-chart-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Situação Geral das Recomendações
+                    </h3>
+                    <div class="status-bar">
+                        <div id="bar-atendidas" style="background: #4CAF50; width: 28.4%;">--</div>
+                        <div id="bar-baixadas" style="background: #2196F3; width: 7.2%;">--</div>
+                        <div id="bar-implementacao" style="background: #FF9800; width: 25.9%;">--</div>
+                        <div id="bar-pendentes" style="background: #f44336; width: 38.4%;">--</div>
+                    </div>
+                    <div class="status-legend">
+                        <span><span class="dot" style="background: #4CAF50;"></span> <span id="legend-atendidas">Atendidas (--)</span></span>
+                        <span><span class="dot" style="background: #2196F3;"></span> <span id="legend-baixadas">Baixadas (--)</span></span>
+                        <span><span class="dot" style="background: #FF9800;"></span> <span id="legend-implementacao">Em Implementação (--)</span></span>
+                        <span><span class="dot" style="background: #f44336;"></span> <span id="legend-pendentes">Pendentes (--)</span></span>
                     </div>
                 </div>
-                </a>
-                
-                <a href="/report/index.html#em-implementacao">
-                <div class="card">
-                    <div>
-                        <div class="numbers">154</div>
-                        <div class="cardName">Recomendações Em Implementação</div>
-                    </div>
+            </div>
 
-                    <div class="iconBx">
-                        <ion-icon name="briefcase-outline"></ion-icon>
-                    </div>
+            <!-- Links Rápidos -->
+            <div style="padding: 0 20px;">
+                <div class="quick-links">
+                    <a href="/monitor/index.html" class="quick-link">
+                        <ion-icon name="radio-outline"></ion-icon>
+                        <div class="link-content">
+                            <h4>Monitoramento</h4>
+                            <span>Acompanhe o fluxo de recomendações por unidade e status</span>
+                        </div>
+                    </a>
+                    <a href="/panel/index.html" class="quick-link">
+                        <ion-icon name="list-outline"></ion-icon>
+                        <div class="link-content">
+                            <h4>Recomendações</h4>
+                            <span>Consulte todas as recomendações com filtros e exportação</span>
+                        </div>
+                    </a>
+                    <a href="/beneficios/index.html" class="quick-link">
+                        <ion-icon name="medal-outline"></ion-icon>
+                        <div class="link-content">
+                            <h4>Benefícios</h4>
+                            <span>Veja os resultados e melhorias alcançados</span>
+                        </div>
+                    </a>
                 </div>
-                </a>
             </div>
 
             <div class="details">
                 <div class="recentOrders">
-
-                    <div class="flourish-embed flourish-hierarchy" data-src="visualisation/14382694"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-                
+                    <iframe src="/charts/chart_toggle.html" style="width:100%; height:620px; border:none;"></iframe>
                 </div>
 
                 <!-- ================= Sobre a AUDIN ================ -->
-                
-                <div class="recentCustomers22">
-                    <div class="cardHeader">
-                        <h2><br>Sobre a AUDIN</h2>
-                    </div>   
-                    <div class="flourish-embed flourish-cards" data-src="visualisation/17077814"><script src="https://public.flourish.studio/resources/embed.js"></script></div>               
-
-                    <span>A <b>Auditoria Interna da Universidade Federal do Amazonas – AUDIN</b>, instituída através da Portaria Nº 2219, de 31 de outubro de 1991, do Gabinete do Reitor, tem como característica principal o desempenho de uma atividade independente e objetiva de avaliação e de consultoria, desenhada para adicionar valor e melhorar as operações da Instituição.</span>
-                    <span>É vinculada diretamente ao Conselho de Administração da Universidade Federal do Amazonas, e está sujeita à orientação normativa e supervisão técnica do Sistema de Controle Interno do Poder Executivo Federal, nos termos do art. 15 do Decreto nº 3.591, de 06 de setembro de 2000.</span>
-                </div>
-                
-                <div class="recentCustomers">
-
-                    <div class="flourish-embed flourish-gauge" data-src="visualisation/14384566"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-                </div>
-
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Últimos relatórios</h2>
+                <div class="recentCustomers22" style="padding: 25px;">
+                    <div class="cardHeader" style="margin-bottom: 20px;">
+                        <h2 style="font-size: 1.2rem; color: #1c8b3d; margin: 0;">
+                            <ion-icon name="shield-checkmark-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                            Sobre a AUDIN
+                        </h2>
                     </div>
 
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/report2.png" alt=""></div>
-                            </td>
-                            <td>
-                                <a target="_blank" href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/231-relatorio-de-auditoria-n-004-2024-ti-e-preservacao-ambiental"
-                                    <h4>004/2024 - TI e Preservação Ambiental <br> <span>CTIC</span></h4>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/report2.png" alt=""></div>
-                            </td>
-                            <td>
-                                <a target="_blank" href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/228-relatorio-de-auditoria-n-003-2024-planejamento-e-gestao"
-                                    <h4>003/2024 - Planejamento e Gestão <br> <span>PROPLAN</span></h4>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/report2.png" alt=""></div>
-                            </td>
-                            <td>
-                                <a target="_blank" href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/226-relatorio-de-auditoria-n-002-2024-ascom">
-                                    <h4>002/2024 - Comunicação <br> <span>ASCOM</span></h4>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/report2.png" alt=""></div>
-                            </td>
-                            <td>
-                                <a target="_blank" href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/222-relatorio-de-auditoria-n-001-2024-propesp">
-                                    <h4>001/2024 - Pesquisa e Pós Graduação <br> <span>PROPESP</span></h4>
-                                </a>
-                            </td>
-                        </tr>
+                    <!-- Card Institucional -->
+                    <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 20px; color: white; margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                            <ion-icon name="business-outline" style="font-size: 2rem; opacity: 0.9;"></ion-icon>
+                            <div>
+                                <div style="font-weight: 700; font-size: 1rem;">Auditoria Interna - UFAM</div>
+                                <div style="font-size: 0.8rem; opacity: 0.85;">Universidade Federal do Amazonas</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.85rem; line-height: 1.6; opacity: 0.95;">
+                            Instituída pela Portaria Nº 2219/1991, a AUDIN desempenha atividade independente e objetiva de avaliação e consultoria, agregando valor às operações da Instituição.
+                        </div>
+                    </div>
 
-                        <tr>
-                            <td width="60px">
-                                <ion-icon name="unlink-outline"></ion-icon>
-                            </td>
-                            <td>
-                                <a href="/report/index.html">
-                                <div style="text-align: center;"> Ver todos </div>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
+                    <!-- Missão e Visão -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                        <div style="background: #e8f5e9; border-radius: 12px; padding: 15px; border-left: 3px solid #4CAF50;">
+                            <div style="font-size: 0.75rem; color: #2E7D32; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 5px;">
+                                <ion-icon name="flag-outline"></ion-icon> MISSÃO
+                            </div>
+                            <div style="font-size: 0.8rem; color: #333; line-height: 1.5;">
+                                Agregar valor à gestão universitária através de avaliações independentes e objetivas.
+                            </div>
+                        </div>
+                        <div style="background: #e3f2fd; border-radius: 12px; padding: 15px; border-left: 3px solid #2196F3;">
+                            <div style="font-size: 0.75rem; color: #1565C0; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 5px;">
+                                <ion-icon name="eye-outline"></ion-icon> VISÃO
+                            </div>
+                            <div style="font-size: 0.8rem; color: #333; line-height: 1.5;">
+                                Ser referência em auditoria interna no âmbito das universidades federais.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Números em Destaque -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
+                        <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #1c8b3d;" id="stat-anos">--</div>
+                            <div style="font-size: 0.7rem; color: #666;">Anos de Atuação</div>
+                        </div>
+                        <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #2196F3;" id="stat-relatorios">--</div>
+                            <div style="font-size: 0.7rem; color: #666;">Relatórios</div>
+                        </div>
+                        <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #FF9800;" id="stat-unidades">--</div>
+                            <div style="font-size: 0.7rem; color: #666;">Unidades</div>
+                        </div>
+                    </div>
+
+                    <!-- Vinculação Institucional -->
+                    <div style="background: #fff3e0; border-radius: 12px; padding: 15px; border-left: 3px solid #FF9800;">
+                        <div style="font-size: 0.75rem; color: #E65100; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 5px;">
+                            <ion-icon name="git-network-outline"></ion-icon> VINCULAÇÃO
+                        </div>
+                        <div style="font-size: 0.8rem; color: #333; line-height: 1.5;">
+                            Vinculada ao <b>Conselho de Administração da UFAM</b> e sujeita à orientação normativa e supervisão técnica do Sistema de Controle Interno do Poder Executivo Federal (Decreto nº 3.591/2000).
+                        </div>
+                    </div>
+
+                    <!-- Link para mais informações -->
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px; padding: 12px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #1c8b3d; font-size: 0.85rem; font-weight: 600; transition: all 0.3s;">
+                        <ion-icon name="globe-outline"></ion-icon>
+                        Conheça mais sobre a AUDIN
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                </div>
+
+                <!-- Indicador de Efetividade Melhorado -->
+                <div class="recentCustomers" style="padding: 20px; overflow: hidden;">
+                    <div class="cardHeader" style="margin-bottom: 20px;">
+                        <h2 style="font-size: 1.1rem; color: #1c8b3d; margin: 0;">
+                            <ion-icon name="speedometer-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                            Índice de Efetividade
+                        </h2>
+                    </div>
+
+                    <!-- Gauge Visual -->
+                    <div style="position: relative; width: 180px; height: 100px; margin: 0 auto 20px auto;">
+                        <svg viewBox="0 0 200 110" style="width: 100%; height: 100%;">
+                            <!-- Fundo do arco -->
+                            <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#e0e0e0" stroke-width="18" stroke-linecap="round"/>
+                            <!-- Arco de progresso (dinâmico) -->
+                            <path id="gauge-arc" d="M 20 100 A 80 80 0 0 1 77 32" fill="none" stroke="url(#gaugeGradient)" stroke-width="18" stroke-linecap="round"/>
+                            <!-- Gradiente -->
+                            <defs>
+                                <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#FF9800"/>
+                                    <stop offset="100%" style="stop-color:#4CAF50"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #1c8b3d;" id="efetividade-valor">--%</div>
+                        </div>
+                    </div>
+
+                    <!-- Escala de referência -->
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 20px; padding: 0 10px;">
+                        <span style="font-size: 0.75rem; color: #f44336;">0%</span>
+                        <span style="font-size: 0.75rem; color: #FF9800;">50%</span>
+                        <span style="font-size: 0.75rem; color: #4CAF50;">100%</span>
+                    </div>
+
+                    <!-- Detalhamento -->
+                    <div style="background: #f8f9fa; border-radius: 10px; padding: 15px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 0.85rem; color: #666;">Atendidas + Baixadas</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: #1c8b3d;" id="efetividade-atendidas-baixadas">--</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-size: 0.85rem; color: #666;">Total de Recomendações</span>
+                            <span style="font-size: 0.85rem; font-weight: 600; color: #333;" id="efetividade-total">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Nota Metodológica -->
+                    <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 8px; padding: 10px; border-left: 3px solid #2196F3;">
+                        <div style="font-size: 0.7rem; color: #1565C0; font-weight: 600; margin-bottom: 4px;">
+                            <ion-icon name="information-circle-outline" style="vertical-align: middle; margin-right: 4px;"></ion-icon>
+                            Nota Metodológica
+                        </div>
+                        <div style="font-size: 0.7rem; color: #555; line-height: 1.4;">
+                            Efetividade = (Atendidas + Baixadas) / Total. Reflete a implementação das melhorias sugeridas pela AUDIN desde 2015.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimos Relatórios Redesenhado -->
+                <div class="recentCustomers" style="padding: 15px; overflow: hidden;">
+                    <div class="cardHeader" style="margin-bottom: 15px;">
+                        <h2 style="font-size: 1.1rem; color: #1c8b3d; margin: 0;">
+                            <ion-icon name="document-text-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                            Últimos Relatórios
+                        </h2>
+                        <a href="/report/index.html" style="font-size: 0.8rem; color: #1c8b3d; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                            Ver todos <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </a>
+                    </div>
+
+                    <!-- Lista de Relatórios em Cards -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Relatório 005/2024 -->
+                        <a href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/232-relatorio-de-auditoria-n-005-2024" target="_blank" style="text-decoration: none;">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px; border-left: 3px solid #1c8b3d;">
+                                <div style="background: #1c8b3d; color: white; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 700; text-align: center; min-width: 45px;">
+                                    <div>005</div>
+                                    <div style="opacity: 0.8;">2024</div>
+                                </div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-size: 0.8rem; font-weight: 600; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Consultoria PROGESP</div>
+                                    <div style="font-size: 0.7rem; color: #666;">PROGESP</div>
+                                </div>
+                                <ion-icon name="open-outline" style="color: #1c8b3d; font-size: 1rem; flex-shrink: 0;"></ion-icon>
+                            </div>
+                        </a>
+
+                        <!-- Relatório 004/2024 -->
+                        <a href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/231-relatorio-de-auditoria-n-004-2024-ti-e-preservacao-ambiental" target="_blank" style="text-decoration: none;">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px; border-left: 3px solid #2196F3;">
+                                <div style="background: #2196F3; color: white; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 700; text-align: center; min-width: 45px;">
+                                    <div>004</div>
+                                    <div style="opacity: 0.8;">2024</div>
+                                </div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-size: 0.8rem; font-weight: 600; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">TI e Preservação Ambiental</div>
+                                    <div style="font-size: 0.7rem; color: #666;">CTIC</div>
+                                </div>
+                                <ion-icon name="open-outline" style="color: #2196F3; font-size: 1rem; flex-shrink: 0;"></ion-icon>
+                            </div>
+                        </a>
+
+                        <!-- Relatório 003/2024 -->
+                        <a href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/228-relatorio-de-auditoria-n-003-2024-planejamento-e-gestao" target="_blank" style="text-decoration: none;">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #fff3e0 100%); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px; border-left: 3px solid #FF9800;">
+                                <div style="background: #FF9800; color: white; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 700; text-align: center; min-width: 45px;">
+                                    <div>003</div>
+                                    <div style="opacity: 0.8;">2024</div>
+                                </div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-size: 0.8rem; font-weight: 600; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Planejamento e Gestão</div>
+                                    <div style="font-size: 0.7rem; color: #666;">PROPLAN</div>
+                                </div>
+                                <ion-icon name="open-outline" style="color: #FF9800; font-size: 1rem; flex-shrink: 0;"></ion-icon>
+                            </div>
+                        </a>
+
+                        <!-- Relatório 002/2024 -->
+                        <a href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/226-relatorio-de-auditoria-n-002-2024-ascom" target="_blank" style="text-decoration: none;">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f3e5f5 100%); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px; border-left: 3px solid #9C27B0;">
+                                <div style="background: #9C27B0; color: white; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 700; text-align: center; min-width: 45px;">
+                                    <div>002</div>
+                                    <div style="opacity: 0.8;">2024</div>
+                                </div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-size: 0.8rem; font-weight: 600; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Comunicação</div>
+                                    <div style="font-size: 0.7rem; color: #666;">ASCOM</div>
+                                </div>
+                                <ion-icon name="open-outline" style="color: #9C27B0; font-size: 1rem; flex-shrink: 0;"></ion-icon>
+                            </div>
+                        </a>
+
+                        <!-- Relatório 001/2024 -->
+                        <a href="https://auditoria.ufam.edu.br/relatorios-de-auditoria/61-audin/222-relatorio-de-auditoria-n-001-2024-propesp" target="_blank" style="text-decoration: none;">
+                            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #ffebee 100%); border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px; border-left: 3px solid #f44336;">
+                                <div style="background: #f44336; color: white; border-radius: 6px; padding: 6px 8px; font-size: 0.65rem; font-weight: 700; text-align: center; min-width: 45px;">
+                                    <div>001</div>
+                                    <div style="opacity: 0.8;">2024</div>
+                                </div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-size: 0.8rem; font-weight: 600; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Pesquisa e Pós-Graduação</div>
+                                    <div style="font-size: 0.7rem; color: #666;">PROPESP</div>
+                                </div>
+                                <ion-icon name="open-outline" style="color: #f44336; font-size: 1rem; flex-shrink: 0;"></ion-icon>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links Externos -->
+                <div style="grid-column: span 2; padding: 0;">
+                    <div class="external-links">
+                        <h3>
+                            <ion-icon name="link-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                            Links Úteis
+                        </h3>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                            <a href="https://auditoria.ufam.edu.br/" target="_blank" class="external-link-item">
+                                <ion-icon name="globe-outline"></ion-icon>
+                                <span>Site Oficial da AUDIN</span>
+                            </a>
+                            <a href="https://auditoria.ufam.edu.br/acesso-aos-relatorios.html" target="_blank" class="external-link-item">
+                                <ion-icon name="folder-open-outline"></ion-icon>
+                                <span>Repositório de Relatórios</span>
+                            </a>
+                            <a href="https://auditoria.ufam.edu.br/legislacao" target="_blank" class="external-link-item">
+                                <ion-icon name="book-outline"></ion-icon>
+                                <span>Legislação Aplicável</span>
+                            </a>
+                            <a href="https://www.gov.br/cgu/pt-br" target="_blank" class="external-link-item">
+                                <ion-icon name="shield-outline"></ion-icon>
+                                <span>CGU - Controladoria Geral</span>
+                            </a>
+                            <a href="https://ufam.edu.br" target="_blank" class="external-link-item">
+                                <ion-icon name="school-outline"></ion-icon>
+                                <span>Portal UFAM</span>
+                            </a>
+                            <a href="https://auditoria.ufam.edu.br/contato" target="_blank" class="external-link-item">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <span>Fale Conosco</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -242,6 +663,7 @@
 
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/data-loader.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

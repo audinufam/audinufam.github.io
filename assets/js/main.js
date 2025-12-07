@@ -1,21 +1,50 @@
-// add hovered class to selected list item
-let list = document.querySelectorAll(".navigation li");
+// Marcar item do menu como ativo baseado na URL atual
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPath = window.location.pathname;
+  const menuItems = document.querySelectorAll(".navigation li");
 
-function activeLink() {
-  list.forEach((item) => {
-    item.classList.remove("hovered");
+  menuItems.forEach((item, index) => {
+    // Pular o primeiro item (logo)
+    if (index === 0) return;
+
+    const link = item.querySelector("a");
+    if (link) {
+      const href = link.getAttribute("href");
+
+      // Verificar se o href corresponde à página atual
+      let isActive = false;
+
+      if (href === "/" || href === "/index.html") {
+        // Dashboard - ativo apenas na raiz
+        isActive = currentPath === "/" || currentPath === "/index.html" || currentPath === "";
+      } else if (href && !href.startsWith("http")) {
+        // Links internos - verificar se o path atual começa com o href
+        isActive = currentPath.startsWith(href.replace("/index.html", "").replace("index.html", ""));
+      }
+
+      if (isActive) {
+        item.classList.add("active");
+      }
+    }
   });
-  this.classList.add("hovered");
-}
+});
 
-list.forEach((item) => item.addEventListener("mouseover", activeLink));
-
-// Menu Toggle
+// Menu Toggle com persistência de estado
 let toggle = document.querySelector(".toggle");
 let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
 
+// Restaurar estado do menu ao carregar a página
+if (localStorage.getItem("menuClosed") === "true") {
+  navigation.classList.add("active");
+  main.classList.add("active");
+}
+
 toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
+
+  // Salvar estado do menu
+  const isClosed = navigation.classList.contains("active");
+  localStorage.setItem("menuClosed", isClosed);
 };

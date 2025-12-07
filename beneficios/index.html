@@ -13,11 +13,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
                             <ion-icon name="logo-apple-ar"></ion-icon>
                         </span>
-                        <img src="../assets/imgs/audin_logo.jpeg" alt="" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="../assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
@@ -31,7 +31,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/monitor/index.html">
                         <span class="icon">
                             <ion-icon name="radio-outline"></ion-icon>
                         </span>
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/beneficios/index.html">
                         <span class="icon">
                             <ion-icon name="medal-outline"></ion-icon>
                         </span>
@@ -91,17 +91,133 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
             </div>
-            <br>
-            
-            <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17205599"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
-            <div class="flourish-embed flourish-heatmap" data-src="visualisation/17206443"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+            <!-- Cards de Benefícios -->
+            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+                <!-- Card Total Benefícios -->
+                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                    <ion-icon name="medal-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="beneficios-total">--</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Benefícios Identificados</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recomendações Atendidas</div>
+                </div>
+
+                <!-- Card Unidades Beneficiadas -->
+                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                    <ion-icon name="business-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="beneficios-unidades">--</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Unidades Beneficiadas</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Setores da UFAM</div>
+                </div>
+
+                <!-- Card Tipo de Benefício -->
+                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                    <ion-icon name="shield-checkmark-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">100%</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Não-Financeiros</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Melhoria de Processos</div>
+                </div>
+
+                <!-- Card Média por Unidade -->
+                <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
+                    <ion-icon name="calculator-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="beneficios-media">--</div>
+                    <div style="font-size: 0.95rem; opacity: 0.9;">Média por Unidade</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Benefícios/Unidade</div>
+                </div>
+            </div>
+
+            <!-- Top 5 Unidades com Mais Benefícios -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 25px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <h3 style="color: #1c8b3d; margin: 0 0 20px 0; font-size: 1.2rem;">
+                        <ion-icon name="trophy-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Top 5 Unidades com Mais Benefícios
+                    </h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #FFD700; color: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</span>
+                            <span style="flex: 1; font-weight: 500;" id="top-beneficio-1-nome">--</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;" id="top-beneficio-1-total">--</span>
+                                <span style="color: #666; font-size: 0.85rem;"> benefícios</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #C0C0C0; color: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</span>
+                            <span style="flex: 1; font-weight: 500;" id="top-beneficio-2-nome">--</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;" id="top-beneficio-2-total">--</span>
+                                <span style="color: #666; font-size: 0.85rem;"> benefícios</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #CD7F32; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</span>
+                            <span style="flex: 1; font-weight: 500;" id="top-beneficio-3-nome">--</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;" id="top-beneficio-3-total">--</span>
+                                <span style="color: #666; font-size: 0.85rem;"> benefícios</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #4CAF50; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">4</span>
+                            <span style="flex: 1; font-weight: 500;" id="top-beneficio-4-nome">--</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;" id="top-beneficio-4-total">--</span>
+                                <span style="color: #666; font-size: 0.85rem;"> benefícios</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="background: #81C784; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700;">5</span>
+                            <span style="flex: 1; font-weight: 500;" id="top-beneficio-5-nome">--</span>
+                            <div style="background: #e8f5e9; border-radius: 8px; padding: 5px 12px;">
+                                <span style="color: #1c8b3d; font-weight: 700;" id="top-beneficio-5-total">--</span>
+                                <span style="color: #666; font-size: 0.85rem;"> benefícios</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Definição de Benefícios -->
+            <div style="padding: 0 20px;">
+                <div style="background: #f8f9fa; border-radius: 15px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #1c8b3d;">
+                    <h4 style="color: #1c8b3d; margin: 0 0 15px 0;">
+                        <ion-icon name="information-circle-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        O que são Benefícios da Auditoria?
+                    </h4>
+                    <div style="font-size: 0.9rem; color: #555; line-height: 1.6;">
+                        <p style="margin: 0 0 10px 0;"><strong>Benefícios Não-Financeiros</strong> são melhorias qualitativas resultantes das recomendações atendidas, como:</p>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
+                            <div><ion-icon name="checkmark-outline" style="color: #4CAF50; margin-right: 5px;"></ion-icon>Melhoria de processos internos</div>
+                            <div><ion-icon name="checkmark-outline" style="color: #4CAF50; margin-right: 5px;"></ion-icon>Fortalecimento de controles</div>
+                            <div><ion-icon name="checkmark-outline" style="color: #4CAF50; margin-right: 5px;"></ion-icon>Conformidade regulatória</div>
+                            <div><ion-icon name="checkmark-outline" style="color: #4CAF50; margin-right: 5px;"></ion-icon>Redução de riscos operacionais</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treemap de Benefícios -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <iframe src="/charts/treemap_beneficios.html" style="width:100%; height:620px; border:none;"></iframe>
+                </div>
+            </div>
+
+            <!-- Heatmap -->
+            <div style="padding: 0 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08); margin-bottom: 20px;">
+                    <iframe src="/charts/heatmap_raiox.html" style="width:100%; height:820px; border:none;"></iframe>
+                </div>
+            </div>
 
         </div>
     </div>
     
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/data-loader.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

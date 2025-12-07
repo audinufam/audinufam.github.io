@@ -1,11 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recomendações detalhadas</title>
+    <title>Recomendações Detalhadas</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- DataTables CSS (sem Bootstrap) -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+    <style>
+        /* Estilos customizados para a tabela */
+        .dataTables_wrapper {
+            padding: 0;
+            font-family: inherit;
+        }
+        .dataTables_filter {
+            margin-bottom: 15px;
+        }
+        .dataTables_filter input {
+            border: 2px solid #1c8b3d !important;
+            border-radius: 8px !important;
+            padding: 8px 15px !important;
+            margin-left: 10px !important;
+            font-size: 14px;
+        }
+        .dataTables_length {
+            margin-bottom: 15px;
+        }
+        .dataTables_length select {
+            border: 2px solid #1c8b3d !important;
+            border-radius: 8px !important;
+            padding: 5px 10px !important;
+        }
+        #recomendacoesTable {
+            width: 100% !important;
+            border-collapse: collapse;
+        }
+        #recomendacoesTable thead th {
+            background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%) !important;
+            color: white !important;
+            font-weight: 600;
+            padding: 15px 10px !important;
+            border: none !important;
+            text-align: left;
+        }
+        #recomendacoesTable tbody tr {
+            border-bottom: 1px solid #eee;
+        }
+        #recomendacoesTable tbody tr:hover {
+            background-color: #e8f5e9 !important;
+        }
+        #recomendacoesTable tbody td {
+            padding: 12px 10px !important;
+            vertical-align: middle;
+            font-size: 0.9rem;
+        }
+        #recomendacoesTable tbody tr:nth-child(odd) {
+            background-color: #fafafa;
+        }
+        .dataTables_paginate {
+            margin-top: 15px;
+        }
+        .dataTables_paginate .paginate_button {
+            padding: 5px 12px !important;
+            margin: 0 3px;
+            border-radius: 5px !important;
+            border: 1px solid #ddd !important;
+            background: white !important;
+            color: #333 !important;
+        }
+        .dataTables_paginate .paginate_button:hover {
+            background: #e8f5e9 !important;
+            border-color: #1c8b3d !important;
+            color: #1c8b3d !important;
+        }
+        .dataTables_paginate .paginate_button.current {
+            background: #1c8b3d !important;
+            border-color: #1c8b3d !important;
+            color: white !important;
+        }
+        .dataTables_info {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        /* Status badges */
+        .status-atendida {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .status-baixada {
+            background: #2196F3;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .status-implementacao {
+            background: #FF9800;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .status-pendente {
+            background: #f44336;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        /* Filtros rápidos */
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .filter-btn.all { border-color: #1c8b3d; color: #1c8b3d; }
+        .filter-btn.all:hover, .filter-btn.all.active { background: #1c8b3d; color: white; }
+        .filter-btn.atendida { border-color: #4CAF50; color: #4CAF50; }
+        .filter-btn.atendida:hover, .filter-btn.atendida.active { background: #4CAF50; color: white; }
+        .filter-btn.baixada { border-color: #2196F3; color: #2196F3; }
+        .filter-btn.baixada:hover, .filter-btn.baixada.active { background: #2196F3; color: white; }
+        .filter-btn.implementacao { border-color: #FF9800; color: #FF9800; }
+        .filter-btn.implementacao:hover, .filter-btn.implementacao.active { background: #FF9800; color: white; }
+        .filter-btn.pendente { border-color: #f44336; color: #f44336; }
+        .filter-btn.pendente:hover, .filter-btn.pendente.active { background: #f44336; color: white; }
+        /* Export buttons */
+        .dt-buttons {
+            margin-bottom: 15px;
+        }
+        .dt-buttons .dt-button {
+            background: #1c8b3d !important;
+            border: none !important;
+            margin-right: 5px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: white !important;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .dt-buttons .dt-button:hover {
+            background: #166b2f !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,11 +172,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="https://auditoria.ufam.edu.br/">
+                    <a href="https://auditoria.ufam.edu.br/" target="_blank">
                         <span class="icon">
                             <ion-icon name="logo-apple-ar"></ion-icon>
                         </span>
-                        <img src="../assets/imgs/audin_logo.jpeg" alt="" style="width: 200px; height: auto; margin-top: 20px; margin-left: 10px;"/>
+                        <img src="../assets/imgs/audin_logo.jpeg" alt="Logo AUDIN" class="nav-logo"/>
                     </a>
                 </li>
 
@@ -40,7 +199,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/panel/index.html">
                         <span class="icon">
                             <ion-icon name="list-outline"></ion-icon>
                         </span>
@@ -92,16 +251,298 @@
                 </div>
             </div>
 
-            <div class="flourish-embed flourish-table" data-src="visualisation/14382827"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+            <!-- Cards de Estatísticas -->
+            <div style="padding: 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;">
+                <!-- Card Total -->
+                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                    <ion-icon name="layers-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="total-count">--</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Total</div>
+                </div>
+
+                <!-- Card Atendidas -->
+                <div style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);">
+                    <ion-icon name="checkmark-circle-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="atendidas-count">--</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Atendidas</div>
+                </div>
+
+                <!-- Card Baixadas -->
+                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                    <ion-icon name="archive-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="baixadas-count">--</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Baixadas</div>
+                </div>
+
+                <!-- Card Em Implementação -->
+                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                    <ion-icon name="construct-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="implementacao-count">--</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Em Implem.</div>
+                </div>
+
+                <!-- Card Pendentes -->
+                <div style="background: linear-gradient(135deg, #f44336 0%, #c62828 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);">
+                    <ion-icon name="alert-circle-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="pendentes-count">--</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Pendentes</div>
+                </div>
+            </div>
+
+            <!-- Filtros Rápidos -->
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background: white; border-radius: 15px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08);">
+                    <h4 style="color: #1c8b3d; margin: 0 0 15px 0; font-size: 1rem;">
+                        <ion-icon name="filter-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Filtros Rápidos
+                    </h4>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button class="filter-btn all active" onclick="filterStatus('')">
+                            <ion-icon name="apps-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                            Todas (<span id="btn-total-count">--</span>)
+                        </button>
+                        <button class="filter-btn atendida" onclick="filterStatus('Atendida')">
+                            <ion-icon name="checkmark-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                            Atendidas (<span id="btn-atendidas-count">--</span>)
+                        </button>
+                        <button class="filter-btn baixada" onclick="filterStatus('Baixada')">
+                            <ion-icon name="archive-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                            Baixadas (<span id="btn-baixadas-count">--</span>)
+                        </button>
+                        <button class="filter-btn implementacao" onclick="filterStatus('Em Implementação')">
+                            <ion-icon name="construct-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                            Em Implementação (<span id="btn-implementacao-count">--</span>)
+                        </button>
+                        <button class="filter-btn pendente" onclick="filterStatus('Pendente')">
+                            <ion-icon name="alert-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon>
+                            Pendentes (<span id="btn-pendentes-count">--</span>)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de Recomendações -->
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 7px 25px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1c8b3d; margin: 0 0 20px 0; font-size: 1.2rem;">
+                        <ion-icon name="document-text-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Base de Recomendações da Auditoria Interna
+                    </h3>
+
+                    <table id="recomendacoesTable" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Ano</th>
+                                <th>Relatório</th>
+                                <th>Unidade</th>
+                                <th>Recomendação</th>
+                                <th>Situação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dados serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Informações Adicionais -->
+            <div style="padding: 0 20px 20px 20px;">
+                <div style="background: #f8f9fa; border-radius: 15px; padding: 20px; border-left: 4px solid #1c8b3d;">
+                    <h4 style="color: #1c8b3d; margin: 0 0 15px 0;">
+                        <ion-icon name="information-circle-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
+                        Como usar esta tabela
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; font-size: 0.9rem; color: #555;">
+                        <div>
+                            <ion-icon name="search-outline" style="color: #1c8b3d; margin-right: 5px;"></ion-icon>
+                            <strong>Busca:</strong> Use o campo de pesquisa para encontrar recomendações específicas
+                        </div>
+                        <div>
+                            <ion-icon name="funnel-outline" style="color: #1c8b3d; margin-right: 5px;"></ion-icon>
+                            <strong>Filtros:</strong> Clique nos botões coloridos para filtrar por status
+                        </div>
+                        <div>
+                            <ion-icon name="download-outline" style="color: #1c8b3d; margin-right: 5px;"></ion-icon>
+                            <strong>Exportar:</strong> Use os botões Excel/PDF para baixar os dados
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
-    
+
     <!-- =========== Scripts =========  -->
     <script src="../assets/js/main.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables JS (sem Bootstrap) -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <!-- DataTables Buttons -->
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+    <script>
+        var table;
+        var recomendacoesData = [];
+
+        // Função para formatar o status com badge colorido
+        function formatStatus(status) {
+            var statusClass = '';
+            switch(status) {
+                case 'Atendida':
+                    statusClass = 'status-atendida';
+                    break;
+                case 'Baixada':
+                    statusClass = 'status-baixada';
+                    break;
+                case 'Em Implementação':
+                    statusClass = 'status-implementacao';
+                    break;
+                case 'Pendente':
+                    statusClass = 'status-pendente';
+                    break;
+            }
+            return '<span class="' + statusClass + '">' + status + '</span>';
+        }
+
+        // Função para filtrar por status
+        function filterStatus(status) {
+            // Atualizar botões ativos
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (status === '') {
+                document.querySelector('.filter-btn.all').classList.add('active');
+            } else if (status === 'Atendida') {
+                document.querySelector('.filter-btn.atendida').classList.add('active');
+            } else if (status === 'Baixada') {
+                document.querySelector('.filter-btn.baixada').classList.add('active');
+            } else if (status === 'Em Implementação') {
+                document.querySelector('.filter-btn.implementacao').classList.add('active');
+            } else if (status === 'Pendente') {
+                document.querySelector('.filter-btn.pendente').classList.add('active');
+            }
+
+            // Aplicar filtro na tabela
+            table.column(4).search(status).draw();
+        }
+
+        // Carregar dados e inicializar tabela
+        $(document).ready(function() {
+            fetch('/data/recomendacoes_table.json')
+                .then(response => response.json())
+                .then(data => {
+                    recomendacoesData = data;
+
+                    // Preparar dados para DataTables
+                    var tableData = data.map(function(item) {
+                        return [
+                            item.Ano,
+                            item.Relatorio,
+                            item.Unidade,
+                            item.Recomendacao,
+                            item.Situacao
+                        ];
+                    });
+
+                    // Inicializar DataTables
+                    table = $('#recomendacoesTable').DataTable({
+                        data: tableData,
+                        columns: [
+                            { title: "Ano", width: "60px" },
+                            { title: "Rel.", width: "50px" },
+                            { title: "Unidade", width: "100px" },
+                            { title: "Recomendação" },
+                            {
+                                title: "Situação",
+                                width: "130px",
+                                render: function(data) {
+                                    return formatStatus(data);
+                                }
+                            }
+                        ],
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                extend: 'excel',
+                                text: '<ion-icon name="document-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> Excel',
+                                className: 'btn btn-success btn-sm',
+                                title: 'Recomendacoes_AUDIN',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4]
+                                }
+                            },
+                            {
+                                extend: 'pdf',
+                                text: '<ion-icon name="document-text-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> PDF',
+                                className: 'btn btn-success btn-sm',
+                                title: 'Recomendações - AUDIN UFAM',
+                                exportOptions: {
+                                    columns: [0, 1, 2, 3, 4]
+                                },
+                                customize: function(doc) {
+                                    doc.styles.tableHeader.fillColor = '#1c8b3d';
+                                }
+                            },
+                            {
+                                extend: 'print',
+                                text: '<ion-icon name="print-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> Imprimir',
+                                className: 'btn btn-success btn-sm',
+                                title: 'Recomendações - AUDIN UFAM'
+                            }
+                        ],
+                        language: {
+                            url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/pt-BR.json',
+                            search: "Buscar:",
+                            lengthMenu: "Mostrar _MENU_ registros",
+                            info: "Mostrando _START_ a _END_ de _TOTAL_ recomendações",
+                            paginate: {
+                                first: "Primeiro",
+                                last: "Último",
+                                next: "Próximo",
+                                previous: "Anterior"
+                            }
+                        },
+                        pageLength: 25,
+                        order: [[0, 'desc'], [1, 'asc']],
+                        responsive: true
+                    });
+
+                    // Atualizar contadores
+                    var counts = {
+                        total: data.length,
+                        atendidas: data.filter(d => d.Situacao === 'Atendida').length,
+                        baixadas: data.filter(d => d.Situacao === 'Baixada').length,
+                        implementacao: data.filter(d => d.Situacao === 'Em Implementação').length,
+                        pendentes: data.filter(d => d.Situacao === 'Pendente').length
+                    };
+
+                    document.getElementById('total-count').textContent = counts.total;
+                    document.getElementById('atendidas-count').textContent = counts.atendidas;
+                    document.getElementById('baixadas-count').textContent = counts.baixadas;
+                    document.getElementById('implementacao-count').textContent = counts.implementacao;
+                    document.getElementById('pendentes-count').textContent = counts.pendentes;
+
+                    // Atualizar botões de filtro
+                    document.getElementById('btn-total-count').textContent = counts.total;
+                    document.getElementById('btn-atendidas-count').textContent = counts.atendidas;
+                    document.getElementById('btn-baixadas-count').textContent = counts.baixadas;
+                    document.getElementById('btn-implementacao-count').textContent = counts.implementacao;
+                    document.getElementById('btn-pendentes-count').textContent = counts.pendentes;
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar dados:', error);
+                });
+        });
+    </script>
 </body>
 </html>

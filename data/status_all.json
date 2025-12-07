@@ -37,12 +37,12 @@
                 "name": "INC",
                 "children": [
                     {
-                        "name": "Atendida",
-                        "value": 2
+                        "name": "Em Implementação",
+                        "value": 4
                     },
                     {
-                        "name": "Em Implementação",
-                        "value": 3
+                        "name": "Atendida",
+                        "value": 1
                     }
                 ]
             },
@@ -82,19 +82,19 @@
                 "name": "BC",
                 "children": [
                     {
-                        "name": "Pendente",
-                        "value": 1
-                    },
-                    {
                         "name": "Em Implementação",
                         "value": 5
                     },
                     {
-                        "name": "Baixada",
+                        "name": "Pendente",
                         "value": 1
                     },
                     {
                         "name": "Atendida",
+                        "value": 1
+                    },
+                    {
+                        "name": "Baixada",
                         "value": 1
                     }
                 ]
@@ -140,23 +140,32 @@
                 ]
             },
             {
-                "name": "PROGESP",
+                "name": "PROAE",
                 "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 8
+                    },
                     {
                         "name": "Pendente",
                         "value": 3
-                    },
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
                     {
                         "name": "Baixada",
                         "value": 1
                     },
                     {
                         "name": "Atendida",
-                        "value": 2
+                        "value": 3
                     },
                     {
                         "name": "Em Implementação",
-                        "value": 10
+                        "value": 1
                     }
                 ]
             }
@@ -254,12 +263,26 @@
                 "name": "FAEXP",
                 "children": [
                     {
-                        "name": "Em Implementação",
-                        "value": 2
-                    },
-                    {
                         "name": "Atendida",
                         "value": 12
+                    }
+                ]
+            },
+            {
+                "name": "FAEXP - DEMAT",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "name": "FAEXP - PCU",
+                "children": [
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
                     }
                 ]
             },
@@ -449,12 +472,12 @@
                         "value": 3
                     },
                     {
-                        "name": "Baixada",
-                        "value": 2
-                    },
-                    {
                         "name": "Em Implementação",
                         "value": 1
+                    },
+                    {
+                        "name": "Baixada",
+                        "value": 2
                     }
                 ]
             },
@@ -462,8 +485,12 @@
                 "name": "PROPESP",
                 "children": [
                     {
+                        "name": "Atendida",
+                        "value": 2
+                    },
+                    {
                         "name": "Em Implementação",
-                        "value": 3
+                        "value": 1
                     }
                 ]
             },
@@ -471,12 +498,12 @@
                 "name": "PROPLAN",
                 "children": [
                     {
-                        "name": "Atendida",
-                        "value": 1
-                    },
-                    {
                         "name": "Baixada",
                         "value": 2
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
                     }
                 ]
             },
@@ -516,7 +543,7 @@
                 "name": "CCA",
                 "children": [
                     {
-                        "name": "Pendente",
+                        "name": "Em Implementação",
                         "value": 2
                     }
                 ]
@@ -525,12 +552,16 @@
                 "name": "CTIC",
                 "children": [
                     {
-                        "name": "Pendente",
-                        "value": 7
+                        "name": "Atendida",
+                        "value": 5
                     },
                     {
                         "name": "Em Implementação",
-                        "value": 10
+                        "value": 8
+                    },
+                    {
+                        "name": "Pendente",
+                        "value": 4
                     }
                 ]
             },
@@ -547,12 +578,12 @@
                 "name": "PCU",
                 "children": [
                     {
-                        "name": "Em Implementação",
-                        "value": 2
-                    },
-                    {
                         "name": "Atendida",
                         "value": 1
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
                     }
                 ]
             },
@@ -597,7 +628,11 @@
                 "children": [
                     {
                         "name": "Pendente",
-                        "value": 4
+                        "value": 3
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
                     }
                 ]
             },
@@ -605,16 +640,16 @@
                 "name": "PROADM",
                 "children": [
                     {
-                        "name": "Atendida",
-                        "value": 1
+                        "name": "Pendente",
+                        "value": 15
                     },
                     {
                         "name": "Em Implementação",
                         "value": 2
                     },
                     {
-                        "name": "Pendente",
-                        "value": 15
+                        "name": "Atendida",
+                        "value": 1
                     }
                 ]
             },
@@ -686,7 +721,7 @@
                 "children": [
                     {
                         "name": "Pendente",
-                        "value": 6
+                        "value": 5
                     }
                 ]
             },
@@ -694,16 +729,16 @@
                 "name": "ARII",
                 "children": [
                     {
-                        "name": "Atendida",
-                        "value": 2
+                        "name": "Em Implementação",
+                        "value": 5
                     },
                     {
                         "name": "Pendente",
-                        "value": 2
+                        "value": 1
                     },
                     {
-                        "name": "Em Implementação",
-                        "value": 3
+                        "name": "Atendida",
+                        "value": 1
                     }
                 ]
             },
@@ -711,8 +746,12 @@
                 "name": "ASCOM",
                 "children": [
                     {
+                        "name": "Em Implementação",
+                        "value": 2
+                    },
+                    {
                         "name": "Pendente",
-                        "value": 5
+                        "value": 3
                     }
                 ]
             },
@@ -720,7 +759,7 @@
                 "name": "CCA",
                 "children": [
                     {
-                        "name": "Pendente",
+                        "name": "Em Implementação",
                         "value": 1
                     }
                 ]
@@ -729,25 +768,16 @@
                 "name": "CTIC",
                 "children": [
                     {
-                        "name": "Atendida",
-                        "value": 2
+                        "name": "Pendente",
+                        "value": 3
                     },
                     {
                         "name": "Em Implementação",
-                        "value": 2
+                        "value": 3
                     },
                     {
-                        "name": "Pendente",
-                        "value": 4
-                    }
-                ]
-            },
-            {
-                "name": "DAEST",
-                "children": [
-                    {
-                        "name": "Pendente",
-                        "value": 10
+                        "name": "Atendida",
+                        "value": 2
                     }
                 ]
             },
@@ -799,11 +829,11 @@
                         "value": 3
                     },
                     {
-                        "name": "Atendida",
+                        "name": "Em Implementação",
                         "value": 2
                     },
                     {
-                        "name": "Em Implementação",
+                        "name": "Atendida",
                         "value": 2
                     }
                 ]
@@ -818,15 +848,24 @@
                 ]
             },
             {
+                "name": "PROAE",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 10
+                    }
+                ]
+            },
+            {
                 "name": "PROPLAN",
                 "children": [
                     {
-                        "name": "Em Implementação",
-                        "value": 1
-                    },
-                    {
                         "name": "Atendida",
                         "value": 2
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 1
                     }
                 ]
             },
@@ -834,12 +873,16 @@
                 "name": "PROTEC",
                 "children": [
                     {
+                        "name": "Em Implementação",
+                        "value": 1
+                    },
+                    {
                         "name": "Pendente",
                         "value": 1
                     },
                     {
-                        "name": "Em Implementação",
-                        "value": 2
+                        "name": "Atendida",
+                        "value": 1
                     }
                 ]
             }
@@ -865,10 +908,6 @@
                 "name": "DAEST",
                 "children": [
                     {
-                        "name": "Pendente",
-                        "value": 3
-                    },
-                    {
                         "name": "Atendida",
                         "value": 1
                     }
@@ -878,8 +917,12 @@
                 "name": "ICSEZ",
                 "children": [
                     {
+                        "name": "Atendida",
+                        "value": 1
+                    },
+                    {
                         "name": "Pendente",
-                        "value": 4
+                        "value": 3
                     }
                 ]
             },
@@ -887,8 +930,21 @@
                 "name": "IEAA",
                 "children": [
                     {
+                        "name": "Atendida",
+                        "value": 1
+                    },
+                    {
                         "name": "Pendente",
-                        "value": 4
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "PROAE",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
                     }
                 ]
             },
@@ -905,12 +961,12 @@
                 "name": "PROEXT",
                 "children": [
                     {
-                        "name": "Atendida",
-                        "value": 2
-                    },
-                    {
                         "name": "Pendente",
                         "value": 1
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 2
                     }
                 ]
             },
@@ -918,12 +974,8 @@
                 "name": "PROGESP",
                 "children": [
                     {
-                        "name": "Pendente",
-                        "value": 1
-                    },
-                    {
                         "name": "Atendida",
-                        "value": 1
+                        "value": 2
                     }
                 ]
             },
@@ -958,16 +1010,16 @@
                 "name": "ARII",
                 "children": [
                     {
-                        "name": "Pendente",
-                        "value": 4
-                    },
-                    {
                         "name": "Em Implementação",
                         "value": 5
                     },
                     {
+                        "name": "Pendente",
+                        "value": 3
+                    },
+                    {
                         "name": "Atendida",
-                        "value": 1
+                        "value": 2
                     }
                 ]
             },
@@ -977,14 +1029,6 @@
                     {
                         "name": "Atendida",
                         "value": 2
-                    },
-                    {
-                        "name": "Em Implementação",
-                        "value": 2
-                    },
-                    {
-                        "name": "Pendente",
-                        "value": 5
                     }
                 ]
             },
@@ -1007,6 +1051,19 @@
                     {
                         "name": "Pendente",
                         "value": 7
+                    }
+                ]
+            },
+            {
+                "name": "PROAE",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 5
+                    },
+                    {
+                        "name": "Em Implementação",
+                        "value": 2
                     }
                 ]
             },
@@ -1036,9 +1093,95 @@
                 "name": "PROTEC",
                 "children": [
                     {
+                        "name": "Pendente",
+                        "value": 2
+                    },
+                    {
+                        "name": "Atendida",
+                        "value": 1
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2024",
+        "children": [
+            {
+                "name": "ASCOM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 3
+                    }
+                ]
+            },
+            {
+                "name": "CTIC",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROADM",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 21
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROPESP",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            },
+            {
+                "name": "PROPLAN",
+                "children": [
+                    {
                         "name": "Atendida",
                         "value": 1
                     },
+                    {
+                        "name": "Pendente",
+                        "value": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "2025",
+        "children": [
+            {
+                "name": "PROAE",
+                "children": [
+                    {
+                        "name": "Pendente",
+                        "value": 7
+                    }
+                ]
+            },
+            {
+                "name": "PROGESP",
+                "children": [
                     {
                         "name": "Pendente",
                         "value": 2

@@ -1,0 +1,78 @@
+{
+    "total_relatorios": 67,
+    "total_recomendacoes": 609,
+    "pendentes": 234,
+    "em_implementacao": 158,
+    "atendidas": 173,
+    "baixadas": 44,
+    "beneficios": 217,
+    "efetividade": 35.63,
+    "total_unidades": 43,
+    "unidades_com_beneficios": 27,
+    "media_beneficios_unidade": 6.4,
+    "ano_inicio": 2015,
+    "ano_fim": 2025,
+    "anos_atuacao": 11,
+    "media_rec_ano": 55.4,
+    "ano_pico": 2017,
+    "rec_ano_pico": 184,
+    "perc_atendidas": 28.4,
+    "perc_baixadas": 7.2,
+    "perc_em_implementacao": 25.9,
+    "perc_pendentes": 38.4,
+    "top_unidades_recomendacoes": [
+        {
+            "unidade": "PROADM",
+            "total": 116,
+            "percentual": 19.0
+        },
+        {
+            "unidade": "ICSEZ",
+            "total": 67,
+            "percentual": 11.0
+        },
+        {
+            "unidade": "PROAE",
+            "total": 38,
+            "percentual": 6.2
+        },
+        {
+            "unidade": "PCU",
+            "total": 35,
+            "percentual": 5.7
+        },
+        {
+            "unidade": "INC",
+            "total": 34,
+            "percentual": 5.6
+        }
+    ],
+    "top_unidades_beneficios": [
+        {
+            "unidade": "ICSEZ",
+            "total": 27,
+            "percentual": 15.6
+        },
+        {
+            "unidade": "PROADM",
+            "total": 24,
+            "percentual": 13.9
+        },
+        {
+            "unidade": "PCU",
+            "total": 18,
+            "percentual": 10.4
+        },
+        {
+            "unidade": "PROGESP",
+            "total": 12,
+            "percentual": 6.9
+        },
+        {
+            "unidade": "FAEXP",
+            "total": 12,
+            "percentual": 6.9
+        }
+    ],
+    "data_atualizacao": "07/12/2025"
+}
