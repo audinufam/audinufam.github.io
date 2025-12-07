@@ -183,6 +183,105 @@
         .external-link-item span {
             font-size: 0.9rem;
         }
+
+        /* ====================== Mobile Responsive ========================== */
+        @media (max-width: 768px) {
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+            .quick-link {
+                padding: 15px;
+            }
+            .status-legend {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: flex-start;
+            }
+            .status-legend span {
+                flex: 0 0 45%;
+            }
+            .recentCustomers,
+            .recentCustomers22 {
+                overflow: visible !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-banner {
+                padding: 20px;
+            }
+            .welcome-banner h1 {
+                font-size: 1.4rem;
+            }
+            .welcome-banner p {
+                font-size: 0.9rem;
+            }
+            .quick-links {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .quick-link {
+                padding: 15px;
+                gap: 12px;
+            }
+            .quick-link ion-icon {
+                font-size: 1.5rem;
+            }
+            .quick-link .link-content h4 {
+                font-size: 0.95rem;
+            }
+            .quick-link .link-content span {
+                font-size: 0.8rem;
+            }
+            .status-summary {
+                padding: 15px;
+            }
+            .status-bar {
+                height: 25px;
+            }
+            .status-bar > div {
+                font-size: 0.65rem;
+            }
+            .status-legend {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .status-legend span {
+                flex: 0 0 auto;
+            }
+            .external-links h3 {
+                font-size: 1rem;
+            }
+            .external-link-item {
+                padding: 10px;
+                gap: 10px;
+            }
+            .external-link-item ion-icon {
+                font-size: 1.2rem;
+            }
+            .external-link-item span {
+                font-size: 0.85rem;
+            }
+            .external-links-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+            }
+            .mission-vision-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            .recentCustomers,
+            .recentCustomers22 {
+                overflow: visible !important;
+                padding: 15px !important;
+            }
+            /* Fix para Links Úteis que tem grid-column: span 2 no desktop */
+            .details > div[style*="grid-column: span 2"] {
+                grid-column: span 1 !important;
+            }
+        }
     </style>
 </head>
 
@@ -417,7 +516,7 @@
                     </div>
 
                     <!-- Missão e Visão -->
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                    <div class="mission-vision-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
                         <div style="background: #e8f5e9; border-radius: 12px; padding: 15px; border-left: 3px solid #4CAF50;">
                             <div style="font-size: 0.75rem; color: #2E7D32; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 5px;">
                                 <ion-icon name="flag-outline"></ion-icon> MISSÃO
@@ -437,7 +536,7 @@
                     </div>
 
                     <!-- Números em Destaque -->
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
+                    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;">
                         <div style="background: #f8f9fa; border-radius: 10px; padding: 12px; text-align: center;">
                             <div style="font-size: 1.5rem; font-weight: 700; color: #1c8b3d;" id="stat-anos">--</div>
                             <div style="font-size: 0.7rem; color: #666;">Anos de Atuação</div>
@@ -628,7 +727,7 @@
                             <ion-icon name="link-outline" style="vertical-align: middle; margin-right: 8px;"></ion-icon>
                             Links Úteis
                         </h3>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                        <div class="external-links-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
                             <a href="https://auditoria.ufam.edu.br/" target="_blank" class="external-link-item">
                                 <ion-icon name="globe-outline"></ion-icon>
                                 <span>Site Oficial da AUDIN</span>
