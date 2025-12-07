@@ -34,8 +34,13 @@ let toggle = document.querySelector(".toggle");
 let navigation = document.querySelector(".navigation");
 let main = document.querySelector(".main");
 
-// Restaurar estado do menu ao carregar a página
-if (localStorage.getItem("menuClosed") === "true") {
+// Função para verificar se está em mobile
+function isMobile() {
+  return window.innerWidth <= 480;
+}
+
+// Restaurar estado do menu ao carregar a página (apenas desktop)
+if (!isMobile() && localStorage.getItem("menuClosed") === "true") {
   navigation.classList.add("active");
   main.classList.add("active");
 }
@@ -44,7 +49,9 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 
-  // Salvar estado do menu
-  const isClosed = navigation.classList.contains("active");
-  localStorage.setItem("menuClosed", isClosed);
+  // Salvar estado do menu apenas no desktop
+  if (!isMobile()) {
+    const isClosed = navigation.classList.contains("active");
+    localStorage.setItem("menuClosed", isClosed);
+  }
 };

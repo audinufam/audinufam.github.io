@@ -582,6 +582,36 @@ body {
   .navigation.active {
     width: 100%;
     left: 0;
+    overflow-y: auto;
+  }
+  /* No mobile, mostrar títulos quando menu está aberto (active) */
+  .navigation.active ul li a .title {
+    display: block !important;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    background: transparent;
+    color: white !important;
+    padding: 0 10px;
+    border-radius: 0;
+    font-size: 1rem;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    height: 60px;
+    line-height: 60px;
+  }
+  .navigation.active ul li a .title::before {
+    display: none;
+  }
+  /* Mostrar logo no mobile quando menu aberto */
+  .navigation.active ul li:nth-child(1) .nav-logo {
+    display: block;
+    width: 180px;
+  }
+  .navigation.active ul li:nth-child(1) .icon {
+    display: none;
   }
   .toggle {
     z-index: 10001;
