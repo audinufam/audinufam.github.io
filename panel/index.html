@@ -164,6 +164,72 @@
         .dt-buttons .dt-button:hover {
             background: #166b2f !important;
         }
+
+        /* Responsividade Mobile */
+        @media (max-width: 768px) {
+            .dataTables_wrapper {
+                overflow-x: auto;
+            }
+            #recomendacoesTable {
+                min-width: 600px;
+            }
+            #recomendacoesTable thead th {
+                padding: 10px 8px !important;
+                font-size: 0.8rem;
+            }
+            #recomendacoesTable tbody td {
+                padding: 8px !important;
+                font-size: 0.8rem;
+            }
+            .dataTables_filter input {
+                width: 150px !important;
+                padding: 6px 10px !important;
+                font-size: 13px;
+            }
+            .dt-buttons .dt-button {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                margin-bottom: 5px;
+            }
+            .filter-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+                margin-bottom: 8px;
+            }
+            .dataTables_paginate .paginate_button {
+                padding: 4px 8px !important;
+                font-size: 0.8rem;
+            }
+            .dataTables_info {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #recomendacoesTable thead th,
+            #recomendacoesTable tbody td {
+                padding: 6px !important;
+                font-size: 0.75rem;
+            }
+            .status-atendida, .status-baixada,
+            .status-implementacao, .status-pendente {
+                padding: 3px 8px;
+                font-size: 0.7rem;
+            }
+            .dataTables_filter {
+                text-align: left !important;
+            }
+            .dataTables_filter input {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-top: 5px;
+            }
+            .dt-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+        }
     </style>
 </head>
 <body>
