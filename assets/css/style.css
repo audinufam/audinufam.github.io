@@ -627,3 +627,184 @@ body {
 a {
   text-decoration: none;
 }
+
+/* ====================== Stats Cards Grid ========================== */
+.stats-cards-grid {
+  display: grid;
+  gap: 15px;
+  padding: 20px;
+}
+
+.stats-cards-grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stats-cards-grid.cols-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.stats-cards-grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat-card {
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card ion-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.stat-card .stat-number,
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.stat-card .stat-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.stat-card .stat-sublabel {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* Large cards variant */
+.stat-card.large {
+  padding: 25px;
+}
+
+.stat-card.large ion-icon {
+  font-size: 2.5rem;
+}
+
+.stat-card.large .stat-number,
+.stat-card.large .stat-value {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.stat-card.large .stat-label {
+  font-size: 0.95rem;
+}
+
+/* Status cards (monitor page variant) */
+.stat-card.status-card {
+  text-align: left;
+}
+
+.status-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-card-content .stat-value {
+  font-size: 2.2rem;
+}
+
+.status-card-content .stat-label {
+  font-size: 0.9rem;
+}
+
+.status-icon {
+  font-size: 2.5rem;
+  opacity: 0.7;
+}
+
+.status-badge {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.status-badge span {
+  background: rgba(255,255,255,0.2);
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+/* Stats cards responsive */
+@media (max-width: 991px) {
+  .stats-cards-grid.cols-4,
+  .stats-cards-grid.cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-cards-grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-cards-grid.cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-cards-grid.cols-4,
+  .stats-cards-grid.cols-5,
+  .stats-cards-grid.cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-card ion-icon {
+    font-size: 1.5rem;
+  }
+
+  .stat-card .stat-number,
+  .stat-card .stat-value {
+    font-size: 1.5rem;
+    margin: 5px 0;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-card .stat-sublabel {
+    font-size: 0.65rem;
+  }
+
+  .stat-card.large {
+    padding: 15px;
+  }
+
+  .stat-card.large ion-icon {
+    font-size: 1.8rem;
+  }
+
+  .stat-card.large .stat-number,
+  .stat-card.large .stat-value {
+    font-size: 1.8rem;
+  }
+
+  /* Status cards responsive */
+  .status-card-content .stat-value {
+    font-size: 1.6rem;
+  }
+
+  .status-icon {
+    font-size: 2rem;
+  }
+
+  .stat-card.large .stat-label {
+    font-size: 0.8rem;
+  }
+}

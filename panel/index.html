@@ -252,40 +252,40 @@
             </div>
 
             <!-- Cards de Estatísticas -->
-            <div style="padding: 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;">
+            <div class="stats-cards-grid cols-5">
                 <!-- Card Total -->
-                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                <div class="stat-card" style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
                     <ion-icon name="layers-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="total-count">--</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Total</div>
+                    <div class="stat-value" id="total-count">--</div>
+                    <div class="stat-label">Total</div>
                 </div>
 
                 <!-- Card Atendidas -->
-                <div style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);">
+                <div class="stat-card" style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);">
                     <ion-icon name="checkmark-circle-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="atendidas-count">--</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Atendidas</div>
+                    <div class="stat-value" id="atendidas-count">--</div>
+                    <div class="stat-label">Atendidas</div>
                 </div>
 
                 <!-- Card Baixadas -->
-                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                <div class="stat-card" style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
                     <ion-icon name="archive-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="baixadas-count">--</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Baixadas</div>
+                    <div class="stat-value" id="baixadas-count">--</div>
+                    <div class="stat-label">Baixadas</div>
                 </div>
 
                 <!-- Card Em Implementação -->
-                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                <div class="stat-card" style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
                     <ion-icon name="construct-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="implementacao-count">--</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Em Implem.</div>
+                    <div class="stat-value" id="implementacao-count">--</div>
+                    <div class="stat-label">Em Implem.</div>
                 </div>
 
                 <!-- Card Pendentes -->
-                <div style="background: linear-gradient(135deg, #f44336 0%, #c62828 100%); border-radius: 15px; padding: 20px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);">
+                <div class="stat-card" style="background: linear-gradient(135deg, #f44336 0%, #c62828 100%); box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);">
                     <ion-icon name="alert-circle-outline" style="font-size: 2rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2rem; font-weight: 700; margin: 8px 0;" id="pendentes-count">--</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Pendentes</div>
+                    <div class="stat-value" id="pendentes-count">--</div>
+                    <div class="stat-label">Pendentes</div>
                 </div>
             </div>
 

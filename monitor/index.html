@@ -93,60 +93,60 @@
             </div>
 
             <!-- Cards de Status -->
-            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+            <div class="stats-cards-grid cols-4">
                 <!-- Card Atendidas -->
-                <div style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); border-radius: 15px; padding: 20px; color: white; box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="stat-card status-card" style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%); box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);">
+                    <div class="status-card-content">
                         <div>
-                            <div style="font-size: 2.2rem; font-weight: 700;" id="monitor-atendidas">--</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;">Atendidas</div>
+                            <div class="stat-value" id="monitor-atendidas">--</div>
+                            <div class="stat-label">Atendidas</div>
                         </div>
-                        <ion-icon name="checkmark-circle-outline" style="font-size: 2.5rem; opacity: 0.7;"></ion-icon>
+                        <ion-icon name="checkmark-circle-outline" class="status-icon"></ion-icon>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
-                        <span style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 10px;" id="monitor-atendidas-perc">--%</span>
+                    <div class="status-badge">
+                        <span id="monitor-atendidas-perc">--%</span>
                     </div>
                 </div>
 
                 <!-- Card Baixadas -->
-                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 20px; color: white; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="stat-card status-card" style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                    <div class="status-card-content">
                         <div>
-                            <div style="font-size: 2.2rem; font-weight: 700;" id="monitor-baixadas">--</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;">Baixadas</div>
+                            <div class="stat-value" id="monitor-baixadas">--</div>
+                            <div class="stat-label">Baixadas</div>
                         </div>
-                        <ion-icon name="archive-outline" style="font-size: 2.5rem; opacity: 0.7;"></ion-icon>
+                        <ion-icon name="archive-outline" class="status-icon"></ion-icon>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
-                        <span style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 10px;" id="monitor-baixadas-perc">--%</span>
+                    <div class="status-badge">
+                        <span id="monitor-baixadas-perc">--%</span>
                     </div>
                 </div>
 
                 <!-- Card Em Implementação -->
-                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 20px; color: white; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="stat-card status-card" style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                    <div class="status-card-content">
                         <div>
-                            <div style="font-size: 2.2rem; font-weight: 700;" id="monitor-implementacao">--</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;">Em Implementação</div>
+                            <div class="stat-value" id="monitor-implementacao">--</div>
+                            <div class="stat-label">Em Implementação</div>
                         </div>
-                        <ion-icon name="construct-outline" style="font-size: 2.5rem; opacity: 0.7;"></ion-icon>
+                        <ion-icon name="construct-outline" class="status-icon"></ion-icon>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
-                        <span style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 10px;" id="monitor-implementacao-perc">--%</span>
+                    <div class="status-badge">
+                        <span id="monitor-implementacao-perc">--%</span>
                     </div>
                 </div>
 
                 <!-- Card Pendentes -->
-                <div style="background: linear-gradient(135deg, #f44336 0%, #c62828 100%); border-radius: 15px; padding: 20px; color: white; box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="stat-card status-card" style="background: linear-gradient(135deg, #f44336 0%, #c62828 100%); box-shadow: 0 8px 25px rgba(244, 67, 54, 0.3);">
+                    <div class="status-card-content">
                         <div>
-                            <div style="font-size: 2.2rem; font-weight: 700;" id="monitor-pendentes">--</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;">Pendentes</div>
+                            <div class="stat-value" id="monitor-pendentes">--</div>
+                            <div class="stat-label">Pendentes</div>
                         </div>
-                        <ion-icon name="alert-circle-outline" style="font-size: 2.5rem; opacity: 0.7;"></ion-icon>
+                        <ion-icon name="alert-circle-outline" class="status-icon"></ion-icon>
                     </div>
-                    <div style="margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
-                        <span style="background: rgba(255,255,255,0.2); padding: 3px 8px; border-radius: 10px;" id="monitor-pendentes-perc">--%</span>
+                    <div class="status-badge">
+                        <span id="monitor-pendentes-perc">--%</span>
                     </div>
                 </div>
             </div>

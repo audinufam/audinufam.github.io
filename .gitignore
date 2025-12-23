@@ -5,3 +5,4 @@ app/.env
 .env
 .vscode/
 .playwright-mcp/
+CLAUDE.md

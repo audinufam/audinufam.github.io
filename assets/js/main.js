@@ -39,8 +39,13 @@ function isMobile() {
   return window.innerWidth <= 480;
 }
 
-// Restaurar estado do menu ao carregar a página (apenas desktop)
-if (!isMobile() && localStorage.getItem("menuClosed") === "true") {
+// Restaurar estado do menu ao carregar a página
+if (isMobile()) {
+  // No mobile, menu sempre inicia fechado (sem classe active)
+  navigation.classList.remove("active");
+  main.classList.remove("active");
+} else if (localStorage.getItem("menuClosed") === "true") {
+  // No desktop, restaurar estado salvo
   navigation.classList.add("active");
   main.classList.add("active");
 }

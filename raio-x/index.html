@@ -93,37 +93,37 @@
             </div>
 
             <!-- Cards de Estatísticas -->
-            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+            <div class="stats-cards-grid cols-4">
                 <!-- Card Total Unidades Auditadas -->
-                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
                     <ion-icon name="business-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-unidades">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Unidades Auditadas</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Desde 2015</div>
+                    <div class="stat-value" id="raiox-unidades">--</div>
+                    <div class="stat-label">Unidades Auditadas</div>
+                    <div class="stat-sublabel">Desde 2015</div>
                 </div>
 
                 <!-- Card Anos de Atuação -->
-                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
                     <ion-icon name="calendar-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-anos">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Anos de Atuação</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;" id="raiox-periodo">--</div>
+                    <div class="stat-value" id="raiox-anos">--</div>
+                    <div class="stat-label">Anos de Atuação</div>
+                    <div class="stat-sublabel" id="raiox-periodo">--</div>
                 </div>
 
                 <!-- Card Média por Ano -->
-                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
                     <ion-icon name="analytics-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-media">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Média por Ano</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recomendações/ano</div>
+                    <div class="stat-value" id="raiox-media">--</div>
+                    <div class="stat-label">Média por Ano</div>
+                    <div class="stat-sublabel">Recomendações/ano</div>
                 </div>
 
                 <!-- Card Ano com Mais Recomendações -->
-                <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
                     <ion-icon name="star-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="raiox-ano-pico">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Ano de Pico</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;" id="raiox-rec-pico">--</div>
+                    <div class="stat-value" id="raiox-ano-pico">--</div>
+                    <div class="stat-label">Ano de Pico</div>
+                    <div class="stat-sublabel" id="raiox-rec-pico">--</div>
                 </div>
             </div>
 
