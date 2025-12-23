@@ -136,6 +136,66 @@
             height: 100%;
             border-radius: 10px;
         }
+
+        /* Responsividade Mobile */
+        @media (max-width: 768px) {
+            .dataTables_wrapper {
+                overflow-x: auto;
+            }
+            #relatoriosTable {
+                min-width: 500px;
+            }
+            #relatoriosTable thead th {
+                padding: 10px 6px !important;
+                font-size: 0.8rem;
+            }
+            #relatoriosTable tbody td {
+                padding: 8px 6px !important;
+                font-size: 0.8rem;
+            }
+            .progress-mini {
+                width: 60px;
+            }
+            .dataTables_filter input {
+                width: 150px !important;
+                padding: 6px 10px !important;
+            }
+            .dt-buttons .dt-button {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                margin-bottom: 5px;
+            }
+            .filter-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #relatoriosTable thead th,
+            #relatoriosTable tbody td {
+                padding: 5px !important;
+                font-size: 0.7rem;
+            }
+            .progress-mini {
+                width: 40px;
+                margin-right: 4px;
+            }
+            .dataTables_filter {
+                text-align: left !important;
+            }
+            .dataTables_filter input {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-top: 5px;
+            }
+            .dt-buttons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -224,37 +284,37 @@
             </div>
 
             <!-- Cards de Métricas -->
-            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+            <div class="stats-cards-grid cols-4">
                 <!-- Card Principal - Relatórios -->
-                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
                     <ion-icon name="document-text-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="total-relatorios">67</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Relatórios</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">2015 - 2025</div>
+                    <div class="stat-value" id="total-relatorios">67</div>
+                    <div class="stat-label">Relatórios</div>
+                    <div class="stat-sublabel">2015 - 2025</div>
                 </div>
 
                 <!-- Card Recomendações -->
-                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
                     <ion-icon name="list-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="total-recomendacoes">609</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Recomendações</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Emitidas</div>
+                    <div class="stat-value" id="total-recomendacoes">609</div>
+                    <div class="stat-label">Recomendações</div>
+                    <div class="stat-sublabel">Emitidas</div>
                 </div>
 
                 <!-- Card Média -->
-                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
                     <ion-icon name="calculator-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="media-relatorio">9,1</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Média</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recom./Relatório</div>
+                    <div class="stat-value" id="media-relatorio">9,1</div>
+                    <div class="stat-label">Média</div>
+                    <div class="stat-sublabel">Recom./Relatório</div>
                 </div>
 
                 <!-- Card Efetividade -->
-                <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
                     <ion-icon name="trending-up-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="efetividade">35,6%</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Efetividade</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Atendidas + Baixadas</div>
+                    <div class="stat-value" id="efetividade">35,6%</div>
+                    <div class="stat-label">Efetividade</div>
+                    <div class="stat-sublabel">Atendidas + Baixadas</div>
                 </div>
             </div>
 

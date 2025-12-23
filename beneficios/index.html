@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raio-X</title>
+    <title>Benefícios</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -93,37 +93,37 @@
             </div>
 
             <!-- Cards de Benefícios -->
-            <div style="padding: 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
+            <div class="stats-cards-grid cols-4">
                 <!-- Card Total Benefícios -->
-                <div style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #1c8b3d 0%, #166b2f 100%); box-shadow: 0 8px 25px rgba(28, 139, 61, 0.3);">
                     <ion-icon name="medal-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="beneficios-total">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Benefícios Identificados</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Recomendações Atendidas</div>
+                    <div class="stat-value" id="beneficios-total">--</div>
+                    <div class="stat-label">Benefícios Identificados</div>
+                    <div class="stat-sublabel">Recomendações Atendidas</div>
                 </div>
 
                 <!-- Card Unidades Beneficiadas -->
-                <div style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%); box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);">
                     <ion-icon name="business-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="beneficios-unidades">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Unidades Beneficiadas</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Setores da UFAM</div>
+                    <div class="stat-value" id="beneficios-unidades">--</div>
+                    <div class="stat-label">Unidades Beneficiadas</div>
+                    <div class="stat-sublabel">Setores da UFAM</div>
                 </div>
 
                 <!-- Card Tipo de Benefício -->
-                <div style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #FF9800 0%, #E65100 100%); box-shadow: 0 8px 25px rgba(255, 152, 0, 0.3);">
                     <ion-icon name="shield-checkmark-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;">100%</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Não-Financeiros</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Melhoria de Processos</div>
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Não-Financeiros</div>
+                    <div class="stat-sublabel">Melhoria de Processos</div>
                 </div>
 
                 <!-- Card Média por Unidade -->
-                <div style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); border-radius: 15px; padding: 25px; color: white; text-align: center; box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
+                <div class="stat-card large" style="background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%); box-shadow: 0 8px 25px rgba(156, 39, 176, 0.3);">
                     <ion-icon name="calculator-outline" style="font-size: 2.5rem; opacity: 0.8;"></ion-icon>
-                    <div style="font-size: 2.5rem; font-weight: 700; margin: 10px 0;" id="beneficios-media">--</div>
-                    <div style="font-size: 0.95rem; opacity: 0.9;">Média por Unidade</div>
-                    <div style="font-size: 0.75rem; opacity: 0.7; margin-top: 5px;">Benefícios/Unidade</div>
+                    <div class="stat-value" id="beneficios-media">--</div>
+                    <div class="stat-label">Média por Unidade</div>
+                    <div class="stat-sublabel">Benefícios/Unidade</div>
                 </div>
             </div>
 

@@ -2,12 +2,17 @@
     {
         "Unidade":"ADM SUPERIOR",
         "Situacao":"Atendida",
+        "value":4
+    },
+    {
+        "Unidade":"ADM SUPERIOR",
+        "Situacao":"Em Implementação",
         "value":3
     },
     {
         "Unidade":"ADM SUPERIOR",
         "Situacao":"Pendente",
-        "value":26
+        "value":23
     },
     {
         "Unidade":"ARII",
@@ -196,7 +201,7 @@
     },
     {
         "Unidade":"ICET",
-        "Situacao":"Pendente",
+        "Situacao":"Em Implementação",
         "value":4
     },
     {

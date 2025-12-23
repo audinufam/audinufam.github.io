@@ -39,7 +39,7 @@
         "Ano":"2015",
         "Unidade":"PCU",
         "Situacao":"Em Implementação",
-        "Total":2
+        "Total":1
     },
     {
         "Ano":"2015",
@@ -530,8 +530,14 @@
     {
         "Ano":"2020",
         "Unidade":"ADM SUPERIOR",
+        "Situacao":"Em Implementação",
+        "Total":1
+    },
+    {
+        "Ano":"2020",
+        "Unidade":"ADM SUPERIOR",
         "Situacao":"Pendente",
-        "Total":10
+        "Total":9
     },
     {
         "Ano":"2020",
@@ -548,8 +554,14 @@
     {
         "Ano":"2021",
         "Unidade":"ADM SUPERIOR",
+        "Situacao":"Em Implementação",
+        "Total":2
+    },
+    {
+        "Ano":"2021",
+        "Unidade":"ADM SUPERIOR",
         "Situacao":"Pendente",
-        "Total":5
+        "Total":3
     },
     {
         "Ano":"2021",
@@ -608,7 +620,7 @@
     {
         "Ano":"2021",
         "Unidade":"ICET",
-        "Situacao":"Pendente",
+        "Situacao":"Em Implementação",
         "Total":4
     },
     {
@@ -699,7 +711,7 @@
         "Ano":"2022",
         "Unidade":"ADM SUPERIOR",
         "Situacao":"Atendida",
-        "Total":2
+        "Total":3
     },
     {
         "Ano":"2022",

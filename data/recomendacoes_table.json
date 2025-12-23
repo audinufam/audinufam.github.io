@@ -23,7 +23,7 @@
     {
         "Unidade":"PCU",
         "Relatorio":"2",
-        "Ano":"2015",
+        "Ano":"",
         "Recomendacao":"Providenciar a ampliação e adequação da garagem de forma a resguardar os veículos oficiais de furtos ou roubos, bem como das ameaças climáticas.",
         "Situacao":"Em Implementação"
     },
@@ -2769,7 +2769,7 @@
         "Relatorio":"NT 001",
         "Ano":"2020",
         "Recomendacao":"Adotar medidas com vistas a elaboração de instrumento de planejamento de segurança da informação e comunicação e de segurança cibernética, observando o que estabelece o Decreto Nº 8.638, de 15 de janeiro de 2016.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"ADM SUPERIOR",
@@ -2853,7 +2853,7 @@
         "Relatorio":"1",
         "Ano":"2021",
         "Recomendacao":"Recomendação 3: Aprimorar o funcionamento do Comitê de Governança, Riscos e Controle, instituído pela Resolução CONSAD 39\/2017, a fim de que seja formalmente regulamentado.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"ARII",
@@ -2888,7 +2888,7 @@
         "Relatorio":"2",
         "Ano":"2021",
         "Recomendacao":"À PROTEC, em parceria com os Institutos (IEAA, ICET, ICSEZ, INC e ISB), que promova ações de estímulo no processo de implementação dos objetivos, das metas e das políticas institucionais referentes ao vetor Inovação do PDI, incluindo, entre outras, iniciativas de articulação e integração (capital\/Interior), difusão das políticas e dos planos, capacitação de pessoal, indicação de responsáveis locais (“correspodendentes”) pela implementação.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"ICSEZ",
@@ -2930,7 +2930,7 @@
         "Relatorio":"2",
         "Ano":"2021",
         "Recomendacao":"À PROTEC, em parceria com os Institutos (IEAA, ICET, ICSEZ, IC e ISB) que estabeleçam mecanismos de colaboração e articulação, no que tange à comunicação, para que sejam divulgados os objetivos, as metas, as estratégias previstas no PDI, de forma a integrar essas Unidades ao processo de execução do Vetor Inovação.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"ICSEZ",
@@ -2972,7 +2972,7 @@
         "Relatorio":"3",
         "Ano":"2021",
         "Recomendacao":"À Administração Superior, com a participação dos integrantes do Sistema Integrado de Gestão Ambiental – SIGA –UFAM, para que implemente adequadamente a Política Ambiental e de Sustentabilidade na Universidade mediante elaboração e execução de Plano de Ação ou Agenda com a indicação das ações, atividades, programas e ou projetos, responsáveis e prazos.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"CCA",
@@ -3014,7 +3014,7 @@
         "Relatorio":"3",
         "Ano":"2021",
         "Recomendacao":"Aos Institutos fora da sede (IEAA, INC, ISB, ICSEZ, e ICET) para que aprimorem os mecanismos a fim de que seja efetivado o gerenciamento de resíduos sólidos de forma eficaz nessas unidades.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"INC",
@@ -3049,7 +3049,7 @@
         "Relatorio":"3",
         "Ano":"2021",
         "Recomendacao":"Aos institutos fora da sede (IEAA, INC, ISB, ICSEZ, e ICET) para que realizem estudos acerca da necessidade de tratamento dos resíduos sólidos produzidos pelos laboratórios e elaborem plano de gestão e descarte desses resíduos.",
-        "Situacao":"Pendente"
+        "Situacao":"Em Implementação"
     },
     {
         "Unidade":"INC",
@@ -3463,6 +3463,13 @@
         "Ano":"2022",
         "Recomendacao":"Que o DAEST, PROEG e Chefia de Gabinete, em parceria com o IEAA e ICSEZ aperfeiçoem os mecanismos de acompanhamento e avaliação do cumprimento da meta de atendimento das demandas dos alunos com deficiência da assistência estudantil, de forma a disponibilizar dados e informações que permitam auferir se o atendimento de tais demandas estão sendo ampliado e em que proporção.",
         "Situacao":"Pendente"
+    },
+    {
+        "Unidade":"ADM SUPERIOR",
+        "Relatorio":"1",
+        "Ano":"2022",
+        "Recomendacao":"Adotar medidas com vistas à aprovação da Política de Proteção de Dados da Universidade Federal do Amazonas, visto se tratar de matéria imprescindível para o andamento das atividades do Grupo de Trabalho e atingimento das determinações emanadas no Acórdão nº 484\/2021 – TCU – Plenário no que tange à implementação do módulo de pesquisa pública para transparência ativa.",
+        "Situacao":"Atendida"
     },
     {
         "Unidade":"IEAA",
@@ -4261,5 +4268,12 @@
         "Ano":"2025",
         "Recomendacao":"Recomendação 04: Mapear periodicamente estudantes e servidores com deficiência, implementando processos contínuos de validação e atualização dos dados, apoiados por campanhas de orientação e sensibilização, a fim de subsidiar o planejamento e a execução das políticas de inclusão e acessibilidade.",
         "Situacao":"Pendente"
+    },
+    {
+        "Unidade":"Prazo 27\/02\/2026",
+        "Relatorio":"nan",
+        "Ano":"",
+        "Recomendacao":null,
+        "Situacao":null
     }
 ]
