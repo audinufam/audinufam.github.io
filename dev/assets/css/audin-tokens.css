@@ -1,0 +1,122 @@
+/*
+ * AUDIN Design System - Tokens
+ * NAO usar :root -- escopar tudo em [class^='audin-']
+ *
+ * Este arquivo contem SOMENTE custom properties (variaveis CSS).
+ * Nenhum estilo visual e definido aqui.
+ *
+ * Cores primarias verificadas contra WCAG AA (minimo 4.5:1 com branco):
+ *   #2e7d32 = 5.13:1 (PASSA AA)
+ *   #1b5e20 = 7.87:1 (PASSA AA)
+ *   #2d3748 = 11.99:1 (PASSA AAA)
+ *   #4a5568 = 7.53:1 (PASSA AA)
+ */
+
+[class^="audin-"],
+[class*=" audin-"] {
+
+    /* ============================================
+       CORES
+       ============================================ */
+
+    /* Primaria (verde institucional WCAG AA) */
+    --audin-color-primary: #2e7d32;
+    --audin-color-primary-hover: #1b5e20;
+    --audin-color-primary-light: #e8f5e9;
+    --audin-color-primary-surface: #c8e6c9;
+
+    /* Secundaria (cinza grafite) */
+    --audin-color-secondary: #4a5568;
+    --audin-color-secondary-hover: #2d3748;
+    --audin-color-secondary-light: #edf2f7;
+
+    /* Texto */
+    --audin-color-text: #2d3748;
+    --audin-color-text-muted: #4a5568;
+    --audin-color-text-inverse: #ffffff;
+
+    /* Superficies */
+    --audin-color-surface: #ffffff;
+    --audin-color-background: #f7fafc;
+    --audin-color-border: #e2e8f0;
+
+    /* Semanticas */
+    --audin-color-info: #2b6cb0;
+    --audin-color-info-light: #bee3f8;
+    --audin-color-success: #2e7d32;
+    --audin-color-success-light: var(--audin-color-primary-light);
+    --audin-color-warning: #c05621;
+    --audin-color-warning-light: #fefcbf;
+    --audin-color-danger: #c53030;
+    --audin-color-danger-light: #fed7d7;
+
+    /* ============================================
+       TIPOGRAFIA
+       ============================================ */
+
+    /* Fonte principal */
+    --audin-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* Escala de tamanhos */
+    --audin-font-size-xs: 0.75rem;      /* 12px */
+    --audin-font-size-sm: 0.875rem;     /* 14px */
+    --audin-font-size-base: 1rem;       /* 16px */
+    --audin-font-size-lg: 1.125rem;     /* 18px */
+    --audin-font-size-xl: 1.25rem;      /* 20px */
+    --audin-font-size-2xl: 1.5rem;      /* 24px */
+    --audin-font-size-3xl: 1.875rem;    /* 30px */
+    --audin-font-size-4xl: 2.25rem;     /* 36px */
+
+    /* Pesos */
+    --audin-font-weight-normal: 400;
+    --audin-font-weight-medium: 500;
+    --audin-font-weight-semibold: 600;
+    --audin-font-weight-bold: 700;
+
+    /* Alturas de linha */
+    --audin-line-height-tight: 1.25;
+    --audin-line-height-normal: 1.5;
+    --audin-line-height-relaxed: 1.75;
+
+    /* ============================================
+       ESPACAMENTO (escala base 4px)
+       ============================================ */
+
+    --audin-space-1: 0.25rem;     /* 4px */
+    --audin-space-2: 0.5rem;      /* 8px */
+    --audin-space-3: 0.75rem;     /* 12px */
+    --audin-space-4: 1rem;        /* 16px */
+    --audin-space-5: 1.25rem;     /* 20px */
+    --audin-space-6: 1.5rem;      /* 24px */
+    --audin-space-8: 2rem;        /* 32px */
+    --audin-space-10: 2.5rem;     /* 40px */
+    --audin-space-12: 3rem;       /* 48px */
+    --audin-space-16: 4rem;       /* 64px */
+
+    /* ============================================
+       SOMBRAS
+       ============================================ */
+
+    --audin-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --audin-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --audin-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --audin-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+
+    /* ============================================
+       BORDAS
+       ============================================ */
+
+    --audin-radius-sm: 0.375rem;    /* 6px */
+    --audin-radius-md: 0.5rem;      /* 8px */
+    --audin-radius-lg: 0.75rem;     /* 12px */
+    --audin-radius-xl: 1rem;        /* 16px */
+    --audin-radius-full: 9999px;
+
+    /* ============================================
+       TRANSICOES
+       ============================================ */
+
+    --audin-transition-fast: 150ms ease;
+    --audin-transition-normal: 250ms ease;
+    --audin-transition-slow: 350ms ease;
+}

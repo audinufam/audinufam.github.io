@@ -1,0 +1,334 @@
+/*
+ * AUDIN Design System - Relatorios
+ *
+ * Componentes especificos de paginas de relatorio de auditoria:
+ * layout two-column, indice lateral sticky, barra de filtros,
+ * cards de listagem, secoes de conteudo e resumo visual.
+ *
+ * Depende de audin-tokens.css (todas as cores, espacamentos,
+ * fontes e transicoes via var(--audin-*)).
+ *
+ * NAO contem valores hardcoded. NAO usa :root.
+ * Prefixo audin- em todas as classes para isolamento do Joomla.
+ * Nomenclatura BEM: audin-block__element--modifier.
+ */
+
+
+/* ============================================
+   1. LAYOUT DO RELATORIO (.audin-relatorio)
+   ============================================ */
+
+.audin-relatorio {
+    width: 100%;
+}
+
+.audin-relatorio__header {
+    margin-bottom: var(--audin-space-6);
+}
+
+.audin-relatorio__titulo {
+    font-size: var(--audin-font-size-2xl);
+    font-weight: var(--audin-font-weight-bold);
+    color: var(--audin-color-text);
+    line-height: var(--audin-line-height-tight);
+    margin-bottom: var(--audin-space-3);
+}
+
+.audin-relatorio__meta {
+    display: flex;
+    gap: var(--audin-space-3);
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.audin-relatorio__meta-item {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+}
+
+.audin-relatorio__resumo {
+    margin-bottom: var(--audin-space-8);
+}
+
+.audin-relatorio__stat {
+    font-size: var(--audin-font-size-3xl);
+    font-weight: var(--audin-font-weight-bold);
+    color: var(--audin-color-primary);
+    line-height: var(--audin-line-height-tight);
+}
+
+.audin-relatorio__footer {
+    text-align: center;
+    margin-top: var(--audin-space-8);
+    padding-top: var(--audin-space-6);
+    border-top: 1px solid var(--audin-color-border);
+}
+
+
+/* ============================================
+   2. LAYOUT TWO-COLUMN (.audin-relatorio__layout)
+   ============================================ */
+
+.audin-relatorio__layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--audin-space-8);
+    align-items: start;
+}
+
+
+/* ============================================
+   3. INDICE LATERAL STICKY (.audin-relatorio__nav)
+   ============================================ */
+
+.audin-relatorio__nav {
+    position: sticky;
+    top: var(--audin-space-4);
+    max-height: calc(100vh - var(--audin-space-8));
+    overflow-y: auto;
+}
+
+.audin-relatorio__nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.audin-relatorio__nav-list li a {
+    display: block;
+    padding: var(--audin-space-2) var(--audin-space-3);
+    border-left: 3px solid transparent;
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    text-decoration: none;
+    transition: all var(--audin-transition-fast);
+}
+
+.audin-relatorio__nav-list li a:hover,
+.audin-relatorio__nav-link--active {
+    color: var(--audin-color-primary);
+    border-left-color: var(--audin-color-primary);
+    background: var(--audin-color-primary-light);
+}
+
+/* scroll-margin-top para compensar sticky elements ao clicar em ancora */
+[id^="secao-"] {
+    scroll-margin-top: var(--audin-space-6);
+}
+
+
+/* ============================================
+   4. BARRA DE FILTROS (.audin-filtros)
+   ============================================ */
+
+.audin-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--audin-space-4);
+    align-items: flex-end;
+    margin-bottom: var(--audin-space-6);
+    padding: var(--audin-space-4);
+    background: var(--audin-color-surface);
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-lg);
+}
+
+.audin-filtros__grupo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--audin-space-1);
+}
+
+.audin-filtros__grupo--busca {
+    flex: 1;
+    min-width: 200px;
+}
+
+.audin-filtros__label {
+    font-size: var(--audin-font-size-xs);
+    font-weight: var(--audin-font-weight-medium);
+    color: var(--audin-color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.audin-filtros__select,
+.audin-filtros__input {
+    padding: var(--audin-space-2) var(--audin-space-3);
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-md);
+    font-family: var(--audin-font-family);
+    font-size: var(--audin-font-size-sm);
+    background: var(--audin-color-surface);
+    color: var(--audin-color-text);
+    transition: border-color var(--audin-transition-fast),
+                box-shadow var(--audin-transition-fast);
+    min-width: 160px;
+}
+
+.audin-filtros__select:focus-visible,
+.audin-filtros__input:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: 2px;
+}
+
+.audin-filtros__input::placeholder {
+    color: var(--audin-color-text-muted);
+}
+
+
+/* ============================================
+   5. CARD DE RELATORIO NA LISTAGEM (.audin-relatorio-item)
+   ============================================ */
+
+/* Estende .audin-card--flat (usado em conjunto, sem duplicar estilos base) */
+
+.audin-relatorio-item .audin-card__text {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--audin-space-2);
+    align-items: center;
+}
+
+.audin-relatorio-item .audin-card__title a {
+    text-decoration: none;
+    color: var(--audin-color-text);
+    font-weight: var(--audin-font-weight-semibold);
+}
+
+.audin-relatorio-item .audin-card__title a:hover {
+    color: var(--audin-color-primary);
+}
+
+
+/* ============================================
+   6. MENSAGEM VAZIA (.audin-relatorios-lista__vazio)
+   ============================================ */
+
+.audin-relatorios-lista__vazio {
+    text-align: center;
+    padding: var(--audin-space-8);
+    color: var(--audin-color-text-muted);
+    font-size: var(--audin-font-size-lg);
+}
+
+
+/* ============================================
+   7. SECOES DE CONTEUDO (.audin-relatorio__secao)
+   ============================================ */
+
+.audin-relatorio__secao {
+    margin-bottom: var(--audin-space-8);
+}
+
+.audin-relatorio__secao-titulo {
+    font-size: var(--audin-font-size-xl);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-4);
+    padding-bottom: var(--audin-space-2);
+    border-bottom: 2px solid var(--audin-color-primary-light);
+}
+
+.audin-relatorio__descricao {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--audin-space-4);
+    background: var(--audin-color-primary-light);
+    padding: var(--audin-space-4);
+    border-radius: var(--audin-radius-md);
+    border-left: 4px solid var(--audin-color-primary);
+    margin-bottom: var(--audin-space-4);
+}
+
+.audin-relatorio__descricao-icon {
+    font-size: 1.5rem;
+    color: var(--audin-color-primary);
+    flex-shrink: 0;
+}
+
+
+/* ============================================
+   8. RESPONSIVIDADE - MOBILE GRANDE (768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Layout two-column colapsa para single column */
+    .audin-relatorio__layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* Indice lateral vira horizontal no topo */
+    .audin-relatorio__nav {
+        position: static;
+        max-height: none;
+        overflow-y: visible;
+        border-bottom: 1px solid var(--audin-color-border);
+        padding-bottom: var(--audin-space-4);
+        margin-bottom: var(--audin-space-4);
+    }
+
+    .audin-relatorio__nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--audin-space-1);
+    }
+
+    .audin-relatorio__nav-list li a {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: var(--audin-space-1) var(--audin-space-3);
+    }
+
+    .audin-relatorio__nav-list li a:hover,
+    .audin-relatorio__nav-list li a.audin-relatorio__nav-link--active {
+        border-left-color: transparent;
+        border-bottom-color: var(--audin-color-primary);
+    }
+
+    /* Titulo reduzido */
+    .audin-relatorio__titulo {
+        font-size: var(--audin-font-size-xl);
+    }
+
+    /* Stat reduzido */
+    .audin-relatorio__stat {
+        font-size: var(--audin-font-size-2xl);
+    }
+}
+
+
+/* ============================================
+   9. RESPONSIVIDADE - MOBILE PEQUENO (480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+    /* Filtros em coluna */
+    .audin-filtros {
+        flex-direction: column;
+    }
+
+    .audin-filtros__grupo,
+    .audin-filtros__grupo--busca {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .audin-filtros__select,
+    .audin-filtros__input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Descricao em coluna */
+    .audin-relatorio__descricao {
+        flex-direction: column;
+        gap: var(--audin-space-2);
+    }
+
+    /* Footer padding reduzido */
+    .audin-relatorio__footer {
+        margin-top: var(--audin-space-6);
+        padding-top: var(--audin-space-4);
+    }
+}

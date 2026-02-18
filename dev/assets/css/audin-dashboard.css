@@ -1,0 +1,339 @@
+/*
+ * AUDIN Design System - Dashboard
+ *
+ * Componentes especificos para dashboard, estatisticas e consulta:
+ * KPI cards, chart containers, Plotly containers, tabs, formulario,
+ * page header com gradiente, contadores animados e responsividade.
+ *
+ * Todos os valores referenciam tokens via var(--audin-*) definidos em audin-tokens.css.
+ * NAO usa :root, seletores globais ou valores hardcoded de cores.
+ * Prefixo audin-dash__ em todas as classes (BEM).
+ */
+
+
+/* ============================================
+   1. PAGE HEADER (.audin-dash__header)
+   ============================================ */
+
+.audin-dash__header {
+    background: linear-gradient(135deg, var(--audin-color-primary), var(--audin-color-primary-hover));
+    color: var(--audin-color-text-inverse);
+    padding: var(--audin-space-10) var(--audin-space-6);
+    text-align: center;
+    margin-bottom: var(--audin-space-8);
+    border-radius: var(--audin-radius-lg);
+}
+
+.audin-dash__header h1 {
+    font-size: var(--audin-font-size-4xl);
+    font-weight: var(--audin-font-weight-bold);
+    color: var(--audin-color-text-inverse);
+    margin-bottom: var(--audin-space-3);
+}
+
+.audin-dash__header-subtitle {
+    font-size: var(--audin-font-size-lg);
+    color: var(--audin-color-text-inverse);
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+
+/* ============================================
+   2. KPI CARDS (.audin-dash__kpis, .audin-dash__kpi)
+   ============================================ */
+
+.audin-dash__kpis {
+    margin-bottom: var(--audin-space-10);
+}
+
+.audin-dash__kpi {
+    text-align: center;
+    padding: var(--audin-space-6);
+    transition: transform var(--audin-transition-normal),
+                box-shadow var(--audin-transition-normal);
+}
+
+.audin-dash__kpi:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--audin-shadow-lg);
+}
+
+.audin-dash__kpi .audin-card__icon {
+    font-size: 3rem;
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-3);
+}
+
+.audin-dash__kpi-value {
+    font-size: 2.5rem;
+    font-weight: var(--audin-font-weight-bold);
+    color: var(--audin-color-primary);
+    line-height: var(--audin-line-height-tight);
+    margin-bottom: var(--audin-space-2);
+}
+
+
+/* ============================================
+   3. CHART CONTAINERS (.audin-dash__chart-*)
+   ============================================ */
+
+.audin-dash__charts {
+    margin-bottom: var(--audin-space-10);
+}
+
+.audin-dash__chart-wrapper {
+    background: var(--audin-color-surface);
+    border-radius: var(--audin-radius-lg);
+    padding: var(--audin-space-6);
+    box-shadow: var(--audin-shadow-md);
+}
+
+.audin-dash__chart-title {
+    font-size: var(--audin-font-size-lg);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    padding-bottom: var(--audin-space-3);
+    border-bottom: 2px solid var(--audin-color-primary-light);
+    margin-bottom: var(--audin-space-4);
+}
+
+.audin-dash__chart-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+
+/* ============================================
+   4. PLOTLY CONTAINER (.audin-dash__plotly-container)
+   ============================================ */
+
+.audin-dash__plotly-container {
+    min-height: 400px;
+    width: 100%;
+}
+
+
+/* ============================================
+   5. SECTION LAYOUT (.audin-dash__section)
+   ============================================ */
+
+.audin-dash__section {
+    padding: var(--audin-space-8) 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.audin-dash__section-title {
+    font-size: var(--audin-font-size-2xl);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    margin-bottom: var(--audin-space-6);
+}
+
+
+/* ============================================
+   6. TABS (.audin-dash__tabs)
+   ============================================ */
+
+.audin-dash__tabs {
+    display: flex;
+    gap: var(--audin-space-1);
+    border-bottom: 2px solid var(--audin-color-border);
+    margin-bottom: var(--audin-space-6);
+    overflow-x: auto;
+}
+
+.audin-dash__tab {
+    padding: var(--audin-space-3) var(--audin-space-5);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-family: var(--audin-font-family);
+    font-size: var(--audin-font-size-sm);
+    font-weight: var(--audin-font-weight-medium);
+    color: var(--audin-color-text-muted);
+    white-space: nowrap;
+    transition: color var(--audin-transition-fast),
+                border-color var(--audin-transition-fast);
+    margin-bottom: -2px;
+}
+
+.audin-dash__tab:hover {
+    color: var(--audin-color-text);
+}
+
+.audin-dash__tab:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: -3px;
+}
+
+.audin-dash__tab--active {
+    color: var(--audin-color-primary);
+    border-bottom-color: var(--audin-color-primary);
+    font-weight: var(--audin-font-weight-semibold);
+}
+
+
+/* ============================================
+   7. FORMULARIO (.audin-dash__form)
+   ============================================ */
+
+.audin-dash__form {
+    max-width: 640px;
+}
+
+.audin-dash__form-group {
+    margin-bottom: var(--audin-space-5);
+}
+
+.audin-dash__form-label {
+    display: block;
+    font-size: var(--audin-font-size-sm);
+    font-weight: var(--audin-font-weight-medium);
+    color: var(--audin-color-text);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-dash__form-required {
+    color: var(--audin-color-danger);
+}
+
+.audin-dash__form-input,
+.audin-dash__form-select,
+.audin-dash__form-textarea {
+    display: block;
+    width: 100%;
+    padding: var(--audin-space-3);
+    font-family: var(--audin-font-family);
+    font-size: var(--audin-font-size-base);
+    color: var(--audin-color-text);
+    background: var(--audin-color-surface);
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-sm);
+    transition: border-color var(--audin-transition-fast),
+                box-shadow var(--audin-transition-fast);
+}
+
+.audin-dash__form-input:focus,
+.audin-dash__form-select:focus,
+.audin-dash__form-textarea:focus {
+    outline: none;
+    border-color: var(--audin-color-primary);
+    box-shadow: 0 0 0 3px var(--audin-color-primary-light);
+}
+
+.audin-dash__form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.audin-dash__form-error {
+    display: block;
+    font-size: var(--audin-font-size-xs);
+    color: var(--audin-color-danger);
+    margin-top: var(--audin-space-1);
+    min-height: 1.2em;
+}
+
+.audin-dash__form-group--error .audin-dash__form-input,
+.audin-dash__form-group--error .audin-dash__form-select,
+.audin-dash__form-group--error .audin-dash__form-textarea {
+    border-color: var(--audin-color-danger);
+}
+
+.audin-dash__form-group--error .audin-dash__form-error {
+    color: var(--audin-color-danger);
+}
+
+
+/* ============================================
+   8. NOTA DE RODAPE (.audin-dash__footnote)
+   ============================================ */
+
+.audin-dash__footnote {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    text-align: center;
+    padding: var(--audin-space-6) 0;
+    border-top: 1px solid var(--audin-color-border);
+    margin-top: var(--audin-space-8);
+}
+
+
+/* ============================================
+   9. RESPONSIVIDADE
+   ============================================ */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .audin-dash__header {
+        padding: var(--audin-space-8) var(--audin-space-4);
+    }
+}
+
+/* Mobile grande (max-width: 768px) */
+@media (max-width: 768px) {
+    .audin-dash__header h1 {
+        font-size: var(--audin-font-size-3xl);
+    }
+
+    .audin-dash__kpi .audin-card__icon {
+        font-size: 2.5rem;
+    }
+
+    .audin-dash__kpi-value {
+        font-size: 2rem;
+    }
+
+    .audin-dash__chart-container {
+        height: 300px;
+    }
+
+    .audin-dash__plotly-container {
+        min-height: 350px;
+    }
+
+    .audin-dash__tabs {
+        gap: 0;
+    }
+
+    .audin-dash__tab {
+        padding: var(--audin-space-2) var(--audin-space-3);
+        font-size: var(--audin-font-size-xs);
+    }
+}
+
+/* Mobile pequeno (max-width: 480px) */
+@media (max-width: 480px) {
+    .audin-dash__header {
+        padding: var(--audin-space-6) var(--audin-space-4);
+        border-radius: 0;
+    }
+
+    .audin-dash__header h1 {
+        font-size: var(--audin-font-size-2xl);
+    }
+
+    .audin-dash__kpi .audin-card__icon {
+        font-size: 2rem;
+    }
+
+    .audin-dash__kpi-value {
+        font-size: 1.75rem;
+    }
+
+    .audin-dash__chart-wrapper {
+        padding: var(--audin-space-4);
+    }
+
+    .audin-dash__chart-container {
+        height: 250px;
+    }
+
+    .audin-dash__plotly-container {
+        min-height: 300px;
+    }
+}

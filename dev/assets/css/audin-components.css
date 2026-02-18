@@ -1,0 +1,415 @@
+/*
+ * AUDIN Design System - Componentes
+ *
+ * Componentes reutilizaveis: acordeao, cards, tabelas, botoes, badges, alerts, skeleton.
+ * Todos os valores referenciam tokens via var(--audin-*) definidos em audin-tokens.css.
+ *
+ * NAO usa :root, seletores globais ou valores hardcoded.
+ * NAO usa @import (tokens carregados via <link> separado).
+ * Prefixo audin- em todas as classes para isolamento do Joomla.
+ */
+
+
+/* ============================================
+   1. ACORDEAO (.audin-accordion)
+   ============================================ */
+
+.audin-accordion {
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--audin-space-3);
+}
+
+.audin-accordion__heading {
+    margin: 0;
+}
+
+.audin-accordion__trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--audin-space-4) var(--audin-space-5);
+    background: var(--audin-color-surface);
+    border: none;
+    cursor: pointer;
+    font-family: var(--audin-font-family);
+    font-size: var(--audin-font-size-base);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    text-align: left;
+    transition: background var(--audin-transition-fast);
+}
+
+.audin-accordion__trigger:hover {
+    background: var(--audin-color-primary-light);
+}
+
+.audin-accordion__trigger:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: -3px;
+}
+
+.audin-accordion__trigger[aria-expanded="true"] {
+    background: var(--audin-color-primary-light);
+    border-bottom: 1px solid var(--audin-color-border);
+}
+
+.audin-accordion__icon {
+    transition: transform var(--audin-transition-normal);
+    flex-shrink: 0;
+    margin-left: var(--audin-space-3);
+}
+
+.audin-accordion__trigger[aria-expanded="true"] .audin-accordion__icon {
+    transform: rotate(180deg);
+}
+
+.audin-accordion__content {
+    padding: var(--audin-space-5);
+}
+
+.audin-accordion__panel[hidden] {
+    display: none;
+}
+
+
+/* ============================================
+   2. CARDS (.audin-card)
+   ============================================ */
+
+.audin-card {
+    background: var(--audin-color-surface);
+    border-radius: var(--audin-radius-lg);
+    padding: var(--audin-space-6);
+    box-shadow: var(--audin-shadow-md);
+    transition: transform var(--audin-transition-normal),
+                box-shadow var(--audin-transition-normal);
+}
+
+.audin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--audin-shadow-lg);
+}
+
+/* Variante com borda lateral de destaque */
+.audin-card--accent {
+    border-left: 4px solid var(--audin-color-primary);
+}
+
+/* Variante plana sem sombra */
+.audin-card--flat {
+    box-shadow: none;
+    border: 1px solid var(--audin-color-border);
+}
+
+.audin-card--flat:hover {
+    box-shadow: var(--audin-shadow-md);
+}
+
+.audin-card__title {
+    font-size: var(--audin-font-size-lg);
+    font-weight: var(--audin-font-weight-semibold);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-card__text {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    line-height: var(--audin-line-height-relaxed);
+}
+
+.audin-card__icon {
+    font-size: 2rem;
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-3);
+}
+
+
+/* ============================================
+   3. TABELAS (.audin-table)
+   ============================================ */
+
+.audin-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.audin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--audin-font-size-sm);
+}
+
+.audin-table thead {
+    background: var(--audin-color-primary);
+    color: var(--audin-color-text-inverse);
+}
+
+.audin-table th,
+.audin-table td {
+    padding: var(--audin-space-3) var(--audin-space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--audin-color-border);
+}
+
+.audin-table th {
+    font-weight: var(--audin-font-weight-semibold);
+}
+
+.audin-table tbody tr:nth-child(even) {
+    background: var(--audin-color-background);
+}
+
+.audin-table tbody tr:hover {
+    background: var(--audin-color-primary-light);
+}
+
+
+/* ============================================
+   4. BOTOES (.audin-btn)
+   ============================================ */
+
+.audin-btn,
+a.audin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--audin-space-2);
+    padding: var(--audin-space-2) var(--audin-space-4);
+    font-family: var(--audin-font-family);
+    font-size: var(--audin-font-size-sm);
+    font-weight: var(--audin-font-weight-medium);
+    line-height: var(--audin-line-height-normal);
+    border-radius: var(--audin-radius-md);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--audin-transition-fast);
+    text-decoration: none;
+}
+
+.audin-btn:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: 2px;
+}
+
+/* Primario: solido verde */
+/* a.audin-btn--primary necessario para vencer [class^="audin-"] a (0,1,1) do base */
+.audin-btn--primary,
+a.audin-btn--primary {
+    background: var(--audin-color-primary);
+    color: var(--audin-color-text-inverse);
+    border-color: var(--audin-color-primary);
+}
+
+.audin-btn--primary:hover,
+a.audin-btn--primary:hover {
+    background: var(--audin-color-primary-hover);
+    border-color: var(--audin-color-primary-hover);
+    color: var(--audin-color-text-inverse);
+}
+
+/* Secundario: outlined */
+.audin-btn--secondary {
+    background: transparent;
+    color: var(--audin-color-primary);
+    border-color: var(--audin-color-primary);
+}
+
+.audin-btn--secondary:hover {
+    background: var(--audin-color-primary-light);
+}
+
+/* Tamanho pequeno */
+.audin-btn--sm {
+    padding: var(--audin-space-1) var(--audin-space-3);
+    font-size: var(--audin-font-size-xs);
+}
+
+/* Tamanho grande */
+.audin-btn--lg {
+    padding: var(--audin-space-3) var(--audin-space-6);
+    font-size: var(--audin-font-size-base);
+}
+
+/* Variante perigo */
+.audin-btn--danger {
+    background: var(--audin-color-danger);
+    color: var(--audin-color-text-inverse);
+    border-color: var(--audin-color-danger);
+}
+
+.audin-btn--danger:hover {
+    opacity: 0.9;
+}
+
+.audin-btn--danger:focus-visible {
+    outline-color: var(--audin-color-danger);
+}
+
+
+/* ============================================
+   5. BADGES (.audin-badge)
+   ============================================ */
+
+.audin-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--audin-space-1) var(--audin-space-2);
+    font-size: var(--audin-font-size-xs);
+    font-weight: var(--audin-font-weight-medium);
+    border-radius: var(--audin-radius-full);
+    background: var(--audin-color-primary-surface);
+    color: var(--audin-color-primary);
+}
+
+.audin-badge--success {
+    background: var(--audin-color-primary-surface);
+    color: var(--audin-color-success);
+}
+
+.audin-badge--warning {
+    background: var(--audin-color-warning-light);
+    color: var(--audin-color-warning);
+}
+
+.audin-badge--danger {
+    background: var(--audin-color-danger-light);
+    color: var(--audin-color-danger);
+}
+
+.audin-badge--info {
+    background: var(--audin-color-info-light);
+    color: var(--audin-color-info);
+}
+
+
+/* ============================================
+   6. ALERTS (.audin-alert)
+   ============================================ */
+
+.audin-alert {
+    padding: var(--audin-space-4);
+    border-radius: var(--audin-radius-md);
+    border-left: 4px solid var(--audin-color-info);
+    margin-bottom: var(--audin-space-4);
+    background: var(--audin-color-info-light);
+    color: var(--audin-color-text);
+}
+
+.audin-alert--info {
+    border-left-color: var(--audin-color-info);
+    background: var(--audin-color-info-light);
+}
+
+.audin-alert--success {
+    border-left-color: var(--audin-color-success);
+    background: var(--audin-color-success-light);
+}
+
+.audin-alert--warning {
+    border-left-color: var(--audin-color-warning);
+    background: var(--audin-color-warning-light);
+}
+
+.audin-alert--danger {
+    border-left-color: var(--audin-color-danger);
+    background: var(--audin-color-danger-light);
+}
+
+
+/* ============================================
+   7. SKELETON LOADING (.audin-skeleton)
+   ============================================ */
+
+@keyframes audin-skeleton-pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.audin-skeleton {
+    background: var(--audin-color-border);
+    border-radius: var(--audin-radius-md);
+    animation: audin-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.audin-skeleton--text {
+    height: 1em;
+    width: 100%;
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-skeleton--card {
+    height: 200px;
+    width: 100%;
+}
+
+
+/* ============================================
+   8. RESPONSIVIDADE DOS COMPONENTES
+   ============================================ */
+
+/* Mobile grande (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Accordion: padding reduzido */
+    .audin-accordion__trigger {
+        padding: var(--audin-space-3) var(--audin-space-4);
+    }
+
+    .audin-accordion__content {
+        padding: var(--audin-space-4);
+    }
+
+    /* Table: wrapper garante scroll horizontal */
+    .audin-table-wrapper {
+        margin-left: calc(-1 * var(--audin-space-4));
+        margin-right: calc(-1 * var(--audin-space-4));
+        padding-left: var(--audin-space-4);
+        padding-right: var(--audin-space-4);
+    }
+
+    .audin-table th,
+    .audin-table td {
+        padding: var(--audin-space-2) var(--audin-space-3);
+    }
+}
+
+/* Mobile pequeno (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Botoes full-width dentro de cards */
+    .audin-card .audin-btn {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Font sizes reduzidos para componentes */
+    .audin-accordion__trigger {
+        font-size: var(--audin-font-size-sm);
+        padding: var(--audin-space-3);
+    }
+
+    .audin-card {
+        padding: var(--audin-space-4);
+    }
+
+    .audin-card__title {
+        font-size: var(--audin-font-size-base);
+    }
+
+    .audin-table {
+        font-size: var(--audin-font-size-xs);
+    }
+
+    .audin-table th,
+    .audin-table td {
+        padding: var(--audin-space-1) var(--audin-space-2);
+    }
+}

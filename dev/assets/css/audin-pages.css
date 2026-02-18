@@ -1,0 +1,636 @@
+/*
+ * AUDIN Design System - Pages
+ *
+ * Componentes especificos para paginas da Fase 3:
+ * timeline vertical (PAINT/RAINT), cards de legislacao, cards de equipe,
+ * header generico de pagina e secao de contato.
+ *
+ * Todos os valores referenciam tokens via var(--audin-*) definidos em audin-tokens.css.
+ * NAO usa :root, seletores globais ou valores hardcoded.
+ * Prefixo audin- em todas as classes para isolamento do Joomla.
+ * BEM naming: audin-block__element--modifier.
+ */
+
+
+/* ============================================
+   1. HEADER GENERICO DE PAGINA (.audin-page-header)
+   ============================================ */
+
+.audin-page-header {
+    margin-bottom: var(--audin-space-8);
+    padding-bottom: var(--audin-space-6);
+    border-bottom: 1px solid var(--audin-color-border);
+}
+
+.audin-page-header h1 {
+    font-size: var(--audin-font-size-2xl);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+}
+
+.audin-page-header__intro {
+    font-size: var(--audin-font-size-lg);
+    color: var(--audin-color-text-muted);
+    max-width: 800px;
+    line-height: var(--audin-line-height-relaxed);
+    margin-top: var(--audin-space-3);
+}
+
+
+/* ============================================
+   2. TIMELINE VERTICAL (.audin-timeline)
+   ============================================ */
+
+.audin-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    padding-left: var(--audin-space-10);
+}
+
+/* Linha vertical */
+.audin-timeline::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--audin-color-border);
+    border-radius: var(--audin-radius-full);
+}
+
+.audin-timeline__item {
+    position: relative;
+    padding-bottom: var(--audin-space-8);
+}
+
+.audin-timeline__item:last-child {
+    padding-bottom: 0;
+}
+
+/* Node circular */
+.audin-timeline__node {
+    position: absolute;
+    left: calc(-1 * var(--audin-space-10) + 6px);
+    top: var(--audin-space-1);
+    width: 20px;
+    height: 20px;
+    border-radius: var(--audin-radius-full);
+    background: var(--audin-color-surface);
+    border: 3px solid var(--audin-color-primary);
+    z-index: 1;
+}
+
+/* Primeiro item (mais recente) com node preenchido */
+.audin-timeline__item:first-child .audin-timeline__node {
+    background: var(--audin-color-primary);
+}
+
+/* Card de conteudo */
+.audin-timeline__content {
+    background: var(--audin-color-surface);
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-lg);
+    padding: var(--audin-space-5);
+    transition: box-shadow var(--audin-transition-normal);
+}
+
+.audin-timeline__content:hover {
+    box-shadow: var(--audin-shadow-md);
+}
+
+.audin-timeline__title {
+    font-size: var(--audin-font-size-lg);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-timeline__summary {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    margin-bottom: var(--audin-space-3);
+    line-height: var(--audin-line-height-relaxed);
+}
+
+
+/* ============================================
+   3. LEGISLACAO (.audin-legislacao)
+   ============================================ */
+
+.audin-legislacao__intro {
+    font-size: var(--audin-font-size-lg);
+    color: var(--audin-color-text-muted);
+    max-width: 800px;
+    margin-bottom: var(--audin-space-8);
+    line-height: var(--audin-line-height-relaxed);
+}
+
+.audin-legislacao__grupo {
+    margin-bottom: var(--audin-space-10);
+}
+
+.audin-legislacao__grupo-titulo {
+    display: flex;
+    align-items: center;
+    gap: var(--audin-space-3);
+    font-size: var(--audin-font-size-xl);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-4);
+    padding-bottom: var(--audin-space-2);
+    border-bottom: 2px solid var(--audin-color-primary-light);
+}
+
+.audin-legislacao__norma {
+    padding: var(--audin-space-4);
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-md);
+    margin-bottom: var(--audin-space-3);
+    transition: border-color var(--audin-transition-fast),
+                box-shadow var(--audin-transition-fast);
+}
+
+.audin-legislacao__norma:hover {
+    border-color: var(--audin-color-primary-surface);
+    box-shadow: var(--audin-shadow-sm);
+}
+
+.audin-legislacao__norma-titulo {
+    font-size: var(--audin-font-size-base);
+    font-weight: var(--audin-font-weight-semibold);
+    margin-bottom: var(--audin-space-1);
+}
+
+.audin-legislacao__norma-titulo a {
+    text-decoration: none;
+    color: var(--audin-color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--audin-space-2);
+}
+
+.audin-legislacao__norma-titulo a:hover {
+    color: var(--audin-color-primary-hover);
+}
+
+.audin-legislacao__link-icon {
+    font-size: var(--audin-font-size-xs);
+    opacity: 0.6;
+}
+
+.audin-legislacao__ementa {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    line-height: var(--audin-line-height-relaxed);
+    margin-bottom: 0;
+}
+
+
+/* ============================================
+   4. CARDS DE EQUIPE (.audin-membro)
+   ============================================ */
+
+.audin-membro {
+    text-align: center;
+    padding: var(--audin-space-5);
+}
+
+.audin-membro__foto-wrapper {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto var(--audin-space-4);
+    border-radius: var(--audin-radius-full);
+    overflow: hidden;
+    border: 3px solid var(--audin-color-primary-surface);
+    transition: border-color var(--audin-transition-normal);
+}
+
+.audin-membro:hover .audin-membro__foto-wrapper {
+    border-color: var(--audin-color-primary);
+}
+
+.audin-membro__foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Placeholder de foto (icone fa-user-circle quando foto real nao disponivel) */
+.audin-membro__foto-placeholder {
+    font-size: 80px;
+    color: var(--audin-color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.audin-membro__nome {
+    font-size: var(--audin-font-size-base);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    margin-bottom: var(--audin-space-1);
+}
+
+.audin-membro__cargo {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    margin-bottom: 0;
+}
+
+
+/* ============================================
+   5. CONTATO (.audin-contato)
+   ============================================ */
+
+.audin-contato__info {
+    margin-bottom: var(--audin-space-10);
+}
+
+.audin-contato__equipe h2 {
+    margin-bottom: var(--audin-space-6);
+    font-size: var(--audin-font-size-xl);
+    font-weight: var(--audin-font-weight-semibold);
+}
+
+
+/* ============================================
+   6. ORGANOGRAMA (.audin-org)
+   ============================================ */
+
+.audin-org {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--audin-space-8) 0;
+}
+
+.audin-org__level {
+    display: flex;
+    justify-content: center;
+    gap: var(--audin-space-8);
+    width: 100%;
+}
+
+/* --- Conectores dedicados --- */
+
+/* Conector vertical simples */
+.audin-org__connector {
+    width: 3px;
+    height: var(--audin-space-8);
+    background: var(--audin-color-primary-surface);
+    border-radius: var(--audin-radius-full);
+    flex-shrink: 0;
+}
+
+/* Conector de vinculacao institucional (tracejado) */
+.audin-org__connector--vinculo {
+    background: repeating-linear-gradient(
+        to bottom,
+        var(--audin-color-border) 0,
+        var(--audin-color-border) 5px,
+        transparent 5px,
+        transparent 10px
+    );
+    border-radius: 0;
+}
+
+/* Conector em T para branches */
+.audin-org__connector--split {
+    width: 100%;
+    height: var(--audin-space-8);
+    position: relative;
+    background: none;
+    flex-shrink: 0;
+}
+
+/* Haste vertical superior (desce do pai ate a metade) */
+.audin-org__connector--split::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 50%;
+    background: var(--audin-color-primary-surface);
+    transform: translateX(-50%);
+}
+
+/* Barra horizontal centrada entre os dois nos (max-width 320px, gap 32px -> distancia entre centros = 176px) */
+.audin-org__connector__arms {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 176px);
+    right: calc(50% - 176px);
+    height: 3px;
+    background: var(--audin-color-primary-surface);
+}
+
+/* Hastes verticais inferiores (descem da barra horizontal ate cada no) */
+.audin-org__connector__arms::before,
+.audin-org__connector__arms::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 3px;
+    height: calc(var(--audin-space-8) / 2);
+    background: var(--audin-color-primary-surface);
+}
+
+.audin-org__connector__arms::before {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.audin-org__connector__arms::after {
+    right: 0;
+    transform: translateX(50%);
+}
+
+/* --- Nodes --- */
+
+.audin-org__node {
+    text-align: center;
+    padding: var(--audin-space-5) var(--audin-space-6);
+    border-radius: var(--audin-radius-lg);
+    border: 2px solid var(--audin-color-border);
+    background: var(--audin-color-surface);
+    min-width: 220px;
+    max-width: 320px;
+    transition: box-shadow var(--audin-transition-normal),
+                transform var(--audin-transition-normal);
+}
+
+.audin-org__node:hover {
+    box-shadow: var(--audin-shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Orgao Superior (CONSAD) */
+.audin-org__node--superior {
+    border-style: dashed;
+    background: var(--audin-color-background);
+}
+
+.audin-org__node--superior .audin-org__node-icon {
+    color: var(--audin-color-text-muted);
+    font-size: 1.25rem;
+}
+
+.audin-org__node--superior .audin-org__node-title {
+    color: var(--audin-color-text-muted);
+    font-size: var(--audin-font-size-sm);
+    font-weight: var(--audin-font-weight-medium);
+}
+
+.audin-org__node--superior .audin-org__node-subtitle {
+    font-size: var(--audin-font-size-xs);
+}
+
+/* Raiz AUDIN */
+.audin-org__node--root {
+    border-color: var(--audin-color-primary);
+    background: var(--audin-color-primary);
+    box-shadow: var(--audin-shadow-md);
+}
+
+.audin-org__node--root .audin-org__node-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.audin-org__node--root .audin-org__node-title {
+    color: var(--audin-color-text-inverse);
+    font-size: var(--audin-font-size-lg);
+}
+
+.audin-org__node--root .audin-org__node-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.audin-org__node--root:hover {
+    background: var(--audin-color-primary-hover);
+    border-color: var(--audin-color-primary-hover);
+    box-shadow: var(--audin-shadow-lg);
+}
+
+/* Auditor Chefe */
+.audin-org__node--chefe {
+    border-color: var(--audin-color-primary);
+    background: var(--audin-color-primary-light);
+}
+
+.audin-org__node--chefe .audin-org__node-icon {
+    color: var(--audin-color-primary);
+}
+
+/* Coordenacoes */
+.audin-org__node--coord {
+    border-color: var(--audin-color-primary-surface);
+    background: var(--audin-color-surface);
+}
+
+.audin-org__node--coord .audin-org__node-icon {
+    color: var(--audin-color-primary);
+    font-size: 1.5rem;
+}
+
+/* Icone e textos genericos */
+.audin-org__node-icon {
+    font-size: 2rem;
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-org__node-title {
+    font-size: var(--audin-font-size-base);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    margin-bottom: var(--audin-space-1);
+}
+
+.audin-org__node-subtitle {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    margin-bottom: 0;
+}
+
+/* --- Legenda --- */
+
+.audin-org__legenda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--audin-space-3) var(--audin-space-8);
+    margin-top: var(--audin-space-8);
+    padding-top: var(--audin-space-6);
+    border-top: 1px solid var(--audin-color-border);
+    width: 100%;
+}
+
+.audin-org__legenda-item {
+    display: flex;
+    align-items: center;
+    gap: var(--audin-space-2);
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+}
+
+.audin-org__legenda-swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--audin-radius-sm);
+    border: 2px solid;
+    flex-shrink: 0;
+}
+
+.audin-org__legenda-item--superior .audin-org__legenda-swatch {
+    border-color: var(--audin-color-border);
+    border-style: dashed;
+    background: var(--audin-color-background);
+}
+
+.audin-org__legenda-item--unidade .audin-org__legenda-swatch {
+    border-color: var(--audin-color-primary);
+    background: var(--audin-color-primary);
+}
+
+.audin-org__legenda-item--chefe .audin-org__legenda-swatch {
+    border-color: var(--audin-color-primary);
+    background: var(--audin-color-primary-light);
+}
+
+.audin-org__legenda-item--coord .audin-org__legenda-swatch {
+    border-color: var(--audin-color-primary-surface);
+    background: var(--audin-color-surface);
+}
+
+
+/* ============================================
+   7. EQUIPE (.audin-equipe)
+   ============================================ */
+
+.audin-equipe__secao {
+    margin-bottom: var(--audin-space-8);
+}
+
+.audin-equipe__secao h2 {
+    font-size: var(--audin-font-size-xl);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-4);
+    padding-bottom: var(--audin-space-2);
+    border-bottom: 2px solid var(--audin-color-primary-light);
+}
+
+.audin-equipe__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--audin-space-1);
+    justify-content: center;
+}
+
+.audin-membro__contato {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    margin-top: var(--audin-space-1);
+}
+
+.audin-membro__contato a {
+    color: var(--audin-color-primary);
+    text-decoration: none;
+}
+
+.audin-membro__contato a:hover {
+    color: var(--audin-color-primary-hover);
+    text-decoration: underline;
+}
+
+.audin-membro__nota {
+    font-size: var(--audin-font-size-xs);
+    color: var(--audin-color-text-muted);
+    font-style: italic;
+    margin-top: var(--audin-space-1);
+}
+
+
+/* ============================================
+   8. FAQ (.audin-faq)
+   ============================================ */
+
+.audin-faq section h2 {
+    font-size: var(--audin-font-size-xl);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-primary);
+    margin-bottom: var(--audin-space-4);
+}
+
+
+/* ============================================
+   9. RESPONSIVIDADE
+   ============================================ */
+
+/* Tablet: organograma branches empilham */
+@media (max-width: 768px) {
+    .audin-org__level--branches {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--audin-space-4);
+    }
+
+    /* Conector T vira conector simples vertical */
+    .audin-org__connector--split {
+        align-self: auto;
+        width: 3px;
+        background: var(--audin-color-primary-surface);
+        border-radius: var(--audin-radius-full);
+    }
+
+    .audin-org__connector--split::before,
+    .audin-org__connector__arms {
+        display: none;
+    }
+
+    .audin-org__node {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* Mobile: timeline simplificada */
+@media (max-width: 480px) {
+    .audin-timeline {
+        padding-left: var(--audin-space-8);
+    }
+
+    .audin-timeline__node {
+        left: calc(-1 * var(--audin-space-8) + 4px);
+        width: 16px;
+        height: 16px;
+    }
+
+    .audin-timeline::before {
+        left: 11px;
+        width: 2px;
+    }
+
+    .audin-timeline__content {
+        padding: var(--audin-space-4);
+    }
+
+    .audin-membro__foto-wrapper {
+        width: 110px;
+        height: 110px;
+    }
+
+    .audin-org__node {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+}

@@ -1,0 +1,852 @@
+/*
+ * AUDIN Design System - PAINT Digital
+ *
+ * Componentes especificos para o PAINT (Plano Anual de Auditoria Interna):
+ * hero header com gradiente e KPIs, layout two-column com sidebar sticky,
+ * barra de progresso de leitura, cards de servico com badges e status,
+ * barras de capacidade empilhada (7 categorias), botao voltar ao topo
+ * e responsividade nos 3 breakpoints.
+ *
+ * Depende de audin-tokens.css (todas as cores, espacamentos,
+ * fontes e transicoes via var(--audin-*)).
+ *
+ * NAO contem valores hardcoded (exceto cores especificas do PAINT).
+ * NAO usa :root. Prefixo audin-paint__ em todas as classes (BEM).
+ * Nomenclatura BEM: audin-paint__element--modifier.
+ */
+
+
+/* ============================================
+   1. HERO HEADER (.audin-paint__hero)
+   ============================================ */
+
+.audin-paint__hero {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
+    color: var(--audin-color-text-inverse);
+    padding: var(--audin-space-10) var(--audin-space-6) var(--audin-space-8);
+    border-radius: var(--audin-radius-lg);
+    margin-bottom: var(--audin-space-8);
+    position: relative;
+}
+
+.audin-paint__hero-title {
+    font-size: var(--audin-font-size-4xl);
+    font-weight: var(--audin-font-weight-bold);
+    color: var(--audin-color-text-inverse);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-paint__hero-subtitle {
+    font-size: var(--audin-font-size-lg);
+    opacity: 0.9;
+    margin-bottom: var(--audin-space-6);
+}
+
+.audin-paint__hero-kpis {
+    display: flex;
+    gap: var(--audin-space-4);
+    flex-wrap: wrap;
+}
+
+.audin-paint__hero-kpi {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    border-radius: var(--audin-radius-md);
+    padding: var(--audin-space-4) var(--audin-space-4);
+    text-align: center;
+    flex: 1 1 0;
+    min-width: 120px;
+}
+
+.audin-paint__hero-kpi > i {
+    font-size: var(--audin-font-size-2xl);
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-paint__hero-kpi-value {
+    font-size: var(--audin-font-size-2xl);
+    font-weight: var(--audin-font-weight-bold);
+    color: var(--audin-color-text-inverse);
+    line-height: var(--audin-line-height-tight);
+}
+
+.audin-paint__hero-kpi-label {
+    font-size: var(--audin-font-size-xs);
+    color: var(--audin-color-text-inverse);
+    opacity: 0.85;
+}
+
+/* Variante para KPIs de secao (fora do hero) com fundo claro */
+.audin-paint__hero-kpi--section {
+    background: rgba(46, 125, 50, 0.1);
+}
+.audin-paint__hero-kpi--section .audin-paint__hero-kpi-value {
+    color: var(--audin-color-text);
+}
+.audin-paint__hero-kpi--section .audin-paint__hero-kpi-label {
+    color: var(--audin-color-text-muted);
+    opacity: 1;
+}
+.audin-paint__hero-kpi--section > i {
+    color: var(--audin-color-primary);
+}
+
+/* Variante monitoramento: fundo laranja */
+.audin-paint__hero-kpi--warning {
+    background: rgba(255, 152, 0, 0.1);
+}
+.audin-paint__hero-kpi--warning > i {
+    color: #ff9800;
+}
+.audin-paint__hero-kpi--warning .audin-paint__hero-kpi-value {
+    color: var(--audin-color-text);
+}
+.audin-paint__hero-kpi--warning .audin-paint__hero-kpi-label {
+    color: var(--audin-color-text-muted);
+    opacity: 1;
+}
+
+/* Variante monitoramento: fundo vermelho */
+.audin-paint__hero-kpi--danger {
+    background: rgba(244, 67, 54, 0.1);
+}
+.audin-paint__hero-kpi--danger > i {
+    color: #f44336;
+}
+.audin-paint__hero-kpi--danger .audin-paint__hero-kpi-value {
+    color: var(--audin-color-text);
+}
+.audin-paint__hero-kpi--danger .audin-paint__hero-kpi-label {
+    color: var(--audin-color-text-muted);
+    opacity: 1;
+}
+
+.audin-paint__hero-pdf {
+    position: absolute;
+    top: var(--audin-space-4);
+    right: var(--audin-space-4);
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--audin-color-text-inverse);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: var(--audin-space-2) var(--audin-space-4);
+    border-radius: var(--audin-radius-md);
+    font-weight: var(--audin-font-weight-semibold);
+    font-size: var(--audin-font-size-sm);
+    text-decoration: none;
+    backdrop-filter: blur(4px);
+    transition: background var(--audin-transition-fast);
+}
+
+.audin-paint__hero-pdf:hover {
+    background: rgba(255, 255, 255, 0.35);
+    color: var(--audin-color-text-inverse);
+}
+
+
+/* ============================================
+   2. LAYOUT (.audin-paint__layout)
+   ============================================ */
+
+.audin-paint__layout {
+    display: grid;
+    grid-template-columns: minmax(200px, 22%) 1fr;
+    gap: var(--audin-space-8);
+    align-items: start;
+}
+
+.audin-paint__content {
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+
+/* ============================================
+   3. SIDEBAR NAVEGACAO (.audin-paint__nav)
+   ============================================ */
+
+.audin-paint__nav {
+    position: sticky;
+    top: var(--audin-space-4);
+    max-height: calc(100vh - var(--audin-space-8));
+    overflow-y: auto;
+}
+
+.audin-paint__nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.audin-paint__nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--audin-space-2);
+    padding: var(--audin-space-2) var(--audin-space-3);
+    border-left: 3px solid transparent;
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    text-decoration: none;
+    transition: all var(--audin-transition-fast);
+}
+
+.audin-paint__nav-link:hover {
+    color: var(--audin-color-primary);
+    border-left-color: var(--audin-color-primary-surface);
+    background: var(--audin-color-primary-light);
+}
+
+.audin-paint__nav-link--active {
+    color: var(--audin-color-primary);
+    border-left-color: var(--audin-color-primary);
+    background: var(--audin-color-primary-light);
+    font-weight: var(--audin-font-weight-medium);
+}
+
+.audin-paint__nav-icon {
+    width: 1.25em;
+    text-align: center;
+    flex-shrink: 0;
+    color: inherit;
+}
+
+/* Hamburger toggle e backdrop (visiveis apenas em mobile via media query) */
+.audin-paint__nav-toggle {
+    display: none;
+}
+
+.audin-paint__nav-close {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--audin-font-size-lg);
+    color: var(--audin-color-text-muted);
+    padding: var(--audin-space-2);
+    margin-bottom: var(--audin-space-2);
+    margin-left: auto;
+}
+
+.audin-paint__nav-close:hover {
+    color: var(--audin-color-text);
+}
+
+.audin-paint__nav-close:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: 2px;
+}
+
+.audin-paint__nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 250;
+}
+
+.audin-paint__nav-backdrop[hidden] {
+    display: none;
+}
+
+
+/* ============================================
+   4. BARRA DE PROGRESSO (.audin-paint__progress)
+   ============================================ */
+
+.audin-paint__progress {
+    height: 3px;
+    background: var(--audin-color-border);
+    border-radius: var(--audin-radius-full);
+    margin-bottom: var(--audin-space-4);
+    overflow: hidden;
+}
+
+.audin-paint__progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--audin-color-primary);
+    border-radius: var(--audin-radius-full);
+    transition: width 100ms linear;
+}
+
+
+/* scroll-margin-top para secoes do PAINT */
+[id^="paint-secao-"] {
+    scroll-margin-top: var(--audin-space-6);
+}
+
+
+/* ============================================
+   5. CARDS DE SERVICO (.audin-paint__servicos, .audin-paint__servico)
+   ============================================ */
+
+.audin-paint__servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--audin-space-4);
+}
+
+.audin-paint__servico {
+    background: var(--audin-color-surface);
+    border-radius: var(--audin-radius-lg);
+    padding: var(--audin-space-5);
+    box-shadow: var(--audin-shadow-sm);
+    border-left: 4px solid var(--audin-color-border);
+    transition: box-shadow var(--audin-transition-normal);
+}
+
+.audin-paint__servico:hover {
+    box-shadow: var(--audin-shadow-md);
+}
+
+/* Status via borda lateral */
+.audin-paint__servico--planned {
+    border-left-color: var(--audin-color-border);
+}
+
+.audin-paint__servico--active {
+    border-left-color: var(--audin-color-info);
+}
+
+.audin-paint__servico--done {
+    border-left-color: var(--audin-color-success);
+}
+
+.audin-paint__servico-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--audin-space-2);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-paint__servico-title {
+    font-size: var(--audin-font-size-base);
+    font-weight: var(--audin-font-weight-semibold);
+    color: var(--audin-color-text);
+    margin-bottom: 0;
+}
+
+.audin-paint__servico-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--audin-space-1);
+    margin-bottom: var(--audin-space-2);
+}
+
+.audin-paint__servico-summary {
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text-muted);
+    line-height: var(--audin-line-height-relaxed);
+    margin-bottom: var(--audin-space-3);
+}
+
+.audin-paint__servico-hh {
+    /* Container para barra H/H compacta no rodape do card */
+}
+
+
+/* ============================================
+   6. BARRAS DE CAPACIDADE EMPILHADA (.audin-paint__capacity-bar)
+   ============================================ */
+
+/* Componente reutilizavel: mesma classe para visao geral e perfil individual */
+.audin-paint__capacity-bar {
+    display: flex;
+    width: 100%;
+    height: 28px;
+    border-radius: var(--audin-radius-md);
+    overflow: visible;
+    background: var(--audin-color-border);
+}
+
+.audin-paint__capacity-segment:first-child {
+    border-radius: var(--audin-radius-md) 0 0 var(--audin-radius-md);
+}
+
+.audin-paint__capacity-segment:last-child {
+    border-radius: 0 var(--audin-radius-md) var(--audin-radius-md) 0;
+}
+
+.audin-paint__capacity-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    padding: 0 var(--audin-space-1);
+    font-size: var(--audin-font-size-xs);
+    font-weight: var(--audin-font-weight-medium);
+    color: #ffffff;
+    position: relative;
+    transition: flex-grow var(--audin-transition-normal);
+    /* flex-grow definido via style inline: style="flex-grow: 45" */
+}
+
+.audin-paint__capacity-segment:hover {
+    filter: brightness(1.1);
+}
+
+/* Tooltip via pseudo-element no hover */
+.audin-paint__capacity-segment::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--audin-color-secondary-hover);
+    color: var(--audin-color-text-inverse);
+    font-size: var(--audin-font-size-xs);
+    padding: var(--audin-space-1) var(--audin-space-2);
+    border-radius: var(--audin-radius-sm);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--audin-transition-fast);
+    z-index: 10;
+}
+
+.audin-paint__capacity-segment:hover::after {
+    opacity: 1;
+}
+
+/* Versao compacta para rodape do card de servico */
+.audin-paint__capacity-bar--compact {
+    height: 8px;
+}
+
+.audin-paint__capacity-bar--compact .audin-paint__capacity-segment {
+    font-size: 0;
+    min-width: 4px;
+}
+
+/* Cores das 7 categorias de atividade */
+.audin-paint__capacity-segment--auditoria {
+    background-color: #2e7d32;
+}
+
+.audin-paint__capacity-segment--consultoria {
+    background-color: #1565c0;
+}
+
+.audin-paint__capacity-segment--monitoramento {
+    background-color: #e65100;
+}
+
+.audin-paint__capacity-segment--capacitacao {
+    background-color: #6a1b9a;
+}
+
+.audin-paint__capacity-segment--gestao {
+    background-color: #00838f;
+}
+
+.audin-paint__capacity-segment--ferias {
+    background-color: #546e7a;
+}
+
+.audin-paint__capacity-segment--outros {
+    background-color: #8d6e63;
+}
+
+
+/* ============================================
+   7. BADGES DE CATEGORIA (.audin-paint__badge)
+   ============================================ */
+
+.audin-paint__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--audin-space-1) var(--audin-space-2);
+    font-size: var(--audin-font-size-xs);
+    font-weight: var(--audin-font-weight-medium);
+    border-radius: var(--audin-radius-full);
+    line-height: 1;
+}
+
+.audin-paint__badge--consultoria {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.audin-paint__badge--avaliacao {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.audin-paint__badge--monitoramento {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.audin-paint__badge--apuracao {
+    background: #fce4ec;
+    color: #c62828;
+}
+
+.audin-paint__badge--capacitacao {
+    background: #f3e5f5;
+    color: #6a1b9a;
+}
+
+.audin-paint__badge--gestao {
+    background: #e0f2f1;
+    color: #00695c;
+}
+
+.audin-paint__badge--especial {
+    background: #e8eaf6;
+    color: #283593;
+}
+
+
+/* ============================================
+   8. BOTAO VOLTAR AO TOPO (.audin-paint__back-to-top)
+   ============================================ */
+
+.audin-paint__back-to-top {
+    position: fixed;
+    bottom: var(--audin-space-6);
+    right: var(--audin-space-6);
+    width: 44px;
+    height: 44px;
+    border-radius: var(--audin-radius-full);
+    background: var(--audin-color-primary);
+    color: var(--audin-color-text-inverse);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--audin-font-size-lg);
+    box-shadow: var(--audin-shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--audin-transition-normal),
+                background var(--audin-transition-fast);
+    z-index: 100;
+}
+
+.audin-paint__back-to-top--visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.audin-paint__back-to-top:hover {
+    background: var(--audin-color-primary-hover);
+}
+
+.audin-paint__back-to-top:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: 2px;
+}
+
+
+/* ============================================
+   9. CHART CONTAINERS (.audin-paint__chart-container)
+   ============================================ */
+
+.audin-paint__chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    margin: 0 auto var(--audin-space-6);
+}
+
+.audin-paint__chart-container--wide {
+    max-width: 100%;
+    height: 350px;
+}
+
+
+/* ============================================
+   10. TOGGLE CARDS EXPANDIVEIS (.audin-paint__servico-toggle)
+   ============================================ */
+
+.audin-paint__servico-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--audin-color-text-muted);
+    padding: var(--audin-space-1);
+    border-radius: var(--audin-radius-sm);
+    transition: transform var(--audin-transition-fast), color var(--audin-transition-fast);
+    flex-shrink: 0;
+}
+
+.audin-paint__servico-toggle:hover {
+    color: var(--audin-color-primary);
+}
+
+.audin-paint__servico-toggle:focus-visible {
+    outline: 3px solid var(--audin-color-primary);
+    outline-offset: 2px;
+}
+
+.audin-paint__servico-toggle[aria-expanded="true"] {
+    transform: rotate(180deg);
+}
+
+.audin-paint__servico-details {
+    padding-top: var(--audin-space-3);
+    border-top: 1px solid var(--audin-color-border);
+    margin-top: var(--audin-space-3);
+}
+
+
+/* ============================================
+   11. BADGES DE STATUS (.audin-paint__badge--status-*)
+   ============================================ */
+
+.audin-paint__badge--status-planned {
+    background: #eceff1;
+    color: #546e7a;
+}
+
+.audin-paint__badge--status-active {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.audin-paint__badge--status-done {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+
+/* ============================================
+   12. GRID DE PERFIS DA EQUIPE (.audin-paint__team-grid, .audin-paint__team-card)
+   ============================================ */
+
+.audin-paint__team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--audin-space-4);
+    margin-bottom: var(--audin-space-6);
+}
+
+.audin-paint__team-card {
+    background: var(--audin-color-surface);
+    border: 1px solid var(--audin-color-border);
+    border-radius: var(--audin-radius-md);
+    padding: var(--audin-space-4);
+}
+
+.audin-paint__team-name {
+    font-weight: var(--audin-font-weight-semibold);
+    font-size: var(--audin-font-size-sm);
+    color: var(--audin-color-text);
+    margin-bottom: var(--audin-space-1);
+}
+
+.audin-paint__team-role {
+    font-size: var(--audin-font-size-xs);
+    color: var(--audin-color-text-muted);
+    margin-bottom: var(--audin-space-3);
+}
+
+
+/* ============================================
+   13. SCROLL SHADOWS PARA TABELAS (.audin-table-wrapper)
+   ============================================ */
+
+.audin-table-wrapper--scrollable {
+    position: relative;
+    overflow-x: auto;
+}
+
+.audin-table-wrapper__shadow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 24px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--audin-transition-fast);
+    z-index: 2;
+}
+
+.audin-table-wrapper__shadow--left {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.audin-table-wrapper__shadow--right {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.08), transparent);
+}
+
+.audin-table-wrapper__shadow--visible {
+    opacity: 1;
+}
+
+.audin-table-wrapper__sentinel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+}
+
+.audin-table-wrapper__sentinel--left {
+    left: 0;
+}
+
+.audin-table-wrapper__sentinel--right {
+    right: 0;
+}
+
+
+/* ============================================
+   14. RESPONSIVIDADE
+   ============================================ */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .audin-paint__hero {
+        padding: var(--audin-space-8) var(--audin-space-4);
+    }
+
+    .audin-paint__layout {
+        gap: var(--audin-space-6);
+    }
+}
+
+/* Mobile grande (max-width: 768px) */
+@media (max-width: 768px) {
+    .audin-paint__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .audin-paint__nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
+        z-index: 300;
+        transform: translateX(-100%);
+        transition: transform var(--audin-transition-normal);
+        background: var(--audin-color-surface);
+        overflow-y: auto;
+        padding: var(--audin-space-6) var(--audin-space-4);
+        display: block;
+    }
+
+    .audin-paint__nav--open {
+        transform: translateX(0);
+    }
+
+    .audin-paint__nav--open .audin-paint__nav-close {
+        display: block;
+    }
+
+    .audin-paint__nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: var(--audin-space-3);
+        left: var(--audin-space-3);
+        z-index: 200;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--audin-radius-md);
+        background: var(--audin-color-surface);
+        border: 1px solid var(--audin-color-border);
+        box-shadow: var(--audin-shadow-sm);
+        cursor: pointer;
+        font-size: var(--audin-font-size-lg);
+        color: var(--audin-color-text);
+    }
+
+    .audin-paint__nav-toggle:focus-visible {
+        outline: 3px solid var(--audin-color-primary);
+        outline-offset: 2px;
+    }
+
+    .audin-paint__chart-container {
+        height: 280px;
+        max-width: 100%;
+    }
+
+    .audin-paint__chart-container--wide {
+        height: 300px;
+    }
+
+    .audin-paint__hero-title {
+        font-size: var(--audin-font-size-3xl);
+    }
+
+    .audin-paint__hero-kpis {
+        gap: var(--audin-space-2);
+    }
+
+    .audin-paint__hero-kpi {
+        min-width: 80px;
+        flex: 1 1 calc(33% - var(--audin-space-2));
+    }
+
+    .audin-paint__servicos {
+        grid-template-columns: 1fr;
+    }
+
+    .audin-paint__capacity-bar {
+        height: 24px;
+    }
+}
+
+/* Mobile pequeno (max-width: 480px) */
+@media (max-width: 480px) {
+    .audin-paint__hero {
+        padding: var(--audin-space-6) var(--audin-space-4);
+        border-radius: 0;
+    }
+
+    .audin-paint__hero-title {
+        font-size: var(--audin-font-size-2xl);
+    }
+
+    .audin-paint__hero-kpi {
+        padding: var(--audin-space-2);
+    }
+
+    .audin-paint__hero-kpi-value {
+        font-size: var(--audin-font-size-xl);
+    }
+
+    .audin-paint__servico {
+        padding: var(--audin-space-4);
+    }
+
+    .audin-paint__back-to-top {
+        bottom: var(--audin-space-4);
+        right: var(--audin-space-4);
+    }
+
+    .audin-paint__chart-container {
+        height: 250px;
+    }
+
+    .audin-paint__chart-container--wide {
+        height: 250px;
+    }
+
+    .audin-paint__team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Acessibilidade: remover animacoes para usuarios que preferem movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    .audin-paint__hero,
+    .audin-paint__nav,
+    .audin-paint__nav-link,
+    .audin-paint__progress-fill,
+    .audin-paint__servico,
+    .audin-paint__capacity-segment,
+    .audin-paint__capacity-segment::after,
+    .audin-paint__back-to-top,
+    .audin-paint__servico-toggle,
+    .audin-table-wrapper__shadow {
+        transition: none;
+    }
+}
