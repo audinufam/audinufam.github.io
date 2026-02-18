@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAINT 2026 - Plano Anual de Auditoria Interna - AUDIN/UFAM</title>
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- CDNs fixadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous">
+    <!-- Design System CSS -->
+    <link rel="stylesheet" href="../assets/css/audin-tokens.css">
+    <link rel="stylesheet" href="../assets/css/audin-base.css">
+    <link rel="stylesheet" href="../assets/css/audin-components.css">
+    <link rel="stylesheet" href="../assets/css/audin-pages.css">
+    <link rel="stylesheet" href="../assets/css/audin-paint.css">
+
+    <!-- PAINT_DATA: dados variaveis centralizados para reutilizacao anual.
+         Para criar versao de novo exercicio, copie paint-template.html,
+         renomeie para paint-XXXX.html e altere os valores abaixo. -->
+    <script>
+    var PAINT_DATA = {
+        // -- Metadados do exercicio --
+        ano: 2026,                                          // Ano do exercicio do PAINT
+        resolucao: 'Resolucao 52/2025 CONSAD',              // Resolucao do CONSAD que aprovou o PAINT
+        dataAprovacao: '16 de dezembro de 2025',             // Data de aprovacao pelo CONSAD
+        dataAssinatura: '11/02/2026',                        // Data da assinatura digital
+        auditorChefe: 'Azenilton Melo da Silva',             // Nome do auditor-chefe
+        pdfUrl: '../data/PAINT/PAINT_2026_ufam.pdf',         // Caminho para o PDF do PAINT
+
+        // -- KPIs do hero (cabecalho) --
+        kpis: {
+            capacidadeTotal: 16272,         // Soma total de H/H de todos os servidores
+            servicosPlanejados: 8,           // Quantidade de servicos de auditoria planejados
+            servidoresAtivos: 9,             // Quantidade de servidores ativos
+            recomendacoesMonitoradas: 392,   // Total de recomendacoes em monitoramento
+            capacitacaoHH: 720              // H/H destinados a capacitacao
+        },
+
+        // -- Capacidade operacional (7 categorias) --
+        capacidade: {
+            hhPorServidor: 1808,             // H/H anual por servidor (calculo: 226 dias x 8h)
+            categorias: [
+                { id: 'auditoria',     label: 'Servicos de Auditoria', hh: 7976 },
+                { id: 'capacitacao',   label: 'Capacitacao',           hh: 720 },
+                { id: 'monitoramento', label: 'Monitoramento',         hh: 3220 },
+                { id: 'gestao',        label: 'Gestao Qualidade',      hh: 840 },
+                { id: 'orgaos',        label: 'Orgaos de Controle',    hh: 804 },
+                { id: 'interna',       label: 'Gestao Interna',        hh: 2216 },
+                { id: 'extraordinarias', label: 'Extraordinarias',     hh: 496 }
+            ]
+        },
+
+        // -- Servicos de auditoria (8 servicos) --
+        servicos: [
+            { numero: 1, titulo: 'Prestacao Contas',              tipo: 'Avaliacao',   semestre: 1, hh: 320 },
+            { numero: 2, titulo: 'Obras',                         tipo: 'Avaliacao',   semestre: 1, hh: 1090 },
+            { numero: 3, titulo: 'Orcamento campi',               tipo: 'Avaliacao',   semestre: 1, hh: 1116 },
+            { numero: 4, titulo: 'Diarias',                       tipo: 'Avaliacao',   semestre: 1, hh: 1090 },
+            { numero: 5, titulo: 'Riscos (consultoria)',          tipo: 'Consultoria', semestre: 1, hh: 1090 },
+            { numero: 6, titulo: 'LGPD',                          tipo: 'Avaliacao',   semestre: 2, hh: 1090 },
+            { numero: 7, titulo: 'Manutencao',                    tipo: 'Avaliacao',   semestre: 2, hh: 1090 },
+            { numero: 8, titulo: 'Laboratorios',                  tipo: 'Avaliacao',   semestre: 2, hh: 1090 }
+        ],
+
+        // -- Monitoramento de recomendacoes --
+        monitoramento: {
+            total: 392,                // Total de recomendacoes monitoradas
+            emImplementacao: 158,      // Recomendacoes em processo de implementacao
+            pendentes: 234,            // Recomendacoes pendentes de resposta
+            hhAlocado: 3220            // H/H alocados para monitoramento
+        },
+
+        // -- Capacitacao (resumo) --
+        capacitacaoResumo: {
+            horasTotal: 720,              // Total de horas de capacitacao
+            servidoresContemplados: 9,    // Quantidade de servidores contemplados
+            minimoMOT: 40                 // Minimo de horas exigido pelo MOT/CGU
+        },
+
+        // -- Demais atividades (H/H por area) --
+        demais: {
+            pgmq: 840,                  // H/H para Gestao da Qualidade (PGMQ)
+            orgaosControle: 804,         // H/H para atendimento a orgaos de controle
+            gestaoInterna: 2216,         // H/H para gestao interna da unidade
+            extraordinarias: 496         // H/H para demandas extraordinarias
+        }
+    };
+    </script>
+</head>
+<body>
+<div class="audin-paint">
+    <div class="audin-container">
+
+        <!-- Hero Header -->
+        <header class="audin-paint__hero">
+            <!-- SUBSTITUIR: URL final do PDF no Joomla -->
+            <a href="../data/PAINT/PAINT_2026_ufam.pdf" target="_blank" rel="noopener"
+               class="audin-btn audin-btn--secondary audin-paint__hero-pdf">
+                <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+                Download PDF
+            </a>
+            <h1 class="audin-paint__hero-title">PAINT 2026</h1>
+            <p class="audin-paint__hero-subtitle">Plano Anual de Auditoria Interna da UFAM</p>
+            <p class="audin-paint__hero-subtitle">
+                <span class="audin-paint__badge audin-paint__badge--avaliacao">
+                    Aprovado - Resolução 52/2025 CONSAD
+                </span>
+            </p>
+            <div class="audin-paint__hero-kpis" aria-label="Indicadores-chave do PAINT 2026">
+                <div class="audin-paint__hero-kpi">
+                    <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                    <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.capacidadeTotal">16.272</div>
+                    <div class="audin-paint__hero-kpi-label">Capacidade Total H/H</div>
+                </div>
+                <div class="audin-paint__hero-kpi">
+                    <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+                    <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.servicosPlanejados">8</div>
+                    <div class="audin-paint__hero-kpi-label">Serviços Planejados</div>
+                </div>
+                <div class="audin-paint__hero-kpi">
+                    <i class="fa-solid fa-users" aria-hidden="true"></i>
+                    <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.servidoresAtivos">9</div>
+                    <div class="audin-paint__hero-kpi-label">Servidores Ativos</div>
+                </div>
+                <div class="audin-paint__hero-kpi">
+                    <i class="fa-solid fa-tasks" aria-hidden="true"></i>
+                    <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.recomendacoesMonitoradas">392</div>
+                    <div class="audin-paint__hero-kpi-label">Recomendações Monitoradas</div>
+                </div>
+                <div class="audin-paint__hero-kpi">
+                    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                    <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.capacitacaoHH">720</div>
+                    <div class="audin-paint__hero-kpi-label">Capacitação H/H</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Barra de progresso -->
+        <div class="audin-paint__progress">
+            <div class="audin-paint__progress-fill"></div>
+        </div>
+
+        <!-- Layout two-column -->
+        <div class="audin-paint__layout">
+
+            <!-- Hamburger toggle (visivel apenas em mobile) -->
+            <button class="audin-paint__nav-toggle" aria-expanded="false" aria-controls="paint-nav" aria-label="Abrir menu de seções">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+
+            <!-- Backdrop do menu mobile -->
+            <div class="audin-paint__nav-backdrop" hidden></div>
+
+            <!-- Sidebar -->
+            <nav class="audin-paint__nav" id="paint-nav" aria-label="Índice do PAINT 2026">
+                <button class="audin-paint__nav-close" aria-label="Fechar menu">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+                <ul class="audin-paint__nav-list">
+                    <li>
+                        <a href="#paint-secao-1" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-info-circle audin-paint__nav-icon" aria-hidden="true"></i>
+                            Contexto
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-2" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-chart-bar audin-paint__nav-icon" aria-hidden="true"></i>
+                            Capacidades Operacionais
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-3" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-clipboard-check audin-paint__nav-icon" aria-hidden="true"></i>
+                            Serviços de Auditoria
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-4" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-graduation-cap audin-paint__nav-icon" aria-hidden="true"></i>
+                            Capacitação
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-5" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-list-check audin-paint__nav-icon" aria-hidden="true"></i>
+                            Monitoramento
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-6" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-briefcase audin-paint__nav-icon" aria-hidden="true"></i>
+                            Demais Atividades
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-7" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-flag-checkered audin-paint__nav-icon" aria-hidden="true"></i>
+                            Considerações Finais
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-8" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-book audin-paint__nav-icon" aria-hidden="true"></i>
+                            Apêndice I - Legendas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#paint-secao-9" class="audin-paint__nav-link">
+                            <i class="fa-solid fa-exclamation-triangle audin-paint__nav-icon" aria-hidden="true"></i>
+                            Anexo I - Riscos
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Conteudo principal -->
+            <main class="audin-paint__content">
+
+                <!-- Secao 1: Contexto (I+II+III condensadas) -->
+                <section id="paint-secao-1">
+                    <h2>Contexto</h2>
+
+                    <ol>
+                        <li>O PAINT 2026<!-- VERIFICAR --> foi elaborado pela Auditoria Interna da UFAM conforme a Instrução Normativa SFC n. 05/2021<!-- VERIFICAR -->, com a finalidade de definir os temas e macroprocessos a serem abordados no exercício 2026, com base na metodologia de auditoria por riscos.</li>
+                        <li>A UFAM tem sede em Manaus e 5 campi<!-- VERIFICAR --> (Benjamin Constant, Coari, Humaita, Itacoatiara e Parintins), criada pela Lei n. 4.069-A/1962<!-- VERIFICAR -->.</li>
+                        <li>A Auditoria Interna é vinculada ao CONSAD, responsável por fortalecer a gestão e contribuir para a legalidade, moralidade e probidade dos atos da administração. Sua atuação está sujeita a orientação normativa e supervisão técnica do Sistema de Controle Interno do Poder Executivo Federal (CGU).</li>
+                    </ol>
+
+                    <!-- Quadro 1: Cronograma de elaboracao do PAINT -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Quadro 1: Etapas e prazos para elaboração do PAINT<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">IN SFC N. 05/2021</th>
+                                    <th scope="col">Acao</th>
+                                    <th scope="col">Prazos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Art. 5.</td>
+                                    <td>A Auditoria Interna deve submeter proposta do PAINT para supervisão técnica da CGU.</td>
+                                    <td>Ate 30 de novembro de 2025<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Art. 6.</td>
+                                    <td>A CGU deverá encaminhar manifestacao sobre a proposta do PAINT a unidade de Auditoria Interna.</td>
+                                    <td>Ate 15 dias após o recebimento da proposta do PAINT<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Art. 7.</td>
+                                    <td>O Conselho de Administração deverá aprovar o PAINT.</td>
+                                    <td>Ate 30 de dezembro de 2025<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Art. 9.</td>
+                                    <td>A Auditoria Interna deve dar publicidade do PAINT aprovado.</td>
+                                    <td>Ate 30 dias após a aprovacao no CONSAD<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Art. 8.</td>
+                                    <td>O PAINT aprovado será encaminhado a CGU.</td>
+                                    <td>Ate 28 de fevereiro de 2026<!-- VERIFICAR --></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><small>Fonte: Instrução Normativa SFC n. 05, de 27 de agosto de 2021.</small></p>
+
+                    <!-- Quadro 2: Servidores da Auditoria Interna -->
+                    <!-- VERIFICAR: exibir todos os 15 servidores ou apenas os 9 ativos? -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Quadro 2: Servidores da Auditoria Interna<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Servidor</th>
+                                    <th scope="col">Cargo/Função</th>
+                                    <th scope="col">Formacao</th>
+                                    <th scope="col">Titulacao</th>
+                                    <th scope="col">Carga Horária</th>
+                                    <th scope="col">Lotacao</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Azenilton Melo da Silva</th>
+                                    <td>Auditor-Chefe</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Mestre</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Jose Deney Alves de Araujo</th>
+                                    <td>Assistente em Administração</td>
+                                    <td>Biotecnologia</td>
+                                    <td>Doutor</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Rosely Costa da Silva Bandeira</th>
+                                    <td>Contadora / Coordenadora</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Mestre</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Luciana Damasceno Costa</th>
+                                    <td>Contadora</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Especialista</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Thayane Santos Tribuzy</th>
+                                    <td>Auditora / Coordenadora</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Especialista</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Daikyty dos Santos Yoshii</th>
+                                    <td>Auditor</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Especialista</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Parintins</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Luzia Neta Albuquerque Chaves</th>
+                                    <td>Administradora</td>
+                                    <td>Administração</td>
+                                    <td>Mestre</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Maria Luiza Andrade Pereira</th>
+                                    <td>Economista</td>
+                                    <td>Economia</td>
+                                    <td>Mestre</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Nicolly Rebeca da Silva Ribeiro</th>
+                                    <td>Auditor</td>
+                                    <td>Direito</td>
+                                    <td>Mestre</td>
+                                    <td>40h<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Dinorvan Fanhaimpork</th>
+                                    <td>Contador</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Mestre</td>
+                                    <td>Afastamento para Pos-Graduação<!-- VERIFICAR --></td>
+                                    <td>Manaus</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Adriano Varela Taveira</th>
+                                    <td>Contador</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Mestre</td>
+                                    <td>Requisitado<!-- VERIFICAR --></td>
+                                    <td>AGU</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Mayara Santos Santos</th>
+                                    <td>Assistente em Administração</td>
+                                    <td>Direito</td>
+                                    <td>Especialista</td>
+                                    <td>Cedida<!-- VERIFICAR --></td>
+                                    <td>TRE</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Luiz Neves Neto</th>
+                                    <td>Auditor</td>
+                                    <td>Ciencias Contabeis</td>
+                                    <td>Especialista</td>
+                                    <td>Designado para Cargo em Comissao<!-- VERIFICAR --></td>
+                                    <td>PROGESP</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Giglianne Acacio Ferraz</th>
+                                    <td>Administradora</td>
+                                    <td>Administração</td>
+                                    <td>Especialista</td>
+                                    <td>Designada para Cargo de Direcao<!-- VERIFICAR --></td>
+                                    <td>PROGESP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><small>Fonte: Elaborado pela equipe da Auditoria Interna.</small></p>
+
+                </section>
+
+                <!-- Secao 2: Capacidades Operacionais (IV) -->
+                <section id="paint-secao-2">
+                    <h2>Capacidades Operacionais</h2>
+
+                    <!-- Numeros de destaque -->
+                    <div class="audin-paint__hero-kpis" aria-label="Números-chave de capacidade operacional">
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.capacidadeTotal">16.272</div>
+                            <div class="audin-paint__hero-kpi-label">H/H de capacidade total</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.servidoresAtivos">9</div>
+                            <div class="audin-paint__hero-kpi-label">Servidores ativos (8h/dia)</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="capacidade.hhPorServidor">1.808</div>
+                            <div class="audin-paint__hero-kpi-label">H/H por servidor</div>
+                        </div>
+                    </div>
+
+                    <p>O planejamento da Auditoria Interna foi estruturado com base na unidade de medida humano-hora (H/H), adotando-se como referencia 1.808<!-- VERIFICAR --> horas anuais por servidor: (365 dias - 52 sabados - 52 domingos - 13 feriados - 22 dias uteis de ferias) x 8h/dia.</p>
+
+                    <p>A capacidade operacional total de 16.272<!-- VERIFICAR --> H/H foi distribuida entre 7 categorias de atividades:</p>
+
+                    <ol type="a">
+                        <li><strong>Serviços de Auditoria</strong> -- execução de serviços de auditoria, incluindo avaliação e consultoria</li>
+                        <li><strong>Capacitação</strong> -- ações de capacitação e desenvolvimento profissional</li>
+                        <li><strong>Monitoramento</strong> -- monitoramento das recomendações expedidas em trabalhos anteriores</li>
+                        <li><strong>Gestão da Qualidade</strong> -- atividades de gestão e melhoria da qualidade (PGMQ)</li>
+                        <li><strong>Órgãos de Controle</strong> -- atendimento e levantamento de informações demandados por órgãos de controle interno e externo</li>
+                        <li><strong>Gestão Interna</strong> -- atividades de gestão interna da unidade</li>
+                        <li><strong>Demandas Extraordinarias</strong> -- demandas cuja necessidade pode surgir durante a execução do PAINT</li>
+                    </ol>
+
+                    <!-- Grafico: Distribuicao da Capacidade Operacional (VIZ-01) -->
+                    <div class="audin-paint__chart-container" role="img"
+                         aria-label="Gráfico doughnut mostrando distribuição da capacidade operacional: Auditoria 49%, Monitoramento 19,8%, Gestão Interna 13,6%, Gestão Qualidade 5,2%, Órgãos Controle 4,9%, Capacitação 4,4%, Extraordinarias 3,1%">
+                        <canvas id="chart-capacidade" data-chart-id="capacidade"></canvas>
+                    </div>
+
+                    <!-- Barra de capacidade empilhada geral -->
+                    <h3>Distribuição da Capacidade Operacional</h3>
+                    <div class="audin-paint__capacity-bar" role="img"
+                         aria-label="Distribuição de capacidade: 49% serviços de auditoria, 4,4% capacitação, 19,8% monitoramento, 5,2% gestão qualidade, 4,9% órgãos controle, 13,6% gestão interna, 3,1% demandas extraordinarias">
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                             style="flex-grow: 7976" data-tooltip="Auditoria: 7.976 H/H (49,02%)"></div>
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao"
+                             style="flex-grow: 720" data-tooltip="Capacitacao: 720 H/H (4,42%)"></div>
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--monitoramento"
+                             style="flex-grow: 3220" data-tooltip="Monitoramento: 3.220 H/H (19,79%)"></div>
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao"
+                             style="flex-grow: 840" data-tooltip="Gestao Qualidade: 840 H/H (5,16%)"></div>
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--ferias"
+                             style="flex-grow: 804" data-tooltip="Orgaos Controle: 804 H/H (4,94%)"></div>
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria"
+                             style="flex-grow: 2216" data-tooltip="Gestao Interna: 2.216 H/H (13,62%)"></div>
+                        <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros"
+                             style="flex-grow: 496" data-tooltip="Extraordinarias: 496 H/H (3,05%)"></div>
+                    </div>
+                    <!-- VERIFICAR: valores da barra de capacidade -->
+
+                    <!-- Quadro 3: Capacidade operacional -->
+                    <h3>Quadro 3: Detalhamento por Servidor</h3>
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Quadro 3: Capacidade operacional da Auditoria Interna<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" id="q3-servidor">Servidor</th>
+                                    <th scope="col" id="q3-lotacao">Lotacao</th>
+                                    <th scope="col" id="q3-cargo">Cargo/função</th>
+                                    <th scope="col" id="q3-auditoria">a - Serviços de Auditoria</th>
+                                    <th scope="col" id="q3-capacitacao">b - Capacitação</th>
+                                    <th scope="col" id="q3-monitoramento">c - Monitoramento</th>
+                                    <th scope="col" id="q3-gestao">d - Gestão Qualidade</th>
+                                    <th scope="col" id="q3-orgaos">e - Órgãos de Controle</th>
+                                    <th scope="col" id="q3-interna">f - Gestão Interna</th>
+                                    <th scope="col" id="q3-extraordinarias">g - Extraordinarias</th>
+                                    <th scope="col" id="q3-total">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <!-- Auditor-Chefe e Assistente -->
+                            <tbody>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Azenilton Melo da Silva</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Auditor-Chefe</td>
+                                    <td headers="q3-auditoria">600<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">140<!-- VERIFICAR --></td>
+                                    <td headers="q3-gestao">120<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">384<!-- VERIFICAR --></td>
+                                    <td headers="q3-interna">420<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">64<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Jose Deney Alves de Araujo</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Assistente em Administração</td>
+                                    <td headers="q3-auditoria">120<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">240<!-- VERIFICAR --></td>
+                                    <td headers="q3-gestao">120<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-interna">1.128<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">40<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                            </tbody>
+                            <!-- Coordenacao de Monitoramento e Acompanhamento - CMA -->
+                            <tbody>
+                                <tr>
+                                    <th colspan="11" style="background: var(--audin-color-primary-light); font-weight: var(--audin-font-weight-semibold);">Coordenação de Monitoramento e Acompanhamento - CMA</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Rosely Costa da Silva Bandeira</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Coordenadora</td>
+                                    <td headers="q3-auditoria">100<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">1.300<!-- VERIFICAR --></td>
+                                    <td headers="q3-gestao">100<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-interna">92<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Luciana Damasceno Costa</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Contadora</td>
+                                    <td headers="q3-auditoria">60<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">1.420<!-- VERIFICAR --></td>
+                                    <td headers="q3-gestao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">40<!-- VERIFICAR --></td>
+                                    <td headers="q3-interna">72<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                            </tbody>
+                            <!-- Coordenacao de Planejamento e Execucao - CPEx -->
+                            <tbody>
+                                <tr>
+                                    <th colspan="11" style="background: var(--audin-color-primary-light); font-weight: var(--audin-font-weight-semibold);">Coordenação de Planejamento e Execução - CPEx</th>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Thayane Santos Tribuzy</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Coordenadora</td>
+                                    <td headers="q3-auditoria">1.112<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">120<!-- VERIFICAR --></td>
+                                    <td headers="q3-gestao">100<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">220<!-- VERIFICAR --></td>
+                                    <td headers="q3-interna">120<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Daikyty dos Santos Yoshii</th>
+                                    <td headers="q3-lotacao">Parintins</td>
+                                    <td headers="q3-cargo">Auditor</td>
+                                    <td headers="q3-auditoria">1.496<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">0</td>
+                                    <td headers="q3-gestao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">0</td>
+                                    <td headers="q3-interna">96<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Luzia Neta Albuquerque Chaves</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Administradora</td>
+                                    <td headers="q3-auditoria">1.496<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">0</td>
+                                    <td headers="q3-gestao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">0</td>
+                                    <td headers="q3-interna">96<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Maria Luiza Andrade Pereira</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Economista</td>
+                                    <td headers="q3-auditoria">1.496<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">0</td>
+                                    <td headers="q3-gestao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">0</td>
+                                    <td headers="q3-interna">96<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" headers="q3-servidor">Nicolly Rebeca da Silva Ribeiro</th>
+                                    <td headers="q3-lotacao">Manaus</td>
+                                    <td headers="q3-cargo">Auditora</td>
+                                    <td headers="q3-auditoria">1.496<!-- VERIFICAR --></td>
+                                    <td headers="q3-capacitacao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-monitoramento">0</td>
+                                    <td headers="q3-gestao">80<!-- VERIFICAR --></td>
+                                    <td headers="q3-orgaos">0</td>
+                                    <td headers="q3-interna">96<!-- VERIFICAR --></td>
+                                    <td headers="q3-extraordinarias">56<!-- VERIFICAR --></td>
+                                    <td headers="q3-total"><strong>1.808<!-- VERIFICAR --></strong></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="3"><strong>TOTAL</strong></th>
+                                    <td><strong>7.976<!-- VERIFICAR --></strong></td>
+                                    <td><strong>720<!-- VERIFICAR --></strong></td>
+                                    <td><strong>3.220<!-- VERIFICAR --></strong></td>
+                                    <td><strong>840<!-- VERIFICAR --></strong></td>
+                                    <td><strong>804<!-- VERIFICAR --></strong></td>
+                                    <td><strong>2.216<!-- VERIFICAR --></strong></td>
+                                    <td><strong>496<!-- VERIFICAR --></strong></td>
+                                    <td><strong>16.272<!-- VERIFICAR --></strong></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" colspan="3">Percentual</th>
+                                    <td>49,02%<!-- VERIFICAR --></td>
+                                    <td>4,42%<!-- VERIFICAR --></td>
+                                    <td>19,79%<!-- VERIFICAR --></td>
+                                    <td>5,16%<!-- VERIFICAR --></td>
+                                    <td>4,94%<!-- VERIFICAR --></td>
+                                    <td>13,62%<!-- VERIFICAR --></td>
+                                    <td>3,05%<!-- VERIFICAR --></td>
+                                    <td>100,00%</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <p><small>Em 2026 foi considerado o total de 1.808<!-- VERIFICAR --> horas disponiveis para cada servidor.</small></p>
+                    <p><small>Calculo: (365 dias - 52 sabados - 52 domingos - 13 feriados - 22 dias uteis de ferias) x 8h/dia = 1.808h<!-- VERIFICAR --></small></p>
+                    <p><small>Fonte: Elaborado pela equipe da Auditoria Interna.</small></p>
+
+                    <!-- Grid de perfis da equipe com barras de alocacao H/H -->
+                    <h3>Perfis da Equipe -- Alocacao H/H</h3>
+
+                    <div class="audin-paint__team-grid">
+
+                        <!-- Auditor-Chefe -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Azenilton Melo da Silva</p>
+                            <p class="audin-paint__team-role">Auditor-Chefe</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 600" data-tooltip="Auditoria: 600 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--monitoramento" style="flex-grow: 140" data-tooltip="Monitoramento: 140 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 120" data-tooltip="Gestao: 120 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--ferias" style="flex-grow: 384" data-tooltip="Orgaos Controle: 384 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 420" data-tooltip="Gestao Interna: 420 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 64" data-tooltip="Extraordinarias: 64 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- Assistente em Administracao -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Jose Deney Alves de Araujo</p>
+                            <p class="audin-paint__team-role">Assistente em Administração</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 120" data-tooltip="Auditoria: 120 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--monitoramento" style="flex-grow: 240" data-tooltip="Monitoramento: 240 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 120" data-tooltip="Gestao: 120 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--ferias" style="flex-grow: 80" data-tooltip="Orgaos Controle: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 1128" data-tooltip="Gestao Interna: 1.128 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 40" data-tooltip="Extraordinarias: 40 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CMA - Coordenadora -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Rosely Costa da Silva Bandeira</p>
+                            <p class="audin-paint__team-role">CMA - Coordenadora</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 100" data-tooltip="Auditoria: 100 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--monitoramento" style="flex-grow: 1300" data-tooltip="Monitoramento: 1.300 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 100" data-tooltip="Gestao: 100 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--ferias" style="flex-grow: 80" data-tooltip="Orgaos Controle: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 92" data-tooltip="Gestao Interna: 92 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CMA - Contadora -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Luciana Damasceno Costa</p>
+                            <p class="audin-paint__team-role">CMA - Contadora</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 60" data-tooltip="Auditoria: 60 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--monitoramento" style="flex-grow: 1420" data-tooltip="Monitoramento: 1.420 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 80" data-tooltip="Gestao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--ferias" style="flex-grow: 40" data-tooltip="Orgaos Controle: 40 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 72" data-tooltip="Gestao Interna: 72 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CPEx - Coordenadora -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Thayane Santos Tribuzy</p>
+                            <p class="audin-paint__team-role">CPEx - Coordenadora</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 1112" data-tooltip="Auditoria: 1.112 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--monitoramento" style="flex-grow: 120" data-tooltip="Monitoramento: 120 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 100" data-tooltip="Gestao: 100 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--ferias" style="flex-grow: 220" data-tooltip="Orgaos Controle: 220 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 120" data-tooltip="Gestao Interna: 120 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CPEx - Auditor -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Daikyty dos Santos Yoshii</p>
+                            <p class="audin-paint__team-role">CPEx - Auditor</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 1496" data-tooltip="Auditoria: 1.496 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 80" data-tooltip="Gestao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 96" data-tooltip="Gestao Interna: 96 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CPEx - Administradora -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Luzia Neta Albuquerque Chaves</p>
+                            <p class="audin-paint__team-role">CPEx - Administradora</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 1496" data-tooltip="Auditoria: 1.496 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 80" data-tooltip="Gestao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 96" data-tooltip="Gestao Interna: 96 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CPEx - Economista -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Maria Luiza Andrade Pereira</p>
+                            <p class="audin-paint__team-role">CPEx - Economista</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 1496" data-tooltip="Auditoria: 1.496 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 80" data-tooltip="Gestao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 96" data-tooltip="Gestao Interna: 96 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                        <!-- CPEx - Auditora -->
+                        <div class="audin-paint__team-card">
+                            <p class="audin-paint__team-name">Nicolly Rebeca da Silva Ribeiro</p>
+                            <p class="audin-paint__team-role">CPEx - Auditora</p>
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria" style="flex-grow: 1496" data-tooltip="Auditoria: 1.496 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--capacitacao" style="flex-grow: 80" data-tooltip="Capacitacao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--gestao" style="flex-grow: 80" data-tooltip="Gestao: 80 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria" style="flex-grow: 96" data-tooltip="Gestao Interna: 96 H/H"></div>
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--outros" style="flex-grow: 56" data-tooltip="Extraordinarias: 56 H/H"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Secao 3: Servicos de Auditoria (V) -->
+                <section id="paint-secao-3">
+                    <h2>Serviços de Auditoria para 2026</h2>
+
+                    <!-- Numeros de destaque -->
+                    <div class="audin-paint__hero-kpis" aria-label="Números-chave dos serviços de auditoria">
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="kpis.servicosPlanejados">8</div>
+                            <div class="audin-paint__hero-kpi-label">Serviços planejados</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value">7.976</div>
+                            <div class="audin-paint__hero-kpi-label">H/H alocados (49,02%)</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-calendar-alt" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value">5 + 3</div>
+                            <div class="audin-paint__hero-kpi-label">1o sem. + 2o sem.</div>
+                        </div>
+                    </div>
+
+                    <p>A seleção dos serviços de auditoria para 2026 adotou uma metodologia integrada que contemplou os riscos críticos identificados no processo de gestão de riscos institucionais, as percepções da comunidade universitária coletadas por meio de consulta pública e as demandas da Alta Administração.</p>
+
+                    <p>Como resultado, foram selecionadas 8<!-- VERIFICAR --> atividades de avaliação e consultoria, distribuidas em 8<!-- VERIFICAR --> serviços com alocacao total de 7.976<!-- VERIFICAR --> H/H, equivalente a 49,02%<!-- VERIFICAR --> da capacidade operacional da UAIG.</p>
+
+                    <!-- Grafico: H/H por Servico de Auditoria (VIZ-05) -->
+                    <div class="audin-paint__chart-container audin-paint__chart-container--wide" role="img"
+                         aria-label="Gráfico de barras horizontais comparando H/H alocados por serviço de auditoria: Serviço 3 lidera com 1.116 H/H, seguido por Serviços 2 a 8 com 1.090 H/H cada, e Serviço 1 com 320 H/H">
+                        <canvas id="chart-servicos-hh" data-chart-id="servicos-hh"></canvas>
+                    </div>
+
+                    <!-- Quadro 4 resumido -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Quadro 4: Serviços de Auditoria previstos para 2026<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Objeto Auditado</th>
+                                    <th scope="col">Tipo de Serviço</th>
+                                    <th scope="col">Período</th>
+                                    <th scope="col">H/H</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Parecer Prestação de Contas</td>
+                                    <td>Avaliação</td>
+                                    <td>1o semestre</td>
+                                    <td>320<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Execução de obras e serviços de engenharia</td>
+                                    <td>Avaliação</td>
+                                    <td>1o semestre</td>
+                                    <td>1.090<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Execução orçamentária e financeira dos campi</td>
+                                    <td>Avaliação</td>
+                                    <td>1o semestre</td>
+                                    <td>1.116<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Procedimentos de diárias e passagens</td>
+                                    <td>Avaliação</td>
+                                    <td>1o semestre</td>
+                                    <td>1.090<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Consultoria sobre Gestão de Riscos e Controles Internos</td>
+                                    <td>Consultoria</td>
+                                    <td>1o semestre</td>
+                                    <td>1.090<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Transparência ativa e atendimento a LGPD</td>
+                                    <td>Avaliação</td>
+                                    <td>2o semestre</td>
+                                    <td>1.090<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Contratos de manutenção, limpeza e pavimentacao</td>
+                                    <td>Avaliação</td>
+                                    <td>2o semestre</td>
+                                    <td>1.090<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Gestão de infraestrutura laboratorial e insumos tecnicos</td>
+                                    <td>Avaliação</td>
+                                    <td>2o semestre</td>
+                                    <td>1.090<!-- VERIFICAR --></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="4"><strong>TOTAL</strong></th>
+                                    <td><strong>7.976<!-- VERIFICAR --></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <p><small>Fonte: Elaborado pela equipe da Auditoria Interna.</small></p>
+
+                    <!-- Grafico: Cronograma de Servicos por Semestre (VIZ-04) -->
+                    <h3>Cronograma dos Serviços</h3>
+                    <div class="audin-paint__chart-container audin-paint__chart-container--wide" role="img"
+                         aria-label="Cronograma Gantt mostrando distribuição dos 8 serviços de auditoria por semestre: serviços 1 a 5 no primeiro semestre (janeiro a junho), serviços 6 a 8 no segundo semestre (julho a dezembro)">
+                        <canvas id="chart-cronograma" data-chart-id="cronograma"></canvas>
+                    </div>
+
+                    <!-- Cards dos 8 servicos -->
+
+                    <!-- Servico 1 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 1: Parecer Prestação de Contas</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-1-details"
+                                    aria-label="Expandir detalhes do Serviço 1">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">1o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 320" data-tooltip="320 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-1-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Emitir o Parecer de Prestação de Contas em conformidade com a Instrução Normativa SFC No 5, de 27 de agosto de 2021 e Decisao Normativa TCU No 187/2020.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Outros<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Critico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Daikyty<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 2 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 2: Execução de obras e serviços de engenharia</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-2-details"
+                                    aria-label="Expandir detalhes do Serviço 2">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação de Conformidade</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">1o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 1090" data-tooltip="1.090 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-2-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Avaliar a conformidade, eficiência e economicidade na execução dos contratos de obras e serviços de engenharia, incluindo aditivos, prazos, medições e entregas.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Matriz de Riscos<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Critico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Daikyty, Luzia, Maria Luiza<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 3 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 3: Execução orçamentária e financeira dos campi</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-3-details"
+                                    aria-label="Expandir detalhes do Serviço 3">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação de Desempenho</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">1o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 1116" data-tooltip="1.116 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-3-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Avaliar planejamento orçamentário e execução financeira dos recursos das unidades fora de sede, inclusive a Fazenda Experimental.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Matriz de Riscos<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Critico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Daikyty, Luzia, Nicolly<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 4 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 4: Procedimentos de diárias e passagens</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-4-details"
+                                    aria-label="Expandir detalhes do Serviço 4">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação de Conformidade</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">1o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 1090" data-tooltip="1.090 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-4-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Avaliar os controles internos relacionados a legalidade, conformidade e eficiência na concessão de diárias e passagens, verificando a aderência a legislação vigente e aos princípios da administração pública.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Matriz de Riscos<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Critico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Luzia, Maria Luiza<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 5 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 5: Consultoria sobre Gestão de Riscos e Controles Internos</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-5-details"
+                                    aria-label="Expandir detalhes do Serviço 5">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--consultoria">Consultoria</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">1o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--consultoria"
+                                     style="flex-grow: 1090" data-tooltip="1.090 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-5-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Assessorar na consolidacao e atualizacao do Plano de Gestão de Riscos, com enfase no monitoramento dos riscos críticos e alinhamento aos objetivos estratégicos do PDI e Controles Internos.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Alta Administração<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Estratégico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Nicolly, Maria Luiza<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 6 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 6: Transparência ativa e atendimento a LGPD</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-6-details"
+                                    aria-label="Expandir detalhes do Serviço 6">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação de Desempenho</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">2o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 1090" data-tooltip="1.090 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-6-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Verificar o cumprimento das obrigações de transparência ativa no portal institucional e a adequação dos processos internos as exigencias da Lei Geral de Proteção de Dados (LGPD).<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Consulta Pública<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Medio<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Luzia, Nicolly<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 7 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 7: Contratos de manutenção, limpeza e pavimentacao</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-7-details"
+                                    aria-label="Expandir detalhes do Serviço 7">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação de Conformidade</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">2o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 1090" data-tooltip="1.090 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-7-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Examinar a conformidade dos processos de contratação e execução dos serviços de manutenção predial e pavimentacao, verificando eficiência na aplicação dos recursos e atendimento às necessidades institucionais.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Alta Administração<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Critico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Daikyty, Luzia<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servico 8 -->
+                    <div class="audin-paint__servico audin-paint__servico--planned">
+                        <div class="audin-paint__servico-header">
+                            <h4 class="audin-paint__servico-title">Serviço 8: Gestão de infraestrutura laboratorial e insumos tecnicos</h4>
+                            <button class="audin-paint__servico-toggle"
+                                    aria-expanded="false"
+                                    aria-controls="servico-8-details"
+                                    aria-label="Expandir detalhes do Serviço 8">
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="audin-paint__servico-badges">
+                            <span class="audin-paint__badge audin-paint__badge--avaliacao">Avaliação de Desempenho</span>
+                            <span class="audin-paint__badge audin-paint__badge--status-planned">Planejado</span>
+                            <span class="audin-badge">2o semestre</span>
+                        </div>
+                        <div class="audin-paint__servico-hh">
+                            <div class="audin-paint__capacity-bar audin-paint__capacity-bar--compact">
+                                <div class="audin-paint__capacity-segment audin-paint__capacity-segment--auditoria"
+                                     style="flex-grow: 1090" data-tooltip="1.090 H/H"></div>
+                            </div>
+                        </div>
+                        <!-- Conteudo expandivel -->
+                        <div id="servico-8-details" class="audin-paint__servico-details" hidden>
+                            <p class="audin-paint__servico-summary">Analisar a suficiência, manutenção e uso dos equipamentos laboratoriais e materiais de consumo, considerando sua importância para ensino, pesquisa, extensão e inovação.<!-- VERIFICAR --></p>
+                            <ul>
+                                <li><strong>Origem da Demanda:</strong> Consulta Pública<!-- VERIFICAR --></li>
+                                <li><strong>Nível de Risco:</strong> Critico<!-- VERIFICAR --></li>
+                                <li><strong>Equipe:</strong> Thayane, Maria Luiza, Nicolly<!-- VERIFICAR --></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- Secao 4: Capacitacao (VII) -->
+                <section id="paint-secao-4">
+                    <h2>Ações de Capacitação</h2>
+
+                    <!-- Numeros de destaque -->
+                    <div class="audin-paint__hero-kpis" aria-label="Números-chave de capacitação">
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="capacitacaoResumo.horasTotal">720</div>
+                            <div class="audin-paint__hero-kpi-label">Horas totais de capacitação</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-users" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="capacitacaoResumo.servidoresContemplados">9</div>
+                            <div class="audin-paint__hero-kpi-label">Servidores contemplados</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value">40h</div>
+                            <div class="audin-paint__hero-kpi-label">Mínimo por servidor (MOT/CGU)</div>
+                        </div>
+                    </div>
+
+                    <p>De acordo com o Manual de Orientações Técnicas (MOT) da Controladoria-Geral da União (CGU), a previsão de carga horária mínima de 40<!-- VERIFICAR --> horas de capacitação anual dos auditores internos governamentais visa permitir o aperfeiçoamento dos seus conhecimentos e de outras competências, por meio do desenvolvimento profissional continuo.</p>
+
+                    <!-- Quadro 5 -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Quadro 5: Ações de capacitação propostas pela Auditoria Interna<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Servidor</th>
+                                    <th scope="col">Capacitação</th>
+                                    <th scope="col">Horas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" rowspan="5">
+                                        1. Azenilton Melo da Silva<br>
+                                        2. Daikyty dos Santos Yoshii<br>
+                                        3. Luciana Damasceno Costa<br>
+                                        4. Luzia Neta Albuquerque Chaves<br>
+                                        5. Maria Luiza Andrade Pereira<br>
+                                        6. Nicolly Rebeca da Silva Ribeiro<br>
+                                        7. Rosely Costa da Silva Bandeira<br>
+                                        8. Thayane Santos Tribuzy
+                                    </th>
+                                    <td>Auditoria Governamental (Avaliação/Consultoria), Controles Interno e Externo e Autoavaliacao, Compliance, Governança, Gestão de Riscos e Cultura Organizacional<!-- VERIFICAR --></td>
+                                    <td rowspan="5">640h<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Congressos de Auditoria Governamental, Controles Interno e Externo, Compliance, Governança e Gestão de Riscos<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Foruns de Auditoria Governamental, Controles, Governança, Gestão de Riscos e Integridade<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Curso de atualizacao e aperfeiçoamento no Ciclo de Gestão de Recursos Públicos (40h)<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Programa de Avaliação da Qualidade em Auditoria (PGMQ)<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" rowspan="2">9. Jose Deney Alves de Araujo</th>
+                                    <td>Cursos de ferramentas em análise de dados e inteligência artificial<!-- VERIFICAR --></td>
+                                    <td rowspan="2">80h<!-- VERIFICAR --></td>
+                                </tr>
+                                <tr>
+                                    <td>Programa de Avaliação da Qualidade em Auditoria (PGMQ)<!-- VERIFICAR --></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row" colspan="2"><strong>TOTAL DE HORAS DESTINADAS A CAPACITACAO - PAINT 2026</strong></th>
+                                    <td><strong>720h<!-- VERIFICAR --></strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <p><small>Fonte: Levantamento de necessidades elaborado pela Auditoria Interna da UFAM.</small></p>
+
+                </section>
+
+                <!-- Secao 5: Monitoramento (VIII) -->
+                <section id="paint-secao-5">
+                    <h2>Monitoramento das Recomendações</h2>
+
+                    <!-- Numeros de destaque -->
+                    <div class="audin-paint__hero-kpis" aria-label="Números-chave do monitoramento de recomendações">
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="monitoramento.total">392</div>
+                            <div class="audin-paint__hero-kpi-label">Recomendações monitoradas</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--warning">
+                            <i class="fa-solid fa-spinner" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="monitoramento.emImplementacao">158</div>
+                            <div class="audin-paint__hero-kpi-label">Em processo de implementação</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--danger">
+                            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="monitoramento.pendentes">234</div>
+                            <div class="audin-paint__hero-kpi-label">Pendentes de resposta</div>
+                        </div>
+                        <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+                            <div class="audin-paint__hero-kpi-value" data-paint-field="monitoramento.hhAlocado">3.220</div>
+                            <div class="audin-paint__hero-kpi-label">H/H alocados (19,79%)</div>
+                        </div>
+                    </div>
+
+                    <!-- Grafico: Status das Recomendacoes Monitoradas (VIZ-02) -->
+                    <div class="audin-paint__chart-container" role="img"
+                         aria-label="Gráfico doughnut mostrando status das 392 recomendações monitoradas: 158 em implementação (40,3%) e 234 pendentes de resposta (59,7%)">
+                        <canvas id="chart-recomendacoes" data-chart-id="recomendacoes"></canvas>
+                    </div>
+
+                    <p>O monitoramento das recomendações tem demandado grande disponibilidade de tempo e recursos humanos. A AUDIN desenvolveu metodologia que possibilita o acompanhamento observando cronograma de implantação elaborado pela Unidade Auditada, com visitas <em>in loco</em>, acompanhamento do tempo de resposta, análise das manifestações dos gestores e elaboração do relatório gerencial.</p>
+
+                    <p>Semestralmente será elaborado um relatório gerencial, demonstrando os avanços e as dificuldades encontradas na implementação das recomendações, com comunicação ao Conselho de Administração (CONSAD). Para esse fim, será adotada a Sistemática de Monitoramento das Recomendações, Resolução aprovada pelo CONSAD em 26 de novembro de 2025<!-- VERIFICAR -->, em conformidade com o Acórdão TCU No 843/2023<!-- VERIFICAR -->.</p>
+
+                    <h3>Atividades de Monitoramento</h3>
+                    <ol>
+                        <li>Monitorar o atendimento das recomendações emitidas pela Auditoria Interna em Relatórios de Auditorias de exercícios anteriores, ainda não implementadas pelas unidades auditadas, bem como das recomendações decorrentes dos relatórios produzidos durante o exercício 2025<!-- VERIFICAR -->;</li>
+                        <li>Acompanhar a comunicação e o atendimento das recomendações expedidas pela Controladoria Geral da União - CGU;</li>
+                        <li>Comunicar, no mínimo semestralmente, o dirigente máximo, por meio de Relatório Gerencial, sobre os trabalhos realizados pela AUDIN, a execução do PAINT, o quantitativo de recomendações expedidas, atendidas e em monitoramento, e o nível de responsividade dos gestores em relação às demandas dos órgãos de controle interno e externo (CGU e TCU);</li>
+                        <li>Realizar a quantificação e registro dos resultados e dos benefícios financeiros e não financeiros decorrentes da atividade da auditoria interna, conforme disposto na Instrução Normativa SFC No 03, de 09 de junho de 2017<!-- VERIFICAR --> e segundo as orientações previstas na Instrução Normativa SFC No 10, de 28 de abril de 2020<!-- VERIFICAR -->.</li>
+                    </ol>
+
+                </section>
+
+                <!-- Secao 6: Demais Atividades (IX) -->
+                <section id="paint-secao-6">
+                    <h2>Demais Atividades</h2>
+
+                    <p>Além dos serviços de auditoria, capacitação e monitoramento descritos acima, a AUDIN executará atividades de gestão da qualidade, atendimento aos órgãos de controle externo e interno, e gestão interna.</p>
+
+                    <!-- Sub-area 1: PGMQ -->
+                    <div class="audin-card" style="margin-bottom: var(--audin-space-4);">
+                        <h3><i class="fa-solid fa-award" aria-hidden="true"></i> PGMQ - Gestão da Qualidade</h3>
+                        <div class="audin-paint__hero-kpis" aria-label="Números do PGMQ" style="margin-bottom: var(--audin-space-3);">
+                            <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                                <div class="audin-paint__hero-kpi-value" data-paint-field="demais.pgmq">840</div>
+                                <div class="audin-paint__hero-kpi-label">H/H (5,16%)</div>
+                            </div>
+                        </div>
+                        <p>A AUDIN estabeleceu como prioritária a continuidade na implantação do Programa de Gestão de Melhoria da Qualidade (PGMQ), com o objetivo de promover a avaliação e melhoria contínua dos seus processos de trabalho.</p>
+                        <ol>
+                            <li>Identificar em qual dos níveis de maturidade a Auditoria Interna encontra-se posicionada;</li>
+                            <li>Promover ações de melhoria voltadas ao amadurecimento do nível de maturidade, com base no Modelo IA-CM;</li>
+                            <li>Proceder a revisao do Manual de Procedimentos da Auditoria;</li>
+                            <li>Elaborar o Plano Gestão de Riscos da Auditoria Interna para o bienio 2026-2028<!-- VERIFICAR -->;</li>
+                            <li>Revisar os Papeis de Trabalhos, Modelos de Relatórios e demais documentos da Auditoria;</li>
+                            <li>Proceder a avaliação dos auditores após cada trabalho, mensurando desempenho e postura profissional;</li>
+                            <li>Instituir pesquisas para obter feedback dos gestores das Unidades Auditadas;</li>
+                            <li>Os procedimentos do PGMQ nortearao as demais medidas a serem implementadas.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Sub-area 2: Orgaos de Controle -->
+                    <div class="audin-card" style="margin-bottom: var(--audin-space-4);">
+                        <h3><i class="fa-solid fa-building-columns" aria-hidden="true"></i> Órgãos de Controle</h3>
+                        <div class="audin-paint__hero-kpis" aria-label="Números de órgãos de controle" style="margin-bottom: var(--audin-space-3);">
+                            <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                                <div class="audin-paint__hero-kpi-value" data-paint-field="demais.orgaosControle">804</div>
+                                <div class="audin-paint__hero-kpi-label">H/H (4,94%)</div>
+                            </div>
+                        </div>
+                        <p>A AUDIN prestará apoio aos órgãos de controle externo e interno, atendendo as suas demandas ao longo do ano, com alocacao correspondente a 4,94%<!-- VERIFICAR --> da capacidade operacional.</p>
+                    </div>
+
+                    <!-- Sub-area 3: Gestao Interna -->
+                    <div class="audin-card" style="margin-bottom: var(--audin-space-4);">
+                        <h3><i class="fa-solid fa-gears" aria-hidden="true"></i> Gestão Interna</h3>
+                        <div class="audin-paint__hero-kpis" aria-label="Números de gestão interna" style="margin-bottom: var(--audin-space-3);">
+                            <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                                <div class="audin-paint__hero-kpi-value" data-paint-field="demais.gestaoInterna">2.216</div>
+                                <div class="audin-paint__hero-kpi-label">H/H (13,62%)</div>
+                            </div>
+                        </div>
+                        <p>A gestão interna da AUDIN inclui a organização da unidade para assegurar o cumprimento das metas estabelecidas, a elaboração do Plano Anual de Auditoria Interna (PAINT/2027<!-- VERIFICAR -->), do Relatório Anual de Atividades de Auditoria Interna (RAINT/2025<!-- VERIFICAR -->), entre outras atividades administrativas.</p>
+                    </div>
+
+                    <!-- Sub-area 4: Demandas Extraordinarias -->
+                    <div class="audin-card" style="margin-bottom: var(--audin-space-4);">
+                        <h3><i class="fa-solid fa-bolt" aria-hidden="true"></i> Demandas Extraordinarias</h3>
+                        <div class="audin-paint__hero-kpis" aria-label="Números de demandas extraordinarias" style="margin-bottom: var(--audin-space-3);">
+                            <div class="audin-paint__hero-kpi audin-paint__hero-kpi--section">
+                                <div class="audin-paint__hero-kpi-value" data-paint-field="demais.extraordinarias">496</div>
+                                <div class="audin-paint__hero-kpi-label">H/H (3,05%)</div>
+                            </div>
+                        </div>
+                        <p>Conforme orientado no MOT, as demandas extraordinarias constituem trabalhos cuja necessidade surge durante o período de execução do PAINT. Uma vez consideradas importantes pela UAIG e aprovadas pela instância responsável, essas demandas podem ser incorporadas ao plano.</p>
+                    </div>
+
+                </section>
+
+                <!-- Secao 7: Consideracoes Finais -->
+                <section id="paint-secao-7">
+                    <h2>Considerações Finais</h2>
+
+                    <p>O Plano Anual de Auditoria Interna (PAINT) é o documento que direciona a atuação da Auditoria Interna da UFAM. Sua elaboração visa assegurar o cumprimento da legislação em vigor e garantir que os trabalhos sejam executados de forma satisfatória e alinhada com os objetivos e metas estabelecidos.</p>
+
+                    <p>As atividades programadas para 2026 somam 16.272<!-- VERIFICAR --> H/H, refletindo o compromisso da AUDIN em fortalecer a unidade de auditoria, assegurar o cumprimento das metas estabelecidas e apoiar a governança da instituição. Havendo necessidade de ajustes ou adaptações para atendimento de demandas suplementares, a Auditoria Interna analisará a viabilidade e, se julgar necessário, revisará o PAINT e submeterá a apreciação do CONSAD.</p>
+
+                    <p>Contudo, é importante destacar que essa programação não é rígida. Ao longo do exercício, a execução dos trabalhos poderá sofrer alterações, em função de fatores eventuais ou imprevistos que demandem alterações na realização das atividades.</p>
+
+                    <div class="audin-alert audin-alert--info">
+                        <p><strong>Assinatura:</strong> Azenilton Melo da Silva, Auditor-Chefe<!-- VERIFICAR --><br>
+                        Documento assinado digitalmente em 11/02/2026<!-- VERIFICAR --></p>
+                    </div>
+
+                </section>
+
+                <!-- Secao 8: Apendice I - Legendas -->
+                <section id="paint-secao-8">
+                    <h2>Apêndice I - Legendas</h2>
+
+                    <p>As tabelas a seguir apresentam as legendas utilizadas na avaliação de riscos do PAINT 2026.</p>
+
+                    <!-- Tabela 1: Tipo do Risco -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Tipo do Risco<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tipo do Risco</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Operacional</td></tr>
+                                <tr><td>Legal</td></tr>
+                                <tr><td>Financeiro/Orçamentário</td></tr>
+                                <tr><td>Imagem/Reputacao do Órgão</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela 2: Resposta ao Risco -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Resposta ao Risco<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Resposta ao Risco</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Evitar</td></tr>
+                                <tr><td>Mitigar</td></tr>
+                                <tr><td>Compartilhar</td></tr>
+                                <tr><td>Aceitar</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela 3: Priorizacao de Riscos -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Priorizacao de Riscos<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Risco</th>
+                                    <th scope="col">Nível de Prioridade</th>
+                                    <th scope="col">Situacao</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Baixo</td>
+                                    <td>4</td>
+                                    <td>Não Urgente</td>
+                                </tr>
+                                <tr>
+                                    <td>Medio</td>
+                                    <td>3</td>
+                                    <td>Pouco Urgente</td>
+                                </tr>
+                                <tr>
+                                    <td>Alto</td>
+                                    <td>2</td>
+                                    <td>Urgencia</td>
+                                </tr>
+                                <tr>
+                                    <td>Critico</td>
+                                    <td>1</td>
+                                    <td>Emergencia</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela 4: Probabilidade -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Probabilidade<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Probabilidade</th>
+                                    <th scope="col">Escala (Peso)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Baixa</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Media</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Alta</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela 5: Impacto -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Impacto<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Impacto</th>
+                                    <th scope="col">Escala (Peso)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Baixo</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Medio</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Alto</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela 6: Nivel do Risco -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Nível do Risco<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nível do Risco</th>
+                                    <th scope="col">Intervalo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Baixo</td>
+                                    <td>0 - 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Medio</td>
+                                    <td>2,1 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Alto</td>
+                                    <td>4,1 - 6</td>
+                                </tr>
+                                <tr>
+                                    <td>Critico</td>
+                                    <td>6,1 - 9</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela 7: Analise e Avaliacao dos Controles Internos -->
+                    <div class="audin-table-wrapper">
+                        <table class="audin-table">
+                            <caption>Análise e Avaliação dos Controles Internos implementados<!-- VERIFICAR --></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Análise e Avaliação dos Controles Internos implementados</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Controles inexistentes.</td></tr>
+                                <tr><td>Controles implementados mitigam alguns aspectos do risco, mas ainda apresentam ma estruturacao em seu desenho ou estao mal implantados.</td></tr>
+                                <tr><td>Controles implementados e sustentados por ferramentas adequadas e, embora passiveis de aperfeiçoamento, mitigam o risco satisfatoriamente.</td></tr>
+                                <tr><td>Controles implementados podem ser considerados a "melhor prática", mitigando todos ou a grande maioria dos aspectos relevantes do risco.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+
+                <!-- Secao 9: Anexo I - Riscos -->
+                <section id="paint-secao-9">
+                    <h2>Anexo I - Detalhamento da Avaliação de Riscos</h2>
+
+                    <p>A metodologia de avaliação de riscos do PAINT 2026 contemplou uma análise integrada dos riscos críticos identificados no processo de gestão de riscos institucionais, confrontados com as percepções da comunidade universitária e as expectativas da Alta Administração.</p>
+
+                    <h3>Eixos Temáticos de Risco</h3>
+                    <p>A avaliação identificou 6<!-- VERIFICAR --> eixos temáticos de risco, abrangendo áreas críticas da gestão universitária:</p>
+                    <ol>
+                        <li>Gestão orçamentária e financeira<!-- VERIFICAR --></li>
+                        <li>Gestão de contratos e licitações<!-- VERIFICAR --></li>
+                        <li>Gestão de pessoas<!-- VERIFICAR --></li>
+                        <li>Governança e controles internos<!-- VERIFICAR --></li>
+                        <li>Transparência e conformidade legal<!-- VERIFICAR --></li>
+                        <li>Infraestrutura e patrimônio<!-- VERIFICAR --></li>
+                    </ol>
+
+                    <h3>Nucleos de Risco Critico</h3>
+                    <p>Foram identificados 4<!-- VERIFICAR --> nucleos de risco critico que fundamentaram a seleção dos serviços de auditoria para 2026:</p>
+                    <ol>
+                        <li>Atrasos e paralisações de obras (impacto em infraestrutura)<!-- VERIFICAR --></li>
+                        <li>Fragilidade na gestão orçamentária descentralizada dos campi<!-- VERIFICAR --></li>
+                        <li>Fragilidade nos controles de diárias e passagens<!-- VERIFICAR --></li>
+                        <li>Falta de insumos e estrutura laboratorial nas unidades acadêmicas<!-- VERIFICAR --></li>
+                    </ol>
+
+                    <!-- Phase 8: adicionar tabela detalhada de riscos criticos e graficos interativos -->
+
+                    <div class="audin-alert audin-alert--info">
+                        <p><i class="fa-solid fa-circle-info" aria-hidden="true"></i> O detalhamento completo da avaliação de riscos, com tabela de áreas e riscos críticos por eixo temático, será disponibilizado com visualização interativa em versão futura desta página.</p>
+                    </div>
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <!-- Footer -->
+        <footer style="margin-top: var(--audin-space-6); padding: var(--audin-space-5) 0; border-top: 2px solid var(--audin-color-primary); text-align: center;">
+
+            <!-- Botao Download PDF -->
+            <div style="margin-bottom: var(--audin-space-4);">
+                <!-- SUBSTITUIR: URL final do PDF no Joomla -->
+                <a href="../data/PAINT/PAINT_2026_ufam.pdf" target="_blank" rel="noopener"
+                   class="audin-btn audin-btn--primary audin-btn--lg">
+                    <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
+                    Download PDF Original
+                </a>
+            </div>
+
+            <!-- Link para repositorio -->
+            <div style="margin-bottom: var(--audin-space-4);">
+                <a href="paint.html" class="audin-btn audin-btn--secondary">
+                    <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+                    Ver todos os PAINTs
+                </a>
+            </div>
+
+            <!-- Informacao de aprovacao -->
+            <div style="margin-top: var(--audin-space-4); color: var(--audin-color-text-muted); font-size: var(--audin-font-size-sm);">
+                <p>Aprovado pela Resolução No 52/2025 do Conselho de Administração (CONSAD) da UFAM, em 16 de dezembro de 2025.<!-- VERIFICAR --></p>
+                <p>Auditoria Interna da UFAM - audin@ufam.edu.br - (92) 3305-1498<!-- VERIFICAR --></p>
+            </div>
+
+        </footer>
+
+    </div>
+</div>
+
+<!-- Back-to-top -->
+<button class="audin-paint__back-to-top" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+<script src="../assets/js/audin-core.js"></script>
+<script src="../assets/js/audin-paint.js"></script>
+</body>
+</html>
